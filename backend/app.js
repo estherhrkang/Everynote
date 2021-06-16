@@ -6,6 +6,7 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const routes = require('./routes');
+const { ValidationError } = require('sequelize');
 
 // check environment
 const { environment } = require('./config');
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 // middlewares for (1) parsing cookies (2) parsing JSON bodies of requests with 'Content-Type' of 'application/json'
 app.use(cookieParser());
 app.use(express.json());
+
 
 // \/ security middlewares \/
 
@@ -45,6 +47,41 @@ app.use(
 );
 
 app.use(routes);
+
+
+// \/ error-handlers \/
+
+// 404 resource not found error-handler
+app.use((_req, _res, next) => {
+    const err = new Error('The requested resource could not be found.');
+    err.title = 'Resource Not Found';
+    err.errors = ['The requested resource could not be found.'];
+    err.status = 404;
+    next(err);
+});
+
+// Sequelize error-handler
+// catching Sequelize errors and formatting them before sending the error response
+app.use((err, _req, _res, next) => {
+    // check if error is a Sequelize error
+    if (err instanceof ValidationError) {
+        err.errors = err.errors.map(e => e.message);
+        err.title = 'Validation Error';
+    };
+    next(err);
+})
+
+// error formatter error-handler
+app.use((err, _req, res, _next) => {
+    res.status(err.status || 500);
+    console.error(err);
+    res.json({
+        title: err.title || 'Server Error',
+        message: err.message,
+        errors: err.errors,
+        stack: isProduction ? null : err.stack
+    });
+});
 
 
 
