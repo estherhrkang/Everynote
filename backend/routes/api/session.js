@@ -26,7 +26,10 @@ router.post('/', asyncHandler( async(req, res, next) => {
 }));
 
 // Logout: DELETE /api/session
-
+router.delete('/', (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+});
 
 // Get session user: GET /api/session
 
