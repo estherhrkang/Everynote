@@ -4,8 +4,19 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING(50),
       allowNull: false
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
-  }, {});
+  }, 
+  {
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+    }
+  });
   Tag.associate = function(models) {
     // associations can be defined here
   };

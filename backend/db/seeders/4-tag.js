@@ -14,13 +14,16 @@ module.exports = {
     */
    return queryInterface.bulkInsert('Tags', [
       {
-        name: 'Demo-Tag1'
+        name: 'Demo-Tag1',
+        userId: 1
       },
       {
-        name: 'Demo-Tag2'
+        name: 'Demo-Tag2',
+        userId: 1
       },
       {
-        name: 'Demo-Tag3'
+        name: 'Demo-Tag3',
+        userId: 1
       }
     ], {});
   },
