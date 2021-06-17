@@ -7,9 +7,9 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
 // test route
-router.post('/test', function(req, res) {
-    res.json({ requestBody: req.body });
-});
+// router.post('/test', function(req, res) {
+//     res.json({ requestBody: req.body });
+// });
 
 // \/ test setTokenCookie auth middleware \/
 // GET /api/set-token-cookie
