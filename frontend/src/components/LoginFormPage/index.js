@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, Redirect } from 'react-router-dom';
 
 import { login } from '../../store/session';
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
 
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
@@ -15,29 +16,28 @@ const LoginFormPage = () => {
     useEffect(() => {
         const errors = [];
 
-        if (!credential.length) errors.push('Please provider your email addres or username.');
+        if (!credential.length) errors.push('Please provider your email address or username.');
         if (!password.length) errors.push('Please provide your password.');
 
         setErrors(errors);
     }, [credential, password]);
-
+  
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const payload = {
-            credential,
-            password
-        };
-
-        let loggedInUser = await dispatch(login(payload));
-
+        
+        let loggedInUser = await dispatch(login({ credential, password }));
+        
         if (loggedInUser) history.push('/');
     };
-
+    
     const handleCancel = (e) => {
         e.preventDefault();
         setCredential('');
         setPassword('');
+    };
+
+    if (sessionUser) {
+        return <Redirect to='/'/>
     };
 
     return (
@@ -53,6 +53,7 @@ const LoginFormPage = () => {
                         placeholder='Email address or username'
                         value={credential}
                         onChange={e => setCredential(e.target.value)}
+                        required
                     ></input>
                 </div>
                 <div>
@@ -61,6 +62,7 @@ const LoginFormPage = () => {
                         placeholder='Password'
                         value={password}
                         onChange={e => setPassword(e.target.value)}
+                        required
                     ></input>
                 </div>
                 <button type='submit'>Sign in</button>
