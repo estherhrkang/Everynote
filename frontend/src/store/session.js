@@ -37,7 +37,7 @@ export const login = ({ credential, password }) => async dispatch => {
     });
     if (response.ok) {
         const user = await response.json();
-        dispatch(setSessionUser(user));
+        dispatch(setSessionUser(user.user));
         return user;
     };
 };
