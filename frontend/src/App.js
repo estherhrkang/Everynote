@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
@@ -17,6 +17,9 @@ function App() {
 
   return isLoaded && (
     <Switch>
+      <Route exact path='/'>
+        Home
+      </Route>
       <Route path='/signin'>
         <LoginFormPage />
       </Route>

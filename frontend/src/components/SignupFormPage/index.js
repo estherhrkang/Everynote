@@ -1,31 +1,33 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { signup } from '../../store/session';
+import './SignupForm.css';
 
 const SignupFormPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
     // add error if username or email address already exists
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         const errors = [];
 
-        if (!email.length) errors.push('Email address is a required field.');
         if (email.length > 256) errors.push('Email address should be less than 256 characters.');
-        if (!username.length) errors.push('Username is a required field.');
         if (username.length > 30) errors.push('Username should be less than 30 characters.');
         if (username === email) errors.push('Username cannot be same as email address.');
-        if (!password.length) errors.push('Password is a required field.');
         if (password.length > 60) errors.push('Password should be less than 60 characters.');
+        if (password !== confirmPassword) errors.push('Password and confirm password must match.');
 
         setErrors(errors);
-    }, [email, username, password]);
+    }, [email, username, password, confirmPassword]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,7 +43,12 @@ const SignupFormPage = () => {
         setEmail('');
         setUsername('');
         setPassword('');
+        setConfirmPassword('');
     };
+
+    if (sessionUser) {
+        return <Redirect to='/' />
+    }
 
     return (
         <div className='rootDiv'>
@@ -74,6 +81,15 @@ const SignupFormPage = () => {
                         placeholder='Password'
                         value={password}
                         onChange={e => setPassword(e.target.value)}
+                        required
+                    ></input>
+                </div>
+                <div>
+                    <input
+                        type='text'
+                        placeholder='Confirm password'
+                        value={confirmPassword}
+                        onChange={e => setConfirmPassword(e.target.value)}
                         required
                     ></input>
                 </div>

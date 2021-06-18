@@ -38,7 +38,7 @@ const LoginFormPage = () => {
     };
 
     if (sessionUser) {
-        return <Redirect to='/'/>
+        return <Redirect to='/' />
     };
 
     return (
