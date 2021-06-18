@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 const SET_SESSION_USER = 'session/SET_SESSION_USER';
 const REMOVE_SESSION_USER = 'session/REMOVE_SESSION_USER';
+const FAILED_RESTORE = 'session/FAILED_RESTORE';
 
 // action creators
 
@@ -17,6 +18,12 @@ export const removeSessionUser = () => {
         type: REMOVE_SESSION_USER
     };
 };
+
+export const failedRestore = () => {
+    return {
+        type: FAILED_RESTORE
+    }
+}
 
 // thunk action creator
 
@@ -39,8 +46,13 @@ export const restoreUser = () => async dispatch => {
     const response = await csrfFetch('/api/session');
     if (response.ok) {
         const data = await response.json();
-        dispatch(setSessionUser(data.user));
-        return response;
+        console.log(data, data.user);
+        if (data.user) {
+            dispatch(setSessionUser(data.user));
+            // return response;
+        } else {
+            dispatch(failedRestore());
+        }
     };
 };
 
@@ -75,8 +87,11 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
     switch(action.type) {
         case SET_SESSION_USER:
-            return action.user;
+            console.log(action);
+            return { user: action.user };
         case REMOVE_SESSION_USER:
+            return initialState;
+        case FAILED_RESTORE:
             return initialState;
         default:
             return state;

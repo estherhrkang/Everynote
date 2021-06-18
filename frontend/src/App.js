@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 
@@ -15,21 +16,26 @@ function App() {
       .then(() => setIsLoaded(true));
   }, [dispatch])
 
-  return isLoaded && (
-    <Switch>
-      <Route exact path='/'>
-        Home
-      </Route>
-      <Route path='/signin'>
-        <LoginFormPage />
-      </Route>
-      <Route path='/signup'>
-        <SignupFormPage />
-      </Route>
-      <Route>
-        Page does not exist.
-      </Route>
-    </Switch>
+  return (
+    <>
+      <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
+        <Switch>
+          <Route exact path='/'>
+            Home
+          </Route>
+          <Route path='/signin'>
+            <LoginFormPage />
+          </Route>
+          <Route path='/signup'>
+            <SignupFormPage />
+          </Route>
+          <Route>
+            Page does not exist.
+          </Route>
+        </Switch>
+      )}
+    </>
   );
 };
 
