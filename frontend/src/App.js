@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
+import NotebookPage from "./components/NotebookPage";
 
 import * as sessionActions from './store/session';
 
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path='/signup'>
             <SignupFormPage />
+          </Route>
+          <Route path='/notebooks'>
+            <NotebookPage />
           </Route>
           <Route>
             Page does not exist.

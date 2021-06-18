@@ -4,7 +4,7 @@ const SET_SESSION_USER = 'session/SET_SESSION_USER';
 const REMOVE_SESSION_USER = 'session/REMOVE_SESSION_USER';
 const FAILED_RESTORE = 'session/FAILED_RESTORE';
 
-// action creators
+// action creator
 
 export const setSessionUser = (user) => {
     return {

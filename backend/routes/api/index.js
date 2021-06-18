@@ -3,8 +3,10 @@ const router = require('express').Router();
 // connect all the routes
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const notebooksRouter = require('./notebooks.js');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
+router.use('/notebooks', notebooksRouter);
 
 // test route
 // router.post('/test', function(req, res) {

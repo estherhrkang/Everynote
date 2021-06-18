@@ -24,5 +24,12 @@ module.exports = (sequelize, DataTypes) => {
     Notebook.hasMany(models.Note, { foreignKey: 'notebookId' });
   };
 
+  Notebook.createNew = async function( title, userId ) {
+    const notebook = await Notebook.create({
+      title, userId
+    });
+    return await Notebook.findByPk(notebook.id);
+  };
+
   return Notebook;
 };
