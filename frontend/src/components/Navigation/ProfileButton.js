@@ -22,11 +22,6 @@ const ProfileButton = ({ user }) => {
         setShowMenu(true);
     };
 
-    const handleLogout = (e) => {
-        e.preventDefault();
-        dispatch(logout());
-    };
-
     return (
         <>
             <button onClick={openMenu}>
@@ -37,7 +32,7 @@ const ProfileButton = ({ user }) => {
                     <li>{user.username}</li>
                     <li>{user.email}</li>
                     <li>
-                        <button onClick={handleLogout}>Sign Out</button>
+                        <button onClick={() => dispatch(logout())}>Sign Out</button>
                     </li>
                 </ul>
             )}
