@@ -56,9 +56,15 @@ export const signup = ({ username, email, password }) => async dispatch => {
     };
 };
 
-// export const logout = ({ credential, password }) => async dispatch => {
-    
-// };
+export const logout = () => async dispatch => {
+    const response = await csrfFetch('/api/session', {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        dispatch(removeSessionUser());
+        return response;
+    }
+};
 
 // reducer
 
