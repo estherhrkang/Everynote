@@ -23,6 +23,12 @@ router.post('/', validateCreateNotebook, requireAuth, asyncHandler( async(req, r
     return res.json( notebook );
 }));
 
+// Get all notebooks: /api/notebooks
+router.get('/', requireAuth, asyncHandler( async(req, res) => {
+    const notebooks = await Notebook.findAll();
+    return res.json(notebooks);
+}));
+
 
 
 module.exports = router;
