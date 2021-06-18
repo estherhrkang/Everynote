@@ -7,8 +7,8 @@ export const setNotebook = (notebook) => {
     return {
         type: SET_NOTEBOOK,
         notebook
-    }
-}
+    };
+};
 
 // thunk action creator
 
@@ -24,7 +24,16 @@ export const createNotebook = ( title ) => async dispatch => {
         const notebook = await response.json();
         dispatch(setNotebook(notebook));
         return notebook;
-    }
+    };
+};
+
+export const getAllNotebooks = () => async dispatch => {
+    const response = await csrfFetch('/api/notebooks');
+    if (response.ok) {
+        const notebooks = await response.json();
+        dispatch(setNotebook(notebooks));
+        return notebooks;
+    };
 };
 
 // reducer
