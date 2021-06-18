@@ -1,0 +1,26 @@
+.rootDiv {
+    display: grid;
+}
+
+h1, form {
+    background-color: white;
+    justify-content: center;
+    text-align: center;
+}
+
+input {
+    padding: 12px 16px;
+}
+
+.submitBtn {
+    background-color: #00a82d;
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    padding: 5px 1px;
+}
+
+.cancelBtn {
+    background-color: white;
+    border: none;
+}

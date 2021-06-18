@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
+import SignupFormPage from "./components/SignupFormPage";
+
 import * as sessionActions from './store/session';
 
 function App() {
@@ -15,8 +17,14 @@ function App() {
 
   return isLoaded && (
     <Switch>
-      <Route path='/login'>
+      <Route path='/signin'>
         <LoginFormPage />
+      </Route>
+      <Route path='/signup'>
+        <SignupFormPage />
+      </Route>
+      <Route>
+        Page does not exist.
       </Route>
     </Switch>
   );
