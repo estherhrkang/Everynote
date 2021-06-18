@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 
 import { login } from '../../store/session';
+import './LoginForm.css';
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const LoginFormPage = () => {
     };
 
     return (
-        <div>
+        <div className='rootDiv'>
             <h1>Everynote</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
@@ -65,8 +66,8 @@ const LoginFormPage = () => {
                         required
                     ></input>
                 </div>
-                <button type='submit'>Sign in</button>
-                <button type='button' onClick={handleCancel}>Cancel</button>
+                <button className='submitBtn' type='submit'>Sign in</button>
+                <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
             </form>
         </div>
     );
