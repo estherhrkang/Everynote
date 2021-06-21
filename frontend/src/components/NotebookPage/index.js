@@ -25,7 +25,7 @@ const NotebookPage = () => {
             <div># Notebooks
                 <ul>
                     {notebooks?.map(notebook => (
-                        <li>{notebook.title}</li>
+                        <li key={notebook.id}>{notebook.title}</li>
                     ))}
                 </ul>
             </div>
