@@ -4,11 +4,9 @@ import { createNotebook, getAllNotebooks } from '../../store/notebook';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();
-    const notebooks = useSelector(state => Object.values(state.notebook));
+    const notebooks = useSelector(state => state.notebook.fullNotebook);
     
     const [title, setTitle] = useState('');
-
-    console.log(Array.isArray(notebooks));
 
     useEffect(() => {
         dispatch(getAllNotebooks());
@@ -25,12 +23,11 @@ const NotebookPage = () => {
                 <button onClick={() => dispatch(createNotebook(title))}>Submit</button>
             </div>
             <div># Notebooks
-                {/* {notebooks} */}
-                {/* <ul>
-                    {notebooks.map(notebook => (
+                <ul>
+                    {notebooks?.map(notebook => (
                         <li>{notebook.title}</li>
                     ))}
-                </ul> */}
+                </ul>
             </div>
         </div>
     );

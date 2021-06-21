@@ -31,6 +31,7 @@ export const getAllNotebooks = () => async dispatch => {
     const response = await csrfFetch('/api/notebooks');
     if (response.ok) {
         const notebooks = await response.json();
+        console.log('HERE-------', notebooks);
         dispatch(setNotebook(notebooks));
         return notebooks;
     };
@@ -39,13 +40,13 @@ export const getAllNotebooks = () => async dispatch => {
 // reducer
 
 const initialState = {
-    notebook: null
+    fullNotebook: null
 };
 
 const notebookReducer = (state = initialState, action) => {
     switch(action.type) {
         case SET_NOTEBOOK:
-            return { ...state, ...action.notebook };
+            return { ...state, fullNotebook: [...action.notebook] };
         default:
             return state;
     };
