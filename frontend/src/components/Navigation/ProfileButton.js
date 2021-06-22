@@ -24,6 +24,11 @@ const ProfileButton = ({ user }) => {
         setShowMenu(true);
     };
 
+    const handleSignout = () => {
+        dispatch(logout());
+        history.push('/');
+    };
+
     return (
         <>
             <button onClick={openMenu}>
@@ -34,7 +39,7 @@ const ProfileButton = ({ user }) => {
                     <li>{user.username}</li>
                     <li>{user.email}</li>
                     <li>
-                        <button onClick={() => dispatch(logout())}>Sign Out</button>
+                        <button onClick={handleSignout}>Sign Out</button>
                     </li>
                 </ul>
             )}

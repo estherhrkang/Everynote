@@ -34,6 +34,10 @@ const LoginFormPage = () => {
         setPassword('');
     };
 
+    const handleDemoSignin = () => {
+        dispatch(login({ credential: 'Demo-lition', password: 'password' }))
+    };
+
     if (sessionUser) {
         return <Redirect to='/' />
     };
@@ -68,6 +72,9 @@ const LoginFormPage = () => {
                 <div>
                     Don't have an account?
                     <button className='createAccountBtn' type='button' onClick={() => history.push('/signup')}>Create account</button>
+                </div>
+                <div>
+                    <button className='demoBtn' type='button' onClick={handleDemoSignin}>Demo user</button>
                 </div>
             </form>
         </div>
