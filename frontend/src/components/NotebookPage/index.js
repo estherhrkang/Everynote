@@ -8,6 +8,7 @@ const NotebookPage = () => {
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     
     const [title, setTitle] = useState('');
+    const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotebooks());
@@ -15,6 +16,17 @@ const NotebookPage = () => {
 
     return (
         <div className='notebook-root-div'><i className='fas fa-book'>NOTEBOOKS</i>
+            <div>
+                <form>
+                    <input
+                        placeholder='Find Notebooks'
+                        type='text'
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                    >
+                    </input>
+                </form>
+            </div>
             <div>New Notebook
                 <input
                     type='text'
