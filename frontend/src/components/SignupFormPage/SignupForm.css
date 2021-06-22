@@ -24,3 +24,7 @@ input {
     background-color: white;
     border: none;
 }
+
+.signinBtn {
+    color: #00a82d
+}

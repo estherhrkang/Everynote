@@ -24,3 +24,7 @@ input {
     background-color: white;
     border: none;
 }
+
+.createAccountBtn {
+    color: #00a82d
+}

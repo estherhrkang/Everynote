@@ -100,7 +100,10 @@ const SignupFormPage = () => {
                 </div>
                 <button className='submitBtn' type='submit'>Sign up</button>
                 <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
-                <button className='signinBtn' type='button' onClick={handleSignin}>Sign in</button>
+                <div>
+                    Already have an account?
+                    <button className='signinBtn' type='button' onClick={handleSignin}>Sign in</button>
+                </div>
             </form>
         </div>
     );

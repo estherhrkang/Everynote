@@ -73,7 +73,10 @@ const LoginFormPage = () => {
                 </div>
                 <button className='submitBtn' type='submit'>Sign in</button>
                 <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
-                <button className='createAccountBtn' type='button' onClick={handleCreateAccount}>Create account</button>
+                <div>
+                    Don't have an account?
+                    <button className='createAccountBtn' type='button' onClick={handleCreateAccount}>Create account</button>
+                </div>
             </form>
         </div>
     );
