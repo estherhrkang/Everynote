@@ -45,6 +45,7 @@ const LoginFormPage = () => {
     return (
         <div className='rootDiv'>
             <h1>Everynote</h1>
+            <p>Remember everything important.</p>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map(error => <li key={error}>{error}</li>)}
