@@ -9,14 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     }
-  }, 
-  {
-    defaultScope: {
-      attributes: {
-        exclude: ['createdAt', 'updatedAt'],
-      },
-    }
-  });
+  }, {});
 
   Notebook.associate = function(models) {
     // associations can be defined here

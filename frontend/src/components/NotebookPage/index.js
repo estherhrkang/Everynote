@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, deleteOneNotebook } from '../../store/notebook';
+import './Notebook.css';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();
@@ -13,24 +14,38 @@ const NotebookPage = () => {
     }, [dispatch]);
 
     return (
-        <div>Notebooks
+        <div className='notebook-root-div'>NOTEBOOKS
             <div>New Notebook
                 <input
                     type='text'
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 ></input>
-                <button onClick={() => dispatch(createNotebook(title))}>Submit</button>
+                <button onClick={() => (dispatch(createNotebook(title)))}>Submit</button>
             </div>
             <div>{notebooks?.length} Notebooks
-                <ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {notebooks?.map(notebook => (
-                        <li key={notebook.id}>
-                            {notebook.title}
-                            <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
-                        </li>
+                        <tr>
+                            <th>{notebook.title}</th>
+                            <th>{notebook.createdAt}</th>
+                            <th>{notebook.updatedAt}</th>
+                            <th>
+                                <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
+                            </th>
+                        </tr>
                     ))}
-                </ul>
+                </tbody>
+            </table>
             </div>
         </div>
     );
