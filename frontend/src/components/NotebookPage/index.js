@@ -24,28 +24,28 @@ const NotebookPage = () => {
                 <button onClick={() => (dispatch(createNotebook(title)))}>Submit</button>
             </div>
             <div>{notebooks?.length} Notebooks
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Created</th>
-                        <th>Updated</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {notebooks?.map(notebook => (
-                        <tr key={notebook.id}>
-                            <th className='table__tbody__tr__th'>{notebook.title}</th>
-                            <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
-                            <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
-                            <th>
-                                <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
-                            </th>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {notebooks?.map(notebook => (
+                            <tr key={notebook.id}>
+                                <th className='table__tbody__tr__th'>{notebook.title}</th>
+                                <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
+                                <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
+                                <th>
+                                    <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
+                                </th>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );
