@@ -24,11 +24,11 @@ const NotePage = () => {
 
     return (
         <div className='note-root-div'>
-            <h1><i className='fas fa-sticky-note'>NOTES</i></h1>
+            <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
             {/* <div>
                 <form onSubmit={handleSubmit}>
                     <input
-                        placeholder='Find Notebooks'
+                        placeholder='Find Note'
                         type='text'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -74,7 +74,7 @@ const NotePage = () => {
                                 <th className='table__tbody__tr__th'>{note.updatedAt.slice(0,10)}</th>
                                 <th>
                                     <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
-                                    {/* <button onClick={() => dispatch(editOneNotebook(note))}>Edit</button> */}
+                                    {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
                                 </th>
                             </tr>
                         ))}

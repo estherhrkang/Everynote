@@ -22,7 +22,7 @@ const NotebookPage = () => {
 
     return (
         <div className='notebook-root-div'>
-            <h1><i className='fas fa-book'>NOTEBOOKS</i></h1>
+            <h1><i className='fas fa-book'> NOTEBOOKS</i></h1>
             {/* <div>
                 <form onSubmit={handleSubmit}>
                     <input

@@ -78,7 +78,7 @@ export const deleteOneNote = (note) => async dispatch => {
 //     });
 //     if (response.ok) {
 //         const note = await response.json();
-//         dispatch(setNotebook(note));
+//         dispatch(setNote(note));
 //         return note;
 //     }
 // };
