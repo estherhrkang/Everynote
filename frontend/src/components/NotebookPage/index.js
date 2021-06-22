@@ -28,17 +28,17 @@ const NotebookPage = () => {
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Created at</th>
-                        <th>Updated at</th>
+                        <th>Created</th>
+                        <th>Updated</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {notebooks?.map(notebook => (
                         <tr>
-                            <th>{notebook.title}</th>
-                            <th>{notebook.createdAt}</th>
-                            <th>{notebook.updatedAt}</th>
+                            <th className='table__tbody__tr__th'>{notebook.title}</th>
+                            <th className='table__tbody__tr__th'>{notebook.createdAt}</th>
+                            <th className='table__tbody__tr__th'>{notebook.updatedAt}</th>
                             <th>
                                 <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
                             </th>
