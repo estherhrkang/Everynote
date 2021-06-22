@@ -84,7 +84,7 @@ const notebookReducer = (state = initialState, action) => {
             return newState;
         case REMOVE_NOTEBOOK:
             newState = { ...state };
-            delete newState[action.notebookId];
+            delete newState.fullNotebook.find(oneFullNotebook => oneFullNotebook.id === action.notebookId);
             return newState;
         default:
             return state;

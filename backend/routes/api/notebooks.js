@@ -31,7 +31,7 @@ router.get('/', requireAuth, asyncHandler( async(req, res) => {
 
 // Delete a notebook: /api/notebooks/:id
 router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
-    const notebookId = await Notebook.deleteOne(req.params.id);
+    const notebookId = await Notebook.deleteOne(Number(req.params.id));
     return res.json(notebookId);
 }));
 
