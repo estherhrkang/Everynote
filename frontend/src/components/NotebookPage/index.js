@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNotebook, getAllNotebooks, deleteOneNotebook } from '../../store/notebook';
+import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import './Notebook.css';
 
 const NotebookPage = () => {
@@ -41,6 +41,7 @@ const NotebookPage = () => {
                                 <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                 <th>
                                     <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
+                                    {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
                                 </th>
                             </tr>
                         ))}

@@ -67,6 +67,21 @@ export const deleteOneNotebook = (notebook) => async dispatch => {
     };
 };
 
+// export const editOneNotebook = (notebook) => async dispatch => {
+//     const response = await csrfFetch(`/api/notebooks/${notebook.id}`, {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(notebook)
+//     });
+//     if (response.ok) {
+//         const notebook = await response.json();
+//         dispatch(setNotebook(notebook));
+//         return notebook;
+//     }
+// }
+
 // reducer
 
 const initialState = {

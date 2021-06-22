@@ -35,6 +35,12 @@ router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
     return res.json(notebookId);
 }));
 
+// Edit a notebook: /api/notebooks/:id
+// router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
+//     const notebook = await Notebook.updateOne(req.body);
+//     return res.json(notebook);
+// }));
+
 
 
 module.exports = router;
