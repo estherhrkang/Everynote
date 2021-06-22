@@ -19,6 +19,7 @@ const validateCreateNote = [
 // Create note: POST /api/notes
 router.post('/', validateCreateNote, requireAuth, asyncHandler( async(req, res) => {
     const { title, content } = req.body;
+    // need to pass in something like ~req.notebook.id
     const note = await Note.createNew( title, content, req.user.id );
     return res.json(note);
 }));
