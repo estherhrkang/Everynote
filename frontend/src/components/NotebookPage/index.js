@@ -14,7 +14,7 @@ const NotebookPage = () => {
     }, [dispatch]);
 
     return (
-        <div className='notebook-root-div'>NOTEBOOKS
+        <div className='notebook-root-div'><i class='fas fa-book'>NOTEBOOKS</i>
             <div>New Notebook
                 <input
                     type='text'
