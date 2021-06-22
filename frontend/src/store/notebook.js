@@ -5,6 +5,7 @@ const SET_NOTEBOOK = 'notebook/SET_NOTEBOOK';
 const REMOVE_NOTEBOOK = 'notebook/REMOVE_NOTEBOOK';
 
 // action creator
+
 export const loadNotebooks = (notebook) => {
     return {
         type: LOAD_NOTEBOOKS,
@@ -28,6 +29,15 @@ export const removeNotebook = (notebookId) => {
 
 // thunk action creator
 
+export const getAllNotebooks = () => async dispatch => {
+    const response = await csrfFetch('/api/notebooks');
+    if (response.ok) {
+        const notebooks = await response.json();
+        dispatch(loadNotebooks(notebooks));
+        return notebooks;
+    };
+};
+
 export const createNotebook = ( title ) => async dispatch => {
     const response = await csrfFetch('/api/notebooks', {
         method: 'POST',
@@ -40,15 +50,6 @@ export const createNotebook = ( title ) => async dispatch => {
         const notebook = await response.json();
         dispatch(setNotebook(notebook));
         return notebook;
-    };
-};
-
-export const getAllNotebooks = () => async dispatch => {
-    const response = await csrfFetch('/api/notebooks');
-    if (response.ok) {
-        const notebooks = await response.json();
-        dispatch(loadNotebooks(notebooks));
-        return notebooks;
     };
 };
 
@@ -90,7 +91,7 @@ const initialState = {
 
 const notebookReducer = (state = initialState, action) => {
     let newState;
-    switch(action.type) {
+    switch (action.type) {
         case LOAD_NOTEBOOKS:
             return { ...state, fullNotebook: [...action.notebook] };
         case SET_NOTEBOOK:
@@ -100,8 +101,8 @@ const notebookReducer = (state = initialState, action) => {
         case REMOVE_NOTEBOOK:
             newState = { ...state };
             newState.fullNotebook = [...state.fullNotebook];
-            const toRemoveIdx = newState.fullNotebook.findIndex(oneFullNotebook => oneFullNotebook.id === action.notebookId) 
-            newState.fullNotebook.splice(toRemoveIdx, 1);
+            const idxToRemove = newState.fullNotebook.findIndex(oneFullNotebook => oneFullNotebook.id === action.notebookId); 
+            newState.fullNotebook.splice(idxToRemove, 1);
             return newState;
         default:
             return state;

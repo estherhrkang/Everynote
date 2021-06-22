@@ -5,6 +5,7 @@ import Navigation from "./components/Navigation";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import NotebookPage from "./components/NotebookPage";
+import NotePage from "./components/NotePage";
 
 import * as sessionActions from './store/session';
 
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path='/notebooks'>
             <NotebookPage />
+          </Route>
+          <Route path='/notes'>
+            <NotePage />
           </Route>
           <Route>
             Page does not exist.

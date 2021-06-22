@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
-import './Notebook.css';
+import { createNote, getAllNotes, deleteOneNote, editOneNote } from '../../store/note';
+import './Note.css';
 
-const NotebookPage = () => {
+const NotePage = () => {
     const dispatch = useDispatch();
-    const notebooks = useSelector(state => state.notebook.fullNotebook);
+    const notes = useSelector(state => state.note.fullNote);
     
     const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
     const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
-        dispatch(getAllNotebooks());
+        dispatch(getAllNotes());
     }, [dispatch]);
 
     // const handleSubmit = (e) => {
@@ -19,10 +20,9 @@ const NotebookPage = () => {
 
     //     dispatch()
     // };
-
     return (
-        <div className='notebook-root-div'>
-            <h1><i className='fas fa-book'>NOTEBOOKS</i></h1>
+        <div className='note-root-div'>
+            <h1><i className='fas fa-sticky-note'>NOTES</i></h1>
             {/* <div>
                 <form onSubmit={handleSubmit}>
                     <input
@@ -36,7 +36,7 @@ const NotebookPage = () => {
                 </form>
             </div> */}
             <div>
-                <form onSubmit={() => dispatch(createNotebook(title))}>
+                <form onSubmit={() => dispatch(createNote(title, content))}>
                     <input
                         placeholder='New Notebook'
                         type='text'
@@ -46,7 +46,7 @@ const NotebookPage = () => {
                     <button type='submit'>Create</button>
                 </form>
             </div>
-            <div>{notebooks?.length} Notebooks
+            <div>{notes?.length} Notebooks
                 <table>
                     <thead>
                         <tr>
@@ -57,13 +57,13 @@ const NotebookPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {notebooks?.map(notebook => (
+                        {notes?.map(notebook => (
                             <tr key={notebook.id}>
                                 <th className='table__tbody__tr__th'>{notebook.title}</th>
                                 <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
                                 <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                 <th>
-                                    <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
+                                    <button onClick={() => dispatch(deleteOneNote(notebook))}>Delete</button>
                                     {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
                                 </th>
                             </tr>
@@ -75,4 +75,4 @@ const NotebookPage = () => {
     );
 };
 
-export default NotebookPage;
+export default NotePage;
