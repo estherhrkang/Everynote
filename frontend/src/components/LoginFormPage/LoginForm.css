@@ -2,9 +2,6 @@
     display: grid;
 }
 
-h1 {
-    color: #00a82d;
-}
 
 h1, form {
     background-color: white;
