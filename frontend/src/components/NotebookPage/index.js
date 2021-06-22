@@ -14,26 +14,36 @@ const NotebookPage = () => {
         dispatch(getAllNotebooks());
     }, [dispatch]);
 
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     dispatch()
+    // };
+
     return (
         <div className='notebook-root-div'><i className='fas fa-book'>NOTEBOOKS</i>
-            <div>
-                <form>
+            {/* <div>
+                <form onSubmit={handleSubmit}>
                     <input
                         placeholder='Find Notebooks'
                         type='text'
-                        value={searchInput}
-                        onChange={(e) => setSearchInput(e.target.value)}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     >
                     </input>
+                    <button type='submit'><i class="fas fa-search"></i></button>
                 </form>
-            </div>
-            <div>New Notebook
-                <input
-                    type='text'
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                ></input>
-                <button onClick={() => (dispatch(createNotebook(title)))}>Submit</button>
+            </div> */}
+            <div>
+                <form onSubmit={() => dispatch(createNotebook(title))}>
+                    <input
+                        placeholder='New Notebook'
+                        type='text'
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                    ></input>
+                    <button type='submit'>Create</button>
+                </form>
             </div>
             <div>{notebooks?.length} Notebooks
                 <table>
