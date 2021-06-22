@@ -68,8 +68,12 @@ const LoginFormPage = () => {
                         required
                     ></input>
                 </div>
-                <button className='submitBtn' type='submit'>Sign in</button>
-                <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
+                <div>
+                    <button className='submitBtn' type='submit'>Sign in</button>
+                </div>
+                <div>
+                    <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
+                </div>
                 <div>
                     Don't have an account?
                     <button className='createAccountBtn' type='button' onClick={() => history.push('/signup')}>Create account</button>
