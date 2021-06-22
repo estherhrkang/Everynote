@@ -84,7 +84,8 @@ const notebookReducer = (state = initialState, action) => {
             return newState;
         case REMOVE_NOTEBOOK:
             newState = { ...state };
-            delete newState.fullNotebook.find(oneFullNotebook => oneFullNotebook.id === action.notebookId);
+            // newState.fullNotebook is an array. pop / shift did not work. need to fix it later... 
+            newState.fullNotebook.find(oneFullNotebook => oneFullNotebook.id === action.notebookId);
             return newState;
         default:
             return state;
