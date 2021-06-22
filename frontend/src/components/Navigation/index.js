@@ -12,7 +12,7 @@ const Navigation = ({ isLoaded }) => {
             <>
                 <nav>
                     <ProfileButton user={sessionUser} />
-                    <NavLink to='/notebooks'><i class='fas fa-book'>Notebooks</i></NavLink>
+                    <NavLink to='/notebooks'><i className='fas fa-book'>Notebooks</i></NavLink>
                 </nav>
             </>
         )
