@@ -37,8 +37,8 @@ const NotebookPage = () => {
                     {notebooks?.map(notebook => (
                         <tr>
                             <th className='table__tbody__tr__th'>{notebook.title}</th>
-                            <th className='table__tbody__tr__th'>{notebook.createdAt}</th>
-                            <th className='table__tbody__tr__th'>{notebook.updatedAt}</th>
+                            <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
+                            <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                             <th>
                                 <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
                             </th>
