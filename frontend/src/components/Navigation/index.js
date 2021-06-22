@@ -14,19 +14,11 @@ const Navigation = ({ isLoaded }) => {
                 <ProfileButton user={sessionUser} />
             </>
         )
-    } else {
-        sessionLinks = (
-            <>
-                <NavLink to='/signin'>Sign In</NavLink>
-                <NavLink to='/signup'>Sign Up</NavLink>
-            </>
-        )
     }
 
     return (
         <ul>
             <li>
-                <NavLink exact to='/'>Home</NavLink>
                 {isLoaded && sessionLinks}
             </li>
         </ul>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { signup } from '../../store/session';
+import LoginFormPage from '../LoginFormPage';
 import './SignupForm.css';
 
 const SignupFormPage = () => {
@@ -45,6 +46,10 @@ const SignupFormPage = () => {
         setPassword('');
         setConfirmPassword('');
     };
+
+    const handleSignin = () => {
+        history.push('/');
+    }
 
     if (sessionUser) {
         return <Redirect to='/' />
@@ -95,6 +100,7 @@ const SignupFormPage = () => {
                 </div>
                 <button className='submitBtn' type='submit'>Sign up</button>
                 <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
+                <button className='signinBtn' type='button' onClick={handleSignin}>Sign in</button>
             </form>
         </div>
     );
