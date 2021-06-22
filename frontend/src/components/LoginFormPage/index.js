@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
-import SignupFormPage from '../SignupFormPage';
 
 import { login } from '../../store/session';
 import './LoginForm.css';
@@ -34,10 +33,6 @@ const LoginFormPage = () => {
         setCredential('');
         setPassword('');
     };
-
-    const handleCreateAccount = () => {
-        history.push('/signup');
-    }
 
     if (sessionUser) {
         return <Redirect to='/' />
@@ -72,7 +67,7 @@ const LoginFormPage = () => {
                 <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
                 <div>
                     Don't have an account?
-                    <button className='createAccountBtn' type='button' onClick={handleCreateAccount}>Create account</button>
+                    <button className='createAccountBtn' type='button' onClick={() => history.push('/signup')}>Create account</button>
                 </div>
             </form>
         </div>
