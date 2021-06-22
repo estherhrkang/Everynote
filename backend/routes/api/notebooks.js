@@ -16,31 +16,32 @@ const validateCreateNotebook = [
         .exists({ checkFalsy: true })
         .withMessage('Please provide a title for this notebook.')
 ];
-// Create notebook: /api/notebooks
+// Create notebook: POST /api/notebooks
 router.post('/', validateCreateNotebook, requireAuth, asyncHandler( async(req, res) => {
     const { title } = req.body;
     const notebook = await Notebook.createNew( title, req.user.id );
     return res.json(notebook);
 }));
 
-// Get all notebooks: /api/notebooks
+// Get all notebooks: GET /api/notebooks
 router.get('/', requireAuth, asyncHandler( async(req, res) => {
     const notebooks = await Notebook.findAll();
     return res.json(notebooks);
 }));
 
-// Delete a notebook: /api/notebooks/:id
+// Delete a notebook: DELETE /api/notebooks/:id
 router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
     const notebookId = await Notebook.deleteOne(Number(req.params.id));
     return res.json(notebookId);
 }));
 
-// Edit a notebook: /api/notebooks/:id
+// Edit a notebook: PATCH /api/notebooks/:id
 // router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
 //     const notebook = await Notebook.updateOne(req.body);
 //     return res.json(notebook);
 // }));
 
+// Get(search) a notebook: GET /api/notebooks/:id
 
 
 module.exports = router;
