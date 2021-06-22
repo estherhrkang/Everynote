@@ -15,21 +15,18 @@ const LoginFormPage = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    useEffect(() => {
-        const errors = [];
-
-        if (!credential.length) errors.push('Please provider your email address or username.');
-        if (!password.length) errors.push('Please provide your password.');
-
-        setErrors(errors);
-    }, [credential, password]);
-  
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        let loggedInUser = await dispatch(login({ credential, password }));
-        
-        if (loggedInUser) history.push('/');
+        setErrors([]);
+        await dispatch(login({ credential, password }))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) {
+                    setErrors(data.errors)
+                } else {
+                    history.push('/notebooks')
+                }
+            })
     };
     
     const handleCancel = (e) => {
