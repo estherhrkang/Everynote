@@ -11,7 +11,7 @@ const Navigation = ({ isLoaded }) => {
         sessionLinks = (
             <>
                 <ProfileButton user={sessionUser} />
-                <NavLink to='/notebooks'>Notebooks</NavLink>
+                <NavLink to='/notebooks'><i class='fas fa-book'>Notebooks</i></NavLink>
             </>
         )
     }
