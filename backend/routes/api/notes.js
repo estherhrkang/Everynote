@@ -14,12 +14,12 @@ const router = express.Router();
 const validateCreateNote = [
     check('title')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a title for this notebook.')
+        .withMessage('Please provide a title for this note.')
 ];
 // Create note: POST /api/notes
 router.post('/', validateCreateNote, requireAuth, asyncHandler( async(req, res) => {
     const { title, content } = req.body;
-    const note = await Notebook.createNew( title, content, req.user.id, req.notebook.id );
+    const note = await Note.createNew( title, content, req.user.id );
     return res.json(note);
 }));
 
