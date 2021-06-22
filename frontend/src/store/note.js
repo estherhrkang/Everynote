@@ -93,7 +93,7 @@ const noteReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_NOTES:
-            return { ...state, fullNote: [...action.notebook] };
+            return { ...state, fullNote: [...action.note] };
         case SET_NOTE:
             newState = { ...state };
             newState.fullNote = [...state.fullNote, action.note];

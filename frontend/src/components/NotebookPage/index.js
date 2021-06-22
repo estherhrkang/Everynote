@@ -8,7 +8,7 @@ const NotebookPage = () => {
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     
     const [title, setTitle] = useState('');
-    const [searchInput, setSearchInput] = useState('');
+    // const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotebooks());

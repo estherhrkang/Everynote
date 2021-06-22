@@ -6,10 +6,11 @@ import './Note.css';
 const NotePage = () => {
     const dispatch = useDispatch();
     const notes = useSelector(state => state.note.fullNote);
+    // const notes = useSelector(state => state.note);
     
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [searchInput, setSearchInput] = useState('');
+    // const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotes());
@@ -20,6 +21,7 @@ const NotePage = () => {
 
     //     dispatch()
     // };
+
     return (
         <div className='note-root-div'>
             <h1><i className='fas fa-sticky-note'>NOTES</i></h1>
@@ -38,33 +40,41 @@ const NotePage = () => {
             <div>
                 <form onSubmit={() => dispatch(createNote(title, content))}>
                     <input
-                        placeholder='New Notebook'
+                        placeholder='New Note Title'
                         type='text'
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                     ></input>
+                    <input
+                        placeholder='New Note Content'
+                        type='text'
+                        value={content}
+                        onChange={e => setContent(e.target.value)}
+                    ></input>
                     <button type='submit'>Create</button>
                 </form>
             </div>
-            <div>{notes?.length} Notebooks
+            <div>{notes?.length} Notes
                 <table>
                     <thead>
                         <tr>
                             <th>Title</th>
+                            <th>Content</th>
                             <th>Created</th>
                             <th>Updated</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {notes?.map(notebook => (
-                            <tr key={notebook.id}>
-                                <th className='table__tbody__tr__th'>{notebook.title}</th>
-                                <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
-                                <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
+                        {notes?.map(note => (
+                            <tr key={note.id}>
+                                <th className='table__tbody__tr__th'>{note.title}</th>
+                                <th className='table__tbody__tr__th'>{note.content}</th>
+                                <th className='table__tbody__tr__th'>{note.createdAt.slice(0,10)}</th>
+                                <th className='table__tbody__tr__th'>{note.updatedAt.slice(0,10)}</th>
                                 <th>
-                                    <button onClick={() => dispatch(deleteOneNote(notebook))}>Delete</button>
-                                    {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
+                                    <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
+                                    {/* <button onClick={() => dispatch(editOneNotebook(note))}>Edit</button> */}
                                 </th>
                             </tr>
                         ))}
