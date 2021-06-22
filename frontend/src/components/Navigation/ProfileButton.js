@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout} from '../../store/session';
 
 const ProfileButton = ({ user }) => {
@@ -25,7 +25,7 @@ const ProfileButton = ({ user }) => {
     return (
         <>
             <button onClick={openMenu}>
-                <i className='fab fa-evernote' />
+                <i className='fab fa-evernote'> {user.username}</i>
             </button>
             {showMenu && (
                 <ul>

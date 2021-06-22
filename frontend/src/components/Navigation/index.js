@@ -10,8 +10,8 @@ const Navigation = ({ isLoaded }) => {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <ProfileButton user={sessionUser} />
                 <NavLink to='/notebooks'>Notebooks</NavLink>
+                <ProfileButton user={sessionUser} />
             </>
         )
     } else {

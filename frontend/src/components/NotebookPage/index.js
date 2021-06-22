@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNotebook, getAllNotebooks } from '../../store/notebook';
+import { createNotebook, getAllNotebooks, deleteOneNotebook } from '../../store/notebook';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();
@@ -22,10 +22,13 @@ const NotebookPage = () => {
                 ></input>
                 <button onClick={() => dispatch(createNotebook(title))}>Submit</button>
             </div>
-            <div># Notebooks
+            <div>{notebooks?.length} Notebooks
                 <ul>
                     {notebooks?.map(notebook => (
-                        <li key={notebook.id}>{notebook.title}</li>
+                        <li key={notebook.id}>
+                            {notebook.title}
+                            <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
+                        </li>
                     ))}
                 </ul>
             </div>

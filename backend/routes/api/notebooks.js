@@ -20,13 +20,19 @@ const validateCreateNotebook = [
 router.post('/', validateCreateNotebook, requireAuth, asyncHandler( async(req, res) => {
     const { title } = req.body;
     const notebook = await Notebook.createNew( title, req.user.id );
-    return res.json( notebook );
+    return res.json(notebook);
 }));
 
 // Get all notebooks: /api/notebooks
 router.get('/', requireAuth, asyncHandler( async(req, res) => {
     const notebooks = await Notebook.findAll();
     return res.json(notebooks);
+}));
+
+// Delete a notebook: /api/notebooks/:id
+router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
+    const notebookId = await Notebook.deleteOne(req.params.id);
+    return res.json(notebookId);
 }));
 
 
