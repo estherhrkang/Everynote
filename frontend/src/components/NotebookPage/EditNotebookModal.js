@@ -13,10 +13,8 @@ const EditNotebookModal = ({ setPopUp, title, setTitle }) => {
                     >
                     </input>
                     <button onClick={()=> setPopUp(false)}> Submit </button>
+                    <button className='cancel-btn' onClick={()=> setPopUp(false)}> Cancel </button>
                 </form>
-            </div>
-            <div className="popup-button-container">
-                <button className='cancel-btn' onClick={()=> setPopUp(false)}> Cancel </button>
             </div>
         </div>
     );
