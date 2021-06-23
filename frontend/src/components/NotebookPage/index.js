@@ -9,8 +9,9 @@ const NotebookPage = () => {
     
     const [title, setTitle] = useState('');
     const [showMenu, setShowMenu] = useState(false);
+    const [popUp, setPopUp] = useState(false);
+    const [errors, setErrors] = useState([]);
     // const [searchInput, setSearchInput] = useState('');
-    // const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         dispatch(getAllNotebooks());
@@ -31,11 +32,23 @@ const NotebookPage = () => {
         setShowMenu(true);
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
+    const handleCreateNotebook = async (e) => {
+        e.preventDefault();
+        if (title) {
+            setErrors([]);
+            return dispatch(createNotebook(title))
+                .catch(async(res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors)
+                });
+        }
+        return setErrors(['Please provide title for this notebook.']);
+    };
 
-    //     dispatch()
-    // };
+    const handleCancelCreate = () => {
+        setTitle('');
+        setErrors([]);
+    };
 
     return (
         <div className='notebook-root-div'>
@@ -56,7 +69,10 @@ const NotebookPage = () => {
             </div> */}
             <div className='main'>
                 <div>
-                    <form onSubmit={() => dispatch(createNotebook(title))}>
+                    <form onSubmit={handleCreateNotebook}>
+                        <ul>
+                            {errors.map(error => <li key={error}>{error}</li>)}
+                        </ul>
                         <input
                             placeholder='New Notebook'
                             type='text'
@@ -64,6 +80,7 @@ const NotebookPage = () => {
                             onChange={e => setTitle(e.target.value)}
                         ></input>
                         <button type='submit'>Create</button>
+                        <button type='button' onClick={handleCancelCreate}>Cancel</button>
                     </form>
                 </div>
                 <div>{notebooks?.length} Notebooks
@@ -87,9 +104,9 @@ const NotebookPage = () => {
                                     </th>
                                         {showMenu && (
                                             <>
-                                                <button>Add new note</button>
-                                                <button>Rename notebook</button>
-                                                <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
+                                                <button className='add-note-notebook-btn'>Add new note</button>
+                                                <button className='rename-notebook-btn'>}>Rename notebook</button>
+                                                <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
                                                 {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
                                             </>
                                         )}
