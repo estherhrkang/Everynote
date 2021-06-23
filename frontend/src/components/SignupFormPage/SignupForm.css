@@ -1,5 +1,8 @@
 .rootDiv {
     display: grid;
+    padding: 5%;
+    width: 50%;
+    box-shadow: 0 0 10px lightgray;
 }
 
 h1, p, form {
@@ -48,4 +51,8 @@ input:focus {
     color: #00a82d;
     background-color: white;
     border: none;
+}
+
+.demoBtn {
+    margin: 1%
 }
