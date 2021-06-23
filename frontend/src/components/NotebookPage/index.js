@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
 import EditNotebookModal from './EditNotebookModal';
-import '../index.css';
+import '../../index.css';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();

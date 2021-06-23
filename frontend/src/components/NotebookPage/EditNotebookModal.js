@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { editOneNotebook } from '../../store/notebook';
 
-import '../index.css';
+import '../../index.css';
 
 const EditNotebookModal = ({ setPopUp, title }) => {
     const notebooks = useSelector(state => state.notebook.fullNotebook);

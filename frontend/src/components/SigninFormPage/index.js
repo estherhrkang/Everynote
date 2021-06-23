@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 
 import { login } from '../../store/session';
-import '../index.css';
+import '../../index.css';
 
 const SigninFormPage = () => {
     const dispatch = useDispatch();
