@@ -95,12 +95,13 @@ const SignupFormPage = () => {
                         required
                     ></input>
                 </div>
-                <div>
+                <div className='show-password-div-container'>
                     <label>Show password</label>
                     <input
+                        id='show-password-checkbox'
                         type='checkbox' 
                         onClick={() => passwordType === 'password' ? setPasswordType('text') : setPasswordType('password')}
-                    >
+                        >
                     </input>
                 </div>
                 <div>

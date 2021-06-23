@@ -154,3 +154,14 @@ table {
     color: red;
     text-align: center;
 }
+
+.show-password-div-container {
+    padding: 1%;
+    margin: 1%;
+}
+
+#show-password-checkbox {
+    width: 5%;
+    margin: 1%;
+    padding: 1%;
+}
