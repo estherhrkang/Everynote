@@ -16,6 +16,7 @@ const SignupFormPage = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    const [passwordType, setPasswordType] = useState('password');
 
     useEffect(() => {
         const errors = [];
@@ -78,7 +79,7 @@ const SignupFormPage = () => {
                 </div>
                 <div>
                     <input
-                        type='text'
+                        type={passwordType}
                         placeholder='Password'
                         value={password}
                         onChange={e => setPassword(e.target.value)}
@@ -87,12 +88,20 @@ const SignupFormPage = () => {
                 </div>
                 <div>
                     <input
-                        type='text'
+                        type={passwordType}
                         placeholder='Confirm password'
                         value={confirmPassword}
                         onChange={e => setConfirmPassword(e.target.value)}
                         required
                     ></input>
+                </div>
+                <div>
+                    <label>Show password</label>
+                    <input
+                        type='checkbox' 
+                        onClick={() => passwordType === 'password' ? setPasswordType('text') : setPasswordType('password')}
+                    >
+                    </input>
                 </div>
                 <div>
                     <button className='submitBtn' type='submit'>Sign up</button>
