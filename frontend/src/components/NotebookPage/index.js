@@ -8,16 +8,28 @@ const NotebookPage = () => {
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     
     const [title, setTitle] = useState('');
+    const [showMenu, setShowMenu] = useState(false);
     // const [searchInput, setSearchInput] = useState('');
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         dispatch(getAllNotebooks());
     }, [dispatch]);
 
     useEffect(() => {
+        if (!showMenu) return;
 
-    }, [errors]);
+        const closeMenu = () => setShowMenu(false);
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener('click', closeMenu);
+    }, [showMenu]);
+
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -71,12 +83,16 @@ const NotebookPage = () => {
                                     <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
                                     <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                     <th>
-                                        <i class="fas fa-ellipsis-h"></i>
-                                        <button>Add new note</button>
-                                        <button>Rename notebook</button>
-                                        <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
-                                        {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
+                                        <button onClick={openMenu}><i class="fas fa-ellipsis-h"></i></button>
                                     </th>
+                                        {showMenu && (
+                                            <>
+                                                <button>Add new note</button>
+                                                <button>Rename notebook</button>
+                                                <button onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
+                                                {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
+                                            </>
+                                        )}
                                 </tr>
                             ))}
                         </tbody>
