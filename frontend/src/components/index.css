@@ -2,18 +2,19 @@
     text-decoration: none;
 }
 
-#root {
+.note-root-div, .notebook-root-div {
     display: grid;
     grid-template-columns: 30% auto;
-    grid-template-rows: 10% auto 10%;
+    grid-template-rows: 10% auto;
     grid-template-areas: 
         'logo header'
-        'sidebar main'
-        'footer footer';
+        'sidebar main';
 }
 
-
 .sidebar {
+    /* grid-area: sidebar; */
+    border: 1px solid black;
+
     height: 100%;
     left: 0;
     width: 250px;
@@ -22,14 +23,14 @@
 
 
 
-/* LoginFormPage */
+/* SigninFormPage */
 
 .rootDiv {
     display: grid;
     padding: 5%;
     width: 40%;
     box-shadow: 0 0 10px lightgray;
-    
+
 }
 
 .main-title, h1, p, form {
@@ -86,11 +87,33 @@ input:focus {
 
 
 
+/* NotebookPage + NotePage */
+
+.header {
+    grid-area: header;
+    height: 100%;
+
+    border: 1px solid black;
+}
+
+.main {
+    grid-area: main;
+}
+
+
+
+
 /* NotebookPage */
 
 .table__tbody__tr__th {
     font-weight:lighter;
     text-align: left;
+}
+
+table {
+    box-shadow: 0 0 3px lightgrey;
+    border-radius: 7px;
+    padding: 3%;
 }
 
 

@@ -5,7 +5,7 @@ import { useHistory, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import '../index.css';
 
-const LoginFormPage = () => {
+const SigninFormPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
@@ -36,6 +36,7 @@ const LoginFormPage = () => {
 
     const handleDemoSignin = () => {
         dispatch(login({ credential: 'Demo-lition', password: 'password' }))
+        history.push('/notebooks')
     };
 
     if (sessionUser) {
@@ -86,4 +87,4 @@ const LoginFormPage = () => {
     );
 };
 
-export default LoginFormPage;
+export default SigninFormPage;
