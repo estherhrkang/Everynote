@@ -83,7 +83,7 @@ const NotebookPage = () => {
                                     <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
                                     <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                     <th>
-                                        <button onClick={openMenu}><i class="fas fa-ellipsis-h"></i></button>
+                                        <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>
                                     </th>
                                         {showMenu && (
                                             <>

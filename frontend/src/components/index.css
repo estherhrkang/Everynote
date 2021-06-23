@@ -130,7 +130,9 @@ table {
     padding: 3%;
 }
 
-
+.notebook-action-btn, .note-action-btn {
+    border: none;
+}
 
 /* NotePage */
 

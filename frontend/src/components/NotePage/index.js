@@ -10,12 +10,27 @@ const NotePage = () => {
     
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [showMenu, setShowMenu] = useState(false);
     // const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotes());
     }, [dispatch]);
 
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = () => setShowMenu(false);
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener('click', closeMenu);
+    }, [showMenu]);
+
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -79,10 +94,15 @@ const NotePage = () => {
                                     <th className='table__tbody__tr__th'>{note.createdAt.slice(0,10)}</th>
                                     <th className='table__tbody__tr__th'>{note.updatedAt.slice(0,10)}</th>
                                     <th>
-                                        <button>Add to a notebook</button>
-                                        <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
-                                        {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
+                                        <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
                                     </th>
+                                        {showMenu && (
+                                            <>
+                                                <button>Add to a notebook</button>
+                                                <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
+                                                {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
+                                            </>
+                                        )}
                                 </tr>
                             ))}
                         </tbody>
