@@ -1,3 +1,29 @@
+* {
+    text-decoration: none;
+}
+
+#root {
+    display: grid;
+    grid-template-columns: 30% auto;
+    grid-template-rows: 10% auto 10%;
+    grid-template-areas: 
+        'logo header'
+        'sidebar main'
+        'footer footer';
+}
+
+
+.sidebar {
+    height: 100%;
+    left: 0;
+    width: 250px;
+    margin-top: 60px;
+}
+
+
+
+/* LoginFormPage */
+
 .rootDiv {
     display: grid;
     padding: 5%;
@@ -56,4 +82,36 @@ input:focus {
 
 .demoBtn {
     margin: 2%
+}
+
+
+
+/* NotebookPage */
+
+.table__tbody__tr__th {
+    font-weight:lighter;
+    text-align: left;
+}
+
+
+
+/* NotePage */
+
+
+
+
+
+/* SignupFormPage */
+
+.signinBtn {
+    color: #00a82d;
+    background-color: white;
+    border: none;
+}
+
+.errors-ul {
+    /* text-decoration: none; */
+    list-style-type: none;
+    color: red;
+    text-align: center;
 }

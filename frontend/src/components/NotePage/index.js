@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, deleteOneNote, editOneNote } from '../../store/note';
-import './Note.css';
+import '../index.css';
 
 const NotePage = () => {
     const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const NotePage = () => {
                 </form>
             </div> */}
             <div>
-                <form onSubmit={() => dispatch(createNote(title, content))}>
+                <form className='create-note-form' onSubmit={() => dispatch(createNote(title, content))}>
                     <input
                         placeholder='New Note Title'
                         type='text'
@@ -51,7 +51,9 @@ const NotePage = () => {
                         value={content}
                         onChange={e => setContent(e.target.value)}
                     ></input>
+                    <div>
                     <button type='submit'>Create</button>
+                    </div>
                 </form>
             </div>
             <div>{notes?.length} Notes

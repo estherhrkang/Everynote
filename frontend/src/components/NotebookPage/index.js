@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
-import './Notebook.css';
+import '../index.css';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();
