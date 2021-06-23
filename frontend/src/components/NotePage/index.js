@@ -11,6 +11,7 @@ const NotePage = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [showMenu, setShowMenu] = useState(false);
+    const [errors, setErrors] = useState([]);
     // const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
@@ -32,11 +33,25 @@ const NotePage = () => {
         setShowMenu(true);
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
+    const handleCreateNote = (e) => {
+        e.preventDefault();
 
-    //     dispatch()
-    // };
+        if (title) {
+            setErrors([]);
+            return dispatch(createNote(title, content))
+                .catch(async(res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
+        };
+        return setErrors(['Please provide title for this note.']);
+    };
+
+    const handleCancelCreate = () => {
+        setTitle('');
+        setContent('');
+        setErrors([]);
+    };
 
     return (
         <div className='note-root-div'>
@@ -57,7 +72,10 @@ const NotePage = () => {
             </div> */}
             <div className='main'>
                 <div>
-                    <form className='create-note-form' onSubmit={() => dispatch(createNote(title, content))}>
+                    <form className='create-note-form' onSubmit={handleCreateNote}>
+                        <ul>
+                            {errors.map(error => <li key={error}>{error}</li>)}
+                        </ul>
                         <input
                             placeholder='New Note Title'
                             type='text'
@@ -72,6 +90,7 @@ const NotePage = () => {
                         ></input>
                         <div>
                         <button type='submit'>Create</button>
+                        <button type='button' onClick={handleCancelCreate}>Cancel</button>
                         </div>
                     </form>
                 </div>

@@ -105,7 +105,7 @@ const NotebookPage = () => {
                                         {showMenu && (
                                             <>
                                                 <button className='add-note-notebook-btn'>Add new note</button>
-                                                <button className='rename-notebook-btn'>}>Rename notebook</button>
+                                                <button className='rename-notebook-btn'>Rename notebook</button>
                                                 <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
                                                 {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
                                             </>
