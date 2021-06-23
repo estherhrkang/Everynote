@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
+import { getAllNotes } from '../../store/note';
 import EditNotebookModal from './EditNotebookModal';
 import '../index.css';
 
@@ -19,6 +20,7 @@ const NotebookPage = () => {
 
     useEffect(() => {
         dispatch(getAllNotebooks());
+        dispatch(getAllNotes());
     }, [dispatch]);
 
     useEffect(() => {
@@ -121,8 +123,11 @@ const NotebookPage = () => {
                                     </tr>
                                     {notes?.map(note => (
                                         <>
-                                            <tr key={`${notebook.id}-note`}>
-                                                <th>hi</th>
+                                            <tr key={`${note.id}-note`}>
+                                                <th>note title</th>
+                                                <th>note createdAt</th>
+                                                <th>note updatedAt</th>
+                                                <th>note actions</th>
                                             </tr>
                                         </>
                                     ))}
