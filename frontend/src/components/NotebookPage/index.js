@@ -7,6 +7,9 @@ import '../index.css';
 const NotebookPage = () => {
     const dispatch = useDispatch();
     const notebooks = useSelector(state => state.notebook.fullNotebook);
+    const notes = useSelector(state => state.note.fullNote);
+    // const subNotes = notes.filter(note => notebooks.includes(note));
+    console.log('NOTEBOOKS?', notebooks, 'NOTES?', notes);
     
     const [title, setTitle] = useState('');
     const [showMenu, setShowMenu] = useState(false);
@@ -100,24 +103,32 @@ const NotebookPage = () => {
                         </thead>
                         <tbody>
                             {notebooks?.map(notebook => (
-                                <tr key={notebook.id}>
-                                    <th className='table__tbody__tr__th'>{notebook.title}</th>
-                                    <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
-                                    <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
-                                    <th>
-                                        <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>
-                                    </th>
-                                        {showMenu && (
-                                            <>
-                                                <button className='add-note-notebook-btn'>Add new note</button>
-                                                <button className={'rename-notebook-btn' + duringPopUp} onClick={() => setPopUp(true)}>Rename notebook</button>
-                                                    {popUp && <EditNotebookModal setPopUp={setPopUp} title={title} setTitle={setTitle}/>}
-                                                <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
-                                                {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
-                                            </>
-                                        )}
-                                </tr>
+                                <>
+                                    <tr key={notebook.id}>
+                                        <th className='table__tbody__tr__th'>{notebook.title}</th>
+                                        <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
+                                        <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
+                                        <th>
+                                            <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>
+                                        </th>
+                                            {showMenu && (
+                                                <>
+                                                    <button className='add-note-notebook-btn'>Add new note</button>
+                                                    <button className={'rename-notebook-btn' + duringPopUp} onClick={() => setPopUp(true)}>Rename notebook</button>
+                                                    <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
+                                                </>
+                                            )}
+                                    </tr>
+                                    {notes?.map(note => (
+                                        <>
+                                            <tr key={`${notebook.id}-note`}>
+                                                <th>hi</th>
+                                            </tr>
+                                        </>
+                                    ))}
+                                </>
                             ))}
+                            {popUp && <EditNotebookModal setPopUp={setPopUp}/>}
                         </tbody>
                     </table>
                 </div>

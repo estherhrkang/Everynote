@@ -36,12 +36,15 @@ router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
 }));
 
 // Edit a notebook: PATCH /api/notebooks/:id
-// router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
-//     const notebook = await Notebook.updateOne(req.body);
-//     return res.json(notebook);
-// }));
+router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
+    const notebook = await Notebook.updateOne(Number(req.params.id));
+    return res.json(notebook);
+}));
 
 // Get(search) a notebook: GET /api/notebooks/:id
-
+router.get('/:id', requireAuth, asyncHandler( async(req, res) => {
+    const notebook = await Notebook.findByPk(Number(req.params.id));
+    return res.json(notebook);
+}));
 
 module.exports = router;
