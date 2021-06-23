@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
+import EditNotebookModal from './EditNotebookModal';
 import '../index.css';
 
 const NotebookPage = () => {
@@ -9,8 +10,8 @@ const NotebookPage = () => {
     
     const [title, setTitle] = useState('');
     const [showMenu, setShowMenu] = useState(false);
-    const [popUp, setPopUp] = useState(false);
     const [errors, setErrors] = useState([]);
+    const [popUp, setPopUp] = useState(false);
     // const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
@@ -31,6 +32,8 @@ const NotebookPage = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
+
+    const duringPopUp = popUp ? ' during-popup' : '';
 
     const handleCreateNotebook = async (e) => {
         e.preventDefault();
@@ -79,8 +82,10 @@ const NotebookPage = () => {
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         ></input>
-                        <button type='submit'>Create</button>
-                        <button type='button' onClick={handleCancelCreate}>Cancel</button>
+                        <div>
+                            <button type='submit'>Create</button>
+                            <button className='cancel-btn' type='button' onClick={handleCancelCreate}>Cancel</button>
+                        </div>
                     </form>
                 </div>
                 <div>{notebooks?.length} Notebooks
@@ -105,7 +110,8 @@ const NotebookPage = () => {
                                         {showMenu && (
                                             <>
                                                 <button className='add-note-notebook-btn'>Add new note</button>
-                                                <button className='rename-notebook-btn'>Rename notebook</button>
+                                                <button className={'rename-notebook-btn' + duringPopUp} onClick={() => setPopUp(true)}>Rename notebook</button>
+                                                    {popUp && <EditNotebookModal setPopUp={setPopUp} title={title} setTitle={setTitle}/>}
                                                 <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
                                                 {/* <button onClick={() => dispatch(editOneNotebook(notebook))}>Edit</button> */}
                                             </>

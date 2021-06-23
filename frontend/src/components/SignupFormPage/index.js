@@ -23,7 +23,7 @@ const SignupFormPage = () => {
 
         if (email.length > 256) errors.push('Email address should be less than 256 characters.');
         if (username.length > 30) errors.push('Username should be less than 30 characters.');
-        if (username === email) errors.push('Username cannot be same as email address.');
+        if (username.length && username === email) errors.push('Username cannot be same as email address.');
         if (password.length > 60) errors.push('Password should be less than 60 characters.');
         if (password !== confirmPassword) errors.push('Password and confirm password must match.');
 
@@ -108,7 +108,7 @@ const SignupFormPage = () => {
                     <button className='submitBtn' type='submit'>Sign up</button>
                 </div>
                 <div>
-                    <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
+                    <button className='cancel-btn' type='button' onClick={handleCancel}>Cancel</button>
                 </div>
                 <div>
                     Already have an account?
