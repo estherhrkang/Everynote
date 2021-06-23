@@ -1,11 +1,11 @@
-.rootDiv {
+/* .rootDiv {
     display: grid;
     padding: 5%;
     width: 50%;
     box-shadow: 0 0 10px lightgray;
 }
 
-h1, p, form {
+.main-title, h1, p, form {
     background-color: white;
     justify-content: center;
     text-align: center;
@@ -44,7 +44,7 @@ input:focus {
     border: none;
     width: 30%;
     margin: 1%;
-}
+}*/
 
 .signinBtn {
     color: #00a82d;
@@ -52,6 +52,6 @@ input:focus {
     border: none;
 }
 
-.demoBtn {
+/* .demoBtn {
     margin: 1%
-}
+}  */

@@ -52,7 +52,7 @@ const SignupFormPage = () => {
 
     return (
         <div className='rootDiv'>
-            <h1>Everynote</h1>
+            <h1 className='main-title'>Everynote</h1>
             <p>Remember everything important.</p>
             <form onSubmit={handleSubmit}>
                 <ul>
