@@ -12,7 +12,7 @@
 }
 
 .sidebar {
-    /* grid-area: sidebar; */
+    grid-area: sidebar;
     border: 1px solid black;
 
     height: 100%;
@@ -25,18 +25,32 @@
 
 /* SigninFormPage */
 
-.rootDiv {
-    display: grid;
+/* .rootDiv {
+    display: flex;
+    justify-content: center;
     padding: 5%;
     width: 40%;
     box-shadow: 0 0 10px lightgray;
 
+} */
+
+.root-div {
+    padding: 5%;
+    width: 40%;
+    box-shadow: 0 0 10px lightgray;
+    margin: 20% 
 }
 
 .main-title, h1, p, form {
     background-color: white;
     justify-content: center;
     text-align: center;
+}
+
+.login-form-container {
+    /* box-sizing:border-box; */
+    display: flex;
+    justify-content: center;
 }
 
 input {

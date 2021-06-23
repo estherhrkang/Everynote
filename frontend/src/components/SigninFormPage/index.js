@@ -44,45 +44,47 @@ const SigninFormPage = () => {
     };
 
     return (
-        <div className='rootDiv'>
+        <div className='root-div'>
             <h1 className='main-title'>Everynote</h1>
             <p>Remember everything important.</p>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
-                </ul>
-                <div>
-                    <input
-                        type='text'
-                        placeholder='Email address or username'
-                        value={credential}
-                        onChange={e => setCredential(e.target.value)}
-                        required
-                    ></input>
-                </div>
-                <div>
-                    <input
-                        type='text'
-                        placeholder='Password'
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        required
-                    ></input>
-                </div>
-                <div>
-                    <button className='submitBtn' type='submit'>Sign in</button>
-                </div>
-                <div>
-                    <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
-                </div>
-                <div>
-                    Don't have an account?
-                    <button className='createAccountBtn' type='button' onClick={() => history.push('/signup')}>Create account</button>
-                </div>
-                <div>
-                    <button className='demoBtn' type='button' onClick={handleDemoSignin}>Demo user</button>
-                </div>
-            </form>
+            <div className='login-form-container'>
+                <form onSubmit={handleSubmit}>
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
+                    <div>
+                        <input
+                            type='text'
+                            placeholder='Email address or username'
+                            value={credential}
+                            onChange={e => setCredential(e.target.value)}
+                            required
+                        ></input>
+                    </div>
+                    <div>
+                        <input
+                            type='text'
+                            placeholder='Password'
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            required
+                        ></input>
+                    </div>
+                    <div>
+                        <button className='submitBtn' type='submit'>Sign in</button>
+                    </div>
+                    <div>
+                        <button className='cancelBtn' type='button' onClick={handleCancel}>Cancel</button>
+                    </div>
+                    <div>
+                        Don't have an account?
+                        <button className='createAccountBtn' type='button' onClick={() => history.push('/signup')}>Create account</button>
+                    </div>
+                    <div>
+                        <button className='demoBtn' type='button' onClick={handleDemoSignin}>Demo user</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
