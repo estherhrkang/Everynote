@@ -34,8 +34,8 @@ const SigninFormPage = () => {
         setPassword('');
     };
 
-    const handleDemoSignin = () => {
-        dispatch(login({ credential: 'Demo-lition', password: 'password' }))
+    const handleDemoSignin = async () => {
+        await dispatch(login({ credential: 'Demo-lition', password: 'password' }))
         history.push('/notebooks')
     };
 
