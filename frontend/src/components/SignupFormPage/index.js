@@ -55,7 +55,7 @@ const SignupFormPage = () => {
             <h1 className='main-title'>Everynote</h1>
             <p>Remember everything important.</p>
             <form onSubmit={handleSubmit}>
-                <ul>
+                <ul className='errors-ul'>
                     {errors.map(error => <li key={error}>{error}</li>)}
                 </ul>
                 <div>

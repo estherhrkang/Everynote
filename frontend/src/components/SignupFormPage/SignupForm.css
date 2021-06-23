@@ -55,3 +55,10 @@ input:focus {
 /* .demoBtn {
     margin: 1%
 }  */
+
+.errors-ul {
+    /* text-decoration: none; */
+    list-style-type: none;
+    color: red;
+    text-align: center;
+}
