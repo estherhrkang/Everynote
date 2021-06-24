@@ -54,7 +54,7 @@ const NotePage = () => {
     };
 
     return (
-        <div className='main'>
+        <div className='main-container'>
             <div className='header'>
                 <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
             </div>
