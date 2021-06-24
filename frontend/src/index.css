@@ -4,17 +4,20 @@
     text-decoration: none;
 }
 
-.note-root-div, .notebook-root-div {
+/* ok */
+.root__main-container {
     display: grid;
-    grid-template-columns: 30% auto;
+    grid-template-columns: auto auto 1fr;
+
+    /* grid-template-columns: 30% auto;
     grid-template-rows: 10% auto;
     grid-template-areas: 
         'logo header'
-        'sidebar main';
+        'sidebar main'; */
 }
 
-.sidebar {
-    grid-area: sidebar;
+.sidebar-container {
+    /* grid-area: sidebar; */
     border: 1px solid black;
 
     height: 100%;
@@ -25,7 +28,9 @@
 
 
 
+/* ------------------------------------ */
 /* SigninFormPage */
+/* ------------------------------------ */
 
 /* .rootDiv {
     display: flex;
@@ -36,26 +41,50 @@
 
 } */
 
-.root-div {
-    padding: 5%;
-    width: 40%;
-    box-shadow: 0 0 10px lightgray;
-    margin: 10% 25% 10% 25%
+/* ok */
+.signin-form-container {
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 512px;
+    box-shadow: 0px 5px 20px lightgrey;
+    border-radius: 3px;
 }
 
-.main-title, h1, p, form {
-    background-color: white;
-    justify-content: center;
+/* ok */
+.signin-form-body {
+    margin: 50px 100px;
+    width: 250px;
+}
+
+/* ok */
+.signin-form-heading {
     text-align: center;
 }
 
-.login-form-container {
-    /* box-sizing:border-box; */
-    display: flex;
-    justify-content: center;
+/* ok */
+.error-container {
+    display: block;
 }
 
-input {
+/* ok */
+.error-ul {
+    list-style-type: none;
+}
+
+/* .signin-form {
+
+} */
+
+
+.signin-form__input-div {
+    display: block;
+}
+
+
+.signin-form__input {
     padding: 12px 16px;
     border: solid 0.3px lightgray;
     border-radius: 7px;
@@ -63,23 +92,25 @@ input {
     margin: 0.5%;
 }
 
-input:focus {
+
+.signin-form__input:focus {
     outline: none;
     box-shadow: 0 0 2px #00a82d;
 }
 
-.submitBtn {
+
+.submit-btn {
     background-color: #00a82d;
     color: white;
     border: none;
     border-radius: 0.3em;
     transition: all 0.2s ease 0s;
-    width: 55%;
+    width: 80%;
     padding: 2%;
     margin: 1%;
 }
 
-.submitBtn:hover {
+.submit-btn:hover {
     background-color: green;
 }
 
@@ -88,7 +119,15 @@ input:focus {
     border: none;
     padding: 1%;
     margin: 1%;
+    width: 80%;
 }
+
+
+
+
+
+
+
 
 .createAccountBtn {
     color: #00a82d;

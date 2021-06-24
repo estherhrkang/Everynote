@@ -23,7 +23,7 @@ const SigninFormPage = () => {
                 if (data && data.errors) {
                     setErrors(data.errors)
                 } else {
-                    history.push('/notebooks')
+                    history.push('/notes')
                 }
             });
     };
@@ -36,7 +36,7 @@ const SigninFormPage = () => {
 
     const handleDemoSignin = async () => {
         await dispatch(login({ credential: 'Demo-lition', password: 'password' }))
-        history.push('/notebooks')
+        history.push('/notes')
     };
 
     if (sessionUser) {
@@ -44,43 +44,41 @@ const SigninFormPage = () => {
     };
 
     return (
-        <div className='root-div'>
-            <h1 className='main-title'>Everynote</h1>
-            <p>Remember everything important.</p>
-            <div className='login-form-container'>
-                <form onSubmit={handleSubmit}>
-                    <ul>
-                        {errors.map(error => <li key={error}>{error}</li>)}
-                    </ul>
-                    <div>
-                        <input
+        <div className='signin-form-container'>
+            <div className='signin-form-body'>
+                <div className='signin-form-heading'>
+                    <h1>Everynote</h1>
+                    <p>Remember everything important.</p>
+                    <div className='error-container'>
+                        <ul className='error-ul'>
+                            {errors.map(error => <li key={error}>{error}</li>)}
+                        </ul>
+                    </div>
+                </div>
+                <form className='signin-form' onSubmit={handleSubmit}>
+                    <div className='signin-form__input-div'>
+                        <input 
+                            className='signin-form__input'
                             type='text'
                             placeholder='Email address or username'
                             value={credential}
                             onChange={e => setCredential(e.target.value)}
                             required
                         ></input>
-                    </div>
-                    <div>
                         <input
+                            className='signin-form__input'
                             type='password'
                             placeholder='Password'
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             required
                         ></input>
-                    </div>
-                    <div>
-                        <button className='submitBtn' type='submit'>Sign in</button>
-                    </div>
-                    <div>
+                        <button className='submit-btn' type='submit'>Sign in</button>
                         <button className='cancel-btn' type='button' onClick={handleCancel}>Cancel</button>
                     </div>
-                    <div>
+                    <div className='sigin-form__buttons'>
                         Don't have an account?
                         <button className='createAccountBtn' type='button' onClick={() => history.push('/signup')}>Create account</button>
-                    </div>
-                    <div>
                         <button className='demoBtn' type='button' onClick={handleDemoSignin}>Demo user</button>
                     </div>
                 </form>

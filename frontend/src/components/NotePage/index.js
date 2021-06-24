@@ -54,7 +54,7 @@ const NotePage = () => {
     };
 
     return (
-        <div className='note-root-div'>
+        <div className='main'>
             <div className='header'>
                 <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
             </div>
@@ -70,7 +70,7 @@ const NotePage = () => {
                     <button type='submit'><i class="fas fa-search"></i></button>
                 </form>
             </div> */}
-            <div className='main'>
+            <div className='main-div'>
                 <div>
                     <form className='create-note-form' onSubmit={handleCreateNote}>
                         <ul>

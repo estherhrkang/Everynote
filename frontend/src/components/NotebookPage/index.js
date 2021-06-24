@@ -59,7 +59,7 @@ const NotebookPage = () => {
     };
 
     return (
-        <div className='notebook-root-div'>
+        <div className='main'>
             <div className='header'>
                 <h1><i className='fas fa-book'> NOTEBOOKS</i></h1>
             </div>
@@ -75,7 +75,7 @@ const NotebookPage = () => {
                     <button type='submit'><i class="fas fa-search"></i></button>
                 </form>
             </div> */}
-            <div className='main'>
+            <div className='main-div'>
                 <div>
                     <form onSubmit={handleCreateNotebook}>
                         <ul>

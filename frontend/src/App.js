@@ -20,29 +20,31 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          {/* <Route exact path='/'>
-            Home
-          </Route> */}
-          <Route exact path='/'>
-            <SigninFormPage />
-          </Route>
-          <Route path='/signup'>
-            <SignupFormPage />
-          </Route>
-          <Route path='/notebooks'>
-            <NotebookPage />
-          </Route>
-          <Route path='/notes'>
-            <NotePage />
-          </Route>
-          <Route>
-            Page does not exist.
-          </Route>
-        </Switch>
-      )}
+      <div className='root__main-container'>
+        <Navigation isLoaded={isLoaded} />
+        {isLoaded && (
+          <Switch>
+            {/* <Route exact path='/'>
+              Home
+            </Route> */}
+            <Route exact path='/'>
+              <SigninFormPage />
+            </Route>
+            <Route path='/signup'>
+              <SignupFormPage />
+            </Route>
+            <Route path='/notebooks'>
+              <NotebookPage />
+            </Route>
+            <Route path='/notes'>
+              <NotePage />
+            </Route>
+            <Route>
+              Page does not exist.
+            </Route>
+          </Switch>
+        )}
+      </div>
     </>
   );
 };

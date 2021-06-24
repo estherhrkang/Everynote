@@ -9,7 +9,7 @@ const Navigation = ({ isLoaded }) => {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <div className='sidebar'>
+            <div>
                     <ProfileButton user={sessionUser} />
                     <NavLink to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
                     <NavLink to='/notes'><i className='fas fa-sticky-note'> Notes</i></NavLink>
