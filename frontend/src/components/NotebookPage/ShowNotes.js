@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getAllNotesInNotebook, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const ShowNotes = ({ notebook }) => {
+const ShowNotes = () => {
     const dispatch = useDispatch();
+
+    const { notebookId } = useParams(); 
+    const notebooks = useSelector(state => state.notebook.fullNotebook);
+    const notebook = notebooks.find(notebook => notebook.id === notebookId);
+
     const notes = useSelector(state => state.note.fullNote);
-    const subNotes = notes.find(note => note.notebookId === notebook.id);
+    const subNotes = notes.find(note => note.notebookId === notebookId);
     
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -15,7 +21,7 @@ const ShowNotes = ({ notebook }) => {
     // const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
-        dispatch(getAllNotesInNotebook(notebook));
+        dispatch(getAllNotesInNotebook(notebookId));
     }, [dispatch]);
 
     useEffect(() => {
@@ -61,7 +67,7 @@ const ShowNotes = ({ notebook }) => {
             </div> */}
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
-                    <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
+                    <h1><i className='fas fa-book'> {notebook.title}</i></h1>
                     <div>{subNotes?.length} Notes</div>
                 </div>
                 <ul className='notes-list-ul'>
