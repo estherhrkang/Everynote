@@ -50,8 +50,8 @@ router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
 
 // Get a notebook with notes: GET /api/notebooks/:id/notes
 router.get('/:id/notes', requireAuth, asyncHandler( async(req, res) => {
-    const notebookId = Number(req.params.id);
-    const notes = await Note.findAll({ where: { notebookId }});
+    const id = Number(req.params.id);
+    const notes = await Note.findAll({ where: { notebookId: id }});
     return res.json(notes);
 }));
 
