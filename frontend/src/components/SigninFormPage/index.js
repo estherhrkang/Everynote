@@ -76,12 +76,16 @@ const SigninFormPage = () => {
                         <button className='signin-btn' type='submit'>Sign in</button>
                         <button className='cancel-btn' type='button' onClick={handleCancel}>Cancel</button>
                     </div>
-                    <div className='sigin-form__button-div'>
+                    <div className='signin-form__button-div'>
                         <div className='signin-form__button-header'>
                             Don't have an account?
                         </div>
-                        <button className='create-account-btn' type='button' onClick={() => history.push('/signup')}>Create account</button>
-                        <button className='demo-signin-btn' type='button' onClick={handleDemoSignin}>Demo user</button>
+                        <div>
+                            <button className='create-account-btn' type='button' onClick={() => history.push('/signup')}>Create account</button>
+                        </div>
+                        <div>
+                            <button className='demo-signin-btn' type='button' onClick={handleDemoSignin}>Demo user</button>
+                        </div>
                     </div>
                 </form>
             </div>
