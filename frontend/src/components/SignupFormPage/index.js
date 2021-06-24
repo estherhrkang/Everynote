@@ -52,69 +52,74 @@ const SignupFormPage = () => {
     }
 
     return (
-        <div className='root-div'>
-            <h1 className='main-title'>Everynote</h1>
-            <p>Remember everything important.</p>
-            <form onSubmit={handleSubmit}>
-                <ul className='errors-ul'>
-                    {errors.map(error => <li key={error}>{error}</li>)}
-                </ul>
-                <div>
-                    <input
-                        type='text'
-                        placeholder='Username'
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
-                        required
-                    ></input>
+        <div className='signup-form-container'>
+            <div className='signup-form-body'>
+                <div className='signup-form-heading'>
+                    <h1>Everynote</h1>
+                    <p>Remember everything important.</p>
+                    <div className='error-container'>
+                        <ul className='error-ul'>
+                            {errors.map(error => <li key={error}>{error}</li>)}
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <input
-                        type='text'
-                        placeholder='Email address'
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        required
-                    ></input>
-                </div>
-                <div>
-                    <input
-                        type={passwordType}
-                        placeholder='Password'
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        required
-                    ></input>
-                </div>
-                <div>
-                    <input
-                        type={passwordType}
-                        placeholder='Confirm password'
-                        value={confirmPassword}
-                        onChange={e => setConfirmPassword(e.target.value)}
-                        required
-                    ></input>
-                </div>
-                <div className='show-password-div-container'>
-                    <label>Show password</label>
-                    <input
-                        id='show-password-checkbox'
-                        type='checkbox' 
-                        onClick={() => passwordType === 'password' ? setPasswordType('text') : setPasswordType('password')}
-                        >
-                    </input>
-                </div>
-                <div>
-                    <button className='submitBtn' type='submit'>Sign up</button>
-                </div>
-                <div>
-                    <button className='cancel-btn' type='button' onClick={handleCancel}>Cancel</button>
-                </div>
-                <div>
-                    Already have an account?
-                    <button className='signinBtn' type='button' onClick={() => history.push('/')}>Sign in</button>
-                </div>
-            </form>
+                <form className='signup-form' onSubmit={handleSubmit}>
+                    <div className='signup-form__input-div'>
+                        <input
+                            className='signup-form__input'
+                            type='text'
+                            placeholder='Username'
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
+                            required
+                        ></input>
+                        <input
+                            className='signup-form__input'
+                            type='text'
+                            placeholder='Email address'
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            required
+                        ></input>
+                        <input
+                            className='signup-form__input'
+                            type={passwordType}
+                            placeholder='Password'
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            required
+                        ></input>
+                        <input
+                            className='signup-form__input'
+                            type={passwordType}
+                            placeholder='Confirm password'
+                            value={confirmPassword}
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            required
+                        ></input>
+                        <button className='signup-btn' type='submit'>Sign up</button>
+                        <button className='cancel-btn' type='button' onClick={handleCancel}>Cancel</button>
+                    </div>
+                    <div className='show-password-div'>
+                        <label>Show password</label>
+                        <input
+                            className='show-password-checkbox'
+                            id='show-password-checkbox'
+                            type='checkbox' 
+                            onClick={() => passwordType === 'password' ? setPasswordType('text') : setPasswordType('password')}
+                            >
+                        </input>
+                    </div>
+                    <div className='signin-form__button-div'>
+                        <div className='signin-form__button-header'>
+                            Already have an account?
+                        </div>
+                        <div>
+                            <button className='alter-signin-btn' type='button' onClick={() => history.push('/')}>Sign in</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

@@ -28,6 +28,7 @@
 
 
 
+/* OK */
 /* ------------------------------------ */
 /* SigninFormPage */
 /* ------------------------------------ */
@@ -111,19 +112,19 @@
     cursor: pointer;
 }
 
-.signin-form__button-div {
+.signup-form__button-div {
     display: block;
     text-align: center;
     padding: 3%;
 }
 
-.signin-form__button-header {
+.signup-form__button-header {
     color: gray;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
 }
 
-.create-account-btn {
+.alter-signup-btn {
     color: #00a82d;
     background-color: white;
     border: none;
@@ -147,6 +148,70 @@
     background-color: gray;
     color: white;
 }
+
+
+
+
+/* ------------------------------------ */
+/* SignupFormPage */
+/* ------------------------------------ */
+
+.signup-form-container {
+
+}
+
+.signup-form-body {
+
+}
+
+.signup-form-heading {
+
+}
+
+.error-container {
+
+}
+
+.error-ul {
+
+}
+
+.signup-form {
+
+}
+
+.signup-form__input-div {
+
+}
+
+.signup-form__input {
+
+}
+
+.signup-btn {
+
+}
+
+.show-password-div {
+
+}
+
+.show-password-checkbox {
+
+}
+
+.signin-form__button-div {
+
+}
+
+.signin-form__button-header {
+
+}
+
+.alter-signin-btn {
+
+}
+
 
 
 
