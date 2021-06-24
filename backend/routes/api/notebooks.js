@@ -43,10 +43,10 @@ router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
 }));
 
 // Get(search) a notebook: GET /api/notebooks/:id
-// router.get('/:id', requireAuth, asyncHandler( async(req, res) => {
-//     const notebook = await Notebook.findByPk(Number(req.params.id));
-//     return res.json(notebook);
-// }));
+router.get('/:id', requireAuth, asyncHandler( async(req, res) => {
+    const notebook = await Notebook.findByPk(Number(req.params.id));
+    return res.json(notebook);
+}));
 
 // Get a notebook with notes: GET /api/notebooks/:id/notes
 router.get('/:id/notes', requireAuth, asyncHandler( async(req, res) => {

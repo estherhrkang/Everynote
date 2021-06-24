@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNote, getAllNotes, deleteOneNote, editOneNote } from '../../store/note';
+import { createNote, getAllNotes, getAllNotesInNotebook, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
 const ShowNotes = ({ notebook }) => {
@@ -15,7 +15,7 @@ const ShowNotes = ({ notebook }) => {
     // const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
-        dispatch(getAllNotes());
+        dispatch(getAllNotesInNotebook(notebook));
     }, [dispatch]);
 
     useEffect(() => {

@@ -1,7 +1,6 @@
 import { csrfFetch } from './csrf';
 
 const LOAD_NOTEBOOKS = 'notebook/LOAD_NOTEBOOKS';
-const LOAD_NOTEBOOK = 'notebook/LOAD_NOTEBOOK';
 const SET_NOTEBOOK = 'notebook/SET_NOTEBOOK';
 const REMOVE_NOTEBOOK = 'notebook/REMOVE_NOTEBOOK';
 
@@ -10,13 +9,6 @@ const REMOVE_NOTEBOOK = 'notebook/REMOVE_NOTEBOOK';
 export const loadNotebooks = (notebook) => {
     return {
         type: LOAD_NOTEBOOKS,
-        notebook
-    };
-};
-
-export const loadNotebook = (notebook) => {
-    return {
-        type: LOAD_NOTEBOOK,
         notebook
     };
 };
@@ -47,10 +39,10 @@ export const getAllNotebooks = () => async dispatch => {
 };
 
 export const getOneNotebook = (notebook) => async dispatch => {
-    const response = await csrfFetch(`/api/notebooks/${notebook.id}/notes`);
+    const response = await csrfFetch(`/api/notebooks/${notebook.id}`);
     if (response.ok) {
         const notebook = await response.json();
-        dispatch(loadNotebook(notebook));
+        dispatch(loadNotebooks(notebook));
         return notebook;
     };
 };
@@ -110,10 +102,6 @@ const notebookReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_NOTEBOOKS:
-            return { ...state, fullNotebook: [...action.notebook] };
-        case LOAD_NOTEBOOK:
-            newState = { ...state };
-
             return { ...state, fullNotebook: [...action.notebook] };
         case SET_NOTEBOOK:
             newState = { ...state };

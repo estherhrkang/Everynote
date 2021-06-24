@@ -279,7 +279,6 @@
 }
 
 .profile-btn__li {
-    cursor: pointer;
     margin-left: -20px;
 
 }
@@ -536,7 +535,7 @@ table {
 }
 
 .delete-note-btn {
-    
+
 }
 
 .during-popup{
