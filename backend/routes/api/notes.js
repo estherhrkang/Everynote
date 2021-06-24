@@ -43,6 +43,10 @@ router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
 // }));
 
 // Get(search) a note: GET /api/notes/:id
+router.get('/:id', requireAuth, asyncHandler( async(req, res) => {
+    const note = await Note.findByPk(Number(req.params.id));
+    return res.json(note);
+}));
 
 
 module.exports = router;

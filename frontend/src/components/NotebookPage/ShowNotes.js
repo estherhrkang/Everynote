@@ -72,7 +72,7 @@ const ShowNotes = () => {
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-book'> {notebook?.title}</i></h1>
                     <div>{subNotes?.length} Notes</div>
-                    <div className='note-body-header'>
+                    <div className='note-search-box'>
                         search box
                         {/* <div>
                             <form onSubmit={handleSubmit}>
@@ -83,7 +83,7 @@ const ShowNotes = () => {
                                     onChange={(e) => setTitle(e.target.value)}
                                 >
                                 </input>
-                                <button type='submit'><i class="fas fa-search"></i></button>
+                                <button type='submit'><i className="fas fa-search"></i></button>
                             </form>
                         </div> */}
                     </div>

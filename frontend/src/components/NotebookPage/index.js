@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Redirect, Route, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
+import { createNotebook, getAllNotebooks, getOneNotebook, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
 import EditNotebookModal from './EditNotebookModal';
 import ShowNotes from './ShowNotes';
@@ -16,7 +16,7 @@ const NotebookPage = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
     const [popUp, setPopUp] = useState(false);
-    // const [searchInput, setSearchInput] = useState('');
+    const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotebooks());
@@ -39,6 +39,12 @@ const NotebookPage = () => {
     };
 
     const duringPopUp = popUp ? ' during-popup' : '';
+
+    const handleSearchNotebook = (e) => {
+        e.preventDefault();
+        
+        dispatch(getOneNotebook(searchInput));
+    };
 
     const handleCreateNotebook = async (e) => {
         e.preventDefault();
@@ -68,26 +74,23 @@ const NotebookPage = () => {
                 <h1><i className='fas fa-book'> NOTEBOOKS</i></h1>
                 {notebooks?.length} Notebooks
             </div>
-            <div className='search-notebook-form'>
-                Search box       
-                {/* <form onSubmit={handleSubmit}>
+            <form className='search-notebook-form' onSubmit={handleSearchNotebook}>
                 <input
-                placeholder='Find Notebooks'
+                placeholder='Find a notebook'
                 type='text'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
                 >
                 </input>
-                    <button type='submit'><i class="fas fa-search"></i></button>
-                </form> */}
-            </div>
+                <button type='submit'><i className="fas fa-search"></i></button>
+            </form>
             <form className='create-notebook-form' onSubmit={handleCreateNotebook}>
                 <ul>
                     {errors.map(error => <li className='create-notebook-form__li' key={error}>{error}</li>)}
                 </ul>
                 <input
                     className='create-notebook-form__input'
-                    placeholder='New Notebook Title'
+                    placeholder='New notebook title'
                     type='text'
                     value={title}
                     onChange={e => setTitle(e.target.value)}

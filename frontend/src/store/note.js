@@ -38,6 +38,15 @@ export const getAllNotes = () => async dispatch => {
     };
 };
 
+export const getOneNote = (note) => async dispatch => {
+    const response = await csrfFetch(`/api/notes/${note.id}`);
+    if (response.ok) {
+        const note = await response.json();
+        dispatch(setNote(note));
+        return note;
+    };
+};
+
 export const getAllNotesInNotebook = (notebookid) => async dispatch => {
     const response = await csrfFetch(`/api/notebooks/${notebookid}/notes`);
     if (response.ok) {

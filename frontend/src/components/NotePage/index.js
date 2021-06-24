@@ -66,7 +66,7 @@ const NotePage = () => {
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
                     <div>{notes?.length} Notes</div>
-                    <div className='note-body-header'>
+                    <div className='note-search-box'>
                         search box
                         {/* <div>
                             <form onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ const NotePage = () => {
                                     onChange={(e) => setTitle(e.target.value)}
                                 >
                                 </input>
-                                <button type='submit'><i class="fas fa-search"></i></button>
+                                <button type='submit'><i className="fas fa-search"></i></button>
                             </form>
                         </div> */}
                     </div>
