@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
@@ -9,6 +9,7 @@ import '../../index.css';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const notebooks = useSelector(state => state.notebook.fullNotebook);
 
     const [title, setTitle] = useState('');
@@ -114,9 +115,12 @@ const NotebookPage = () => {
                                 <>
                                     {/* {setNotebookState(notebook)} */}
                                     <tr key={notebook.id}>
-                                        <th className='table__tbody__tr__th' onClick={() => {
+                                        <th className='table__tbody__tr__th'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
+                                        {/* <button onClick={() => history.push(`/notebooks/${notebook.id}/notes}`).bind(notebook)}></button> */}
+                                        {/* <button onClick={() => {
                                             return <Redirect to={`/notebooks/${notebook.id}/notes`} notebook={notebook}/>}
-                                        }>{notebook.title}</th>
+                                        }></button> */}
+                                        {/* <button onClick={() => history.push(`/notebooks/${notebook.id}/notes}`, { notebook })}>{notebook.title}</button> */}
                                         <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                         <th>
                                             <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>
