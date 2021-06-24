@@ -104,7 +104,6 @@ const SignupFormPage = () => {
                         <label>Show password</label>
                         <input
                             className='show-password-checkbox'
-                            id='show-password-checkbox'
                             type='checkbox' 
                             onClick={() => passwordType === 'password' ? setPasswordType('text') : setPasswordType('password')}
                         >
