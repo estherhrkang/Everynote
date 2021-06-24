@@ -374,6 +374,12 @@
 /* ------------------------------------ */
 
 
+.notebooks-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    height: 100vh;
+}
+
 /* .header {
     grid-area: header;
     height: 100%;
