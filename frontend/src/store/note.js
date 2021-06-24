@@ -38,8 +38,8 @@ export const getAllNotes = () => async dispatch => {
     };
 };
 
-export const getAllNotesInNotebook = (notebookId) => async dispatch => {
-    const response = await csrfFetch(`/api/notebooks/${notebookId}/notes`);
+export const getAllNotesInNotebook = (notebookid) => async dispatch => {
+    const response = await csrfFetch(`/api/notebooks/${notebookid}/notes`);
     if (response.ok) {
         const notes = await response.json();
         dispatch(loadNotes(notes));

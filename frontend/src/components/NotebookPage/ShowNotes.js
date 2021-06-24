@@ -7,12 +7,12 @@ import '../../index.css';
 const ShowNotes = () => {
     const dispatch = useDispatch();
 
-    const { notebookId } = useParams(); 
+    const { notebookid } = useParams(); 
     const notebooks = useSelector(state => state.notebook.fullNotebook);
-    const notebook = notebooks.find(notebook => notebook.id === notebookId);
+    const notebook = notebooks.find(notebook => notebook.id === notebookid);
 
     const notes = useSelector(state => state.note.fullNote);
-    const subNotes = notes.find(note => note.notebookId === notebookId);
+    const subNotes = notes.find(note => note.notebookId === notebookid);
     
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -21,7 +21,7 @@ const ShowNotes = () => {
     // const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
-        dispatch(getAllNotesInNotebook(notebookId));
+        dispatch(getAllNotesInNotebook(notebookid));
     }, [dispatch]);
 
     useEffect(() => {

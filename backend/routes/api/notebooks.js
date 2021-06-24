@@ -49,9 +49,9 @@ router.get('/:id', requireAuth, asyncHandler( async(req, res) => {
 }));
 
 // Get a notebook with notes: GET /api/notebooks/:id/notes
-router.get('/:id/notes', requireAuth, asyncHandler( async(req, res) => {
-    const id = Number(req.params);
-    const notes = await Note.findAll({ where: { notebookId: id }});
+router.get('/:notebookid/notes', requireAuth, asyncHandler( async(req, res) => {
+    const notebookid = Number(req.params.id);
+    const notes = await Note.findAll({ where: { notebookId: notebookid }});
     return res.json(notes);
 }));
 
