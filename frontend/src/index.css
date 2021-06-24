@@ -69,7 +69,7 @@
 .signin-form__input-div {
     display: block;
     text-align: center;
-    margin: 2% 0;
+    margin: 10% 0 5% 0;
 }
 
 .signin-form__input {
@@ -93,7 +93,7 @@
     transition: all 0.2s ease 0s;
     width: 80%;
     padding: 2%;
-    margin: 1%;
+    margin: 3% 0 1% 0;
 }
 
 .signin-btn:hover {
@@ -176,7 +176,7 @@
 .signup-form__input-div {
     display: block;
     text-align: center;
-    margin: 2% 0;
+    margin: 10% 0 5% 0;
 }
 
 .signup-form__input {
@@ -200,7 +200,7 @@
     transition: all 0.2s ease 0s;
     width: 80%;
     padding: 2%;
-    margin: 1%;
+    margin: 3% 0 1% 0;
 }
 
 .signup-btn:hover {
