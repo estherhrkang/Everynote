@@ -78,28 +78,29 @@
 
 } */
 
-
+/* ok */
 .signin-form__input-div {
     display: block;
+    text-align: center;
 }
 
-
+/* ok */
 .signin-form__input {
     padding: 12px 16px;
     border: solid 0.3px lightgray;
     border-radius: 7px;
     width: 70%;
-    margin: 0.5%;
+    margin: 1%;
 }
 
-
+/* ok */
 .signin-form__input:focus {
     outline: none;
     box-shadow: 0 0 2px #00a82d;
 }
 
-
-.submit-btn {
+/* ok */
+.signin-btn {
     background-color: #00a82d;
     color: white;
     border: none;
@@ -110,33 +111,59 @@
     margin: 1%;
 }
 
-.submit-btn:hover {
+/* ok */
+.signin-btn:hover {
     background-color: green;
+    cursor: pointer;
 }
 
+/* ok */
 .cancel-btn {
     background-color: white;
     border: none;
+    width: 80%;
     padding: 1%;
     margin: 1%;
-    width: 80%;
+    cursor: pointer;
 }
 
 
+/* .signin-form__button-div {
+    
+} */
 
 
+.signin-form__button-header {
+    text-align: center;
+
+}
 
 
-
-
-.createAccountBtn {
+.create-account-btn {
     color: #00a82d;
     background-color: white;
     border: none;
+    cursor: pointer;
 }
 
-.demoBtn {
-    margin: 2%
+
+.demo-signin-btn {
+    background-color: lightgray;
+    color: white;
+    margin: 2%;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.3em;
+    transition: all 0.2s ease 0s;
+    width: 50%;
+    padding: 2%;
+    margin: 1%;
+}
+
+.demo-signin-btn:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
 }
 
 

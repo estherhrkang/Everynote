@@ -73,13 +73,15 @@ const SigninFormPage = () => {
                             onChange={e => setPassword(e.target.value)}
                             required
                         ></input>
-                        <button className='submit-btn' type='submit'>Sign in</button>
+                        <button className='signin-btn' type='submit'>Sign in</button>
                         <button className='cancel-btn' type='button' onClick={handleCancel}>Cancel</button>
                     </div>
-                    <div className='sigin-form__buttons'>
-                        Don't have an account?
-                        <button className='createAccountBtn' type='button' onClick={() => history.push('/signup')}>Create account</button>
-                        <button className='demoBtn' type='button' onClick={handleDemoSignin}>Demo user</button>
+                    <div className='sigin-form__button-div'>
+                        <div className='signin-form__button-header'>
+                            Don't have an account?
+                        </div>
+                        <button className='create-account-btn' type='button' onClick={() => history.push('/signup')}>Create account</button>
+                        <button className='demo-signin-btn' type='button' onClick={handleDemoSignin}>Demo user</button>
                     </div>
                 </form>
             </div>
