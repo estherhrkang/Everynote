@@ -32,6 +32,7 @@ const SigninFormPage = () => {
         e.preventDefault();
         setCredential('');
         setPassword('');
+        setErrors([]);
     };
 
     const handleDemoSignin = async () => {
