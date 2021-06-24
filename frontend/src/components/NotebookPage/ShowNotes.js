@@ -72,6 +72,21 @@ const ShowNotes = () => {
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-book'> {notebook?.title}</i></h1>
                     <div>{subNotes?.length} Notes</div>
+                    <div className='note-body-header'>
+                        search box
+                        {/* <div>
+                            <form onSubmit={handleSubmit}>
+                                <input
+                                    placeholder='Find Note'
+                                    type='text'
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                >
+                                </input>
+                                <button type='submit'><i class="fas fa-search"></i></button>
+                            </form>
+                        </div> */}
+                    </div>
                 </div>
                 <ul className='notes-list-ul'>
                     {subNotes?.map(subNote => (
@@ -95,22 +110,6 @@ const ShowNotes = () => {
                 </ul>
             </div>
             <div className='note-body'>
-                <div className='note-body-header'>
-                    search box
-                    {/* <div>
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                placeholder='Find Note'
-                                type='text'
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                            >
-                            </input>
-                            <button type='submit'><i class="fas fa-search"></i></button>
-                        </form>
-                    </div> */}
-                    
-                </div>
                 <div className='note-body-content'>
                     <form className='note-body-content__form' onSubmit={handleCreateNote}>
                         <ul className='note-body-content__error-ul'>
