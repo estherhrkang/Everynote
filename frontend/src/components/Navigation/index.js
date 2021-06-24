@@ -9,10 +9,18 @@ const Navigation = ({ isLoaded }) => {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <div>
-                    <ProfileButton user={sessionUser} />
-                    <NavLink to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
-                    <NavLink to='/notes'><i className='fas fa-sticky-note'> Notes</i></NavLink>
+            <div className='navigation-div'>
+                <ul className='navigation-ul'>
+                    <li className='navigation-li'>
+                        <ProfileButton user={sessionUser} />
+                    </li>
+                    <li className='navigation-li'>
+                        <NavLink to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
+                    </li>
+                    <li className='navigation-li'> 
+                        <NavLink to='/notes'><i className='fas fa-sticky-note'> Notes</i></NavLink>
+                    </li>
+                </ul>
             </div>
         )
     }

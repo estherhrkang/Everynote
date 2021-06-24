@@ -8,7 +8,7 @@
 /* ok - signin and signup forms */
 .root__main-container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 0.5fr auto auto;
 
     /* grid-template-columns: 30% auto;
     grid-template-rows: 10% auto;
@@ -236,6 +236,74 @@
 
 
 
+/* ------------------------------------ */
+/* Navigation */
+/* ------------------------------------ */
+
+.navigation-div {
+
+}
+
+.navigation-ul {
+    list-style-type: none;
+
+}
+
+.navigation-li {
+    text-decoration: none;
+    padding: 5px;
+
+}
+
+
+
+/* ------------------------------------ */
+/* ProfileButton */
+/* ------------------------------------ */
+
+.profile-btn {
+    cursor: pointer;
+    border: none;
+    /* background-color: #04a72e; */
+    background-color: #00a82d;
+    border-radius: 7px;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+
+}
+
+.profile-btn__ul {
+    list-style-type: none;
+
+}
+
+.profile-btn__li {
+    cursor: pointer;
+    margin-left: -20px;
+
+}
+
+.profile-btn__li:hover {
+    background-color: #e6e6e6;
+
+}
+
+.profile-btn__signout-btn {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin-left: -5px;
+
+}
+
+.profile-btn__signout-btn:hover {
+    background-color: #e6e6e6;
+
+}
+
+
+
 /* OK */
 /* ------------------------------------ */
 /* NotePage */
@@ -376,8 +444,8 @@
 
 
 .notebooks-container {
-    /* display: grid; */
-    /* grid-template-columns: auto; */
+    /* display: grid;
+    grid-template-columns: 1fr; */
     height: 100vh;
     padding: 0 30px;
 }
@@ -440,10 +508,6 @@
 .notebook-list-body {
 
 }
-
-
-
-
 
 /* .header {
     grid-area: header;

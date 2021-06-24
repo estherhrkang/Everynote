@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout} from '../../store/session';
+import '../../index.css';
 
 const ProfileButton = ({ user }) => {
     const dispatch = useDispatch();
@@ -31,15 +32,15 @@ const ProfileButton = ({ user }) => {
 
     return (
         <>
-            <button onClick={openMenu}>
+            <button className='profile-btn' onClick={openMenu}>
                 <i className='fab fa-evernote'> {user.username}</i>
             </button>
             {showMenu && (
-                <ul>
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={handleSignout}>Sign Out</button>
+                <ul className='profile-btn__ul'>
+                    <li className='profile-btn__li'>{user.username}</li>
+                    <li className='profile-btn__li'>{user.email}</li>
+                    <li className='profile-btn__li'>
+                        <button className='profile-btn__signout-btn' onClick={handleSignout}>Sign Out</button>
                     </li>
                 </ul>
             )}
