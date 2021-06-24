@@ -72,9 +72,9 @@ const NotePage = () => {
                             <div className='notes-list-li__content'>{note.content.length < 40 ? note.content : `${note.content.slice(0, 40)}...`}</div>
                             <div className='notes-list-li__date'>{note.updatedAt.slice(0,10)}</div>
                             
-                            {/* <div>
+                            <div>
                                 <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
-                            </div> */}
+                            </div>
                                 {showMenu && (
                                     <>
                                         <button>Add to a notebook</button>
@@ -110,14 +110,14 @@ const NotePage = () => {
                         </ul>
                         <input
                             className='note-body-content__title-input'
-                            placeholder='New Note Title'
+                            placeholder='Title'
                             type='text'
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         ></input>
                         <input
                             className='note-body-content__content-input'
-                            placeholder='New Note Content'
+                            placeholder='Start writing...'
                             type='text'
                             value={content}
                             onChange={e => setContent(e.target.value)}
