@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
 import EditNotebookModal from './EditNotebookModal';
-import Navigation from '../Navigation';
+import ShowNotes from './ShowNotes';
 import '../../index.css';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();
     const notebooks = useSelector(state => state.notebook.fullNotebook);
-    const notes = useSelector(state => state.note.fullNote);
-    // const subNotes = notes.filter(note => notebooks.includes(note));
-    console.log('NOTEBOOKS?', notebooks, 'NOTES?', notes);
-    
+
     const [title, setTitle] = useState('');
     const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -107,7 +105,6 @@ const NotebookPage = () => {
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>Created</th>
                                 <th>Updated</th>
                                 <th>Actions</th>
                             </tr>
@@ -115,9 +112,11 @@ const NotebookPage = () => {
                         <tbody>
                             {notebooks?.map(notebook => (
                                 <>
+                                    {/* {setNotebookState(notebook)} */}
                                     <tr key={notebook.id}>
-                                        <th className='table__tbody__tr__th'>{notebook.title}</th>
-                                        <th className='table__tbody__tr__th'>{notebook.createdAt.slice(0,10)}</th>
+                                        <th className='table__tbody__tr__th' onClick={() => {
+                                            return <Redirect to={`/notebooks/${notebook.id}/notes`} notebook={notebook}/>}
+                                        }>{notebook.title}</th>
                                         <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                         <th>
                                             <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>
@@ -130,16 +129,6 @@ const NotebookPage = () => {
                                                 </>
                                             )}
                                     </tr>
-                                    {notes?.map(note => (
-                                        <>
-                                            <tr key={`${note.id}-note`}>
-                                                <th>note title</th>
-                                                <th>note createdAt</th>
-                                                <th>note updatedAt</th>
-                                                <th>note actions</th>
-                                            </tr>
-                                        </>
-                                    ))}
                                 </>
                             ))}
                             {popUp && <EditNotebookModal setPopUp={setPopUp}/>}

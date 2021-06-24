@@ -535,6 +535,10 @@ table {
     border: none;
 }
 
+.delete-note-btn {
+    
+}
+
 .during-popup{
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
 }

@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { Notebook } = require('../../db/models');
+const { Note } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -42,9 +43,16 @@ router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
 }));
 
 // Get(search) a notebook: GET /api/notebooks/:id
-router.get('/:id', requireAuth, asyncHandler( async(req, res) => {
-    const notebook = await Notebook.findByPk(Number(req.params.id));
-    return res.json(notebook);
+// router.get('/:id', requireAuth, asyncHandler( async(req, res) => {
+//     const notebook = await Notebook.findByPk(Number(req.params.id));
+//     return res.json(notebook);
+// }));
+
+// Get a notebook with notes: GET /api/notebooks/:id/notes
+router.get('/:id/notes', requireAuth, asyncHandler( async(req, res) => {
+    const notebookId = Number(req.params.id);
+    const notes = await Note.findAll({ where: { notebookId }});
+    return res.json(notes);
 }));
 
 module.exports = router;

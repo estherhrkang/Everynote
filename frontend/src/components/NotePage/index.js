@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, deleteOneNote, editOneNote } from '../../store/note';
-import Navigation from '../Navigation';
+// import Navigation from '../Navigation';
 import '../../index.css';
 
 const NotePage = () => {
