@@ -117,7 +117,7 @@ const NotePage = () => {
                         ></input>
                         <input
                             className='note-body-content__content-input'
-                            placeholder='Start writing...'
+                            placeholder='Start writing here...'
                             type='text'
                             value={content}
                             onChange={e => setContent(e.target.value)}

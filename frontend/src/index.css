@@ -2,12 +2,13 @@
 
 * {
     text-decoration: none;
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 /* ok - signin and signup forms */
 .root__main-container {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto auto auto;
 
     /* grid-template-columns: 30% auto;
     grid-template-rows: 10% auto;
@@ -49,7 +50,7 @@
     width: 250px;
 }
 
-.signin-form-heading {
+.signin-form-header {
     text-align: center;
 }
 
@@ -235,7 +236,7 @@
 
 
 
-
+/* OK */
 /* ------------------------------------ */
 /* NotePage */
 /* ------------------------------------ */
@@ -375,10 +376,74 @@
 
 
 .notebooks-container {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    /* display: grid; */
+    /* grid-template-columns: auto; */
     height: 100vh;
+    padding: 0 30px;
 }
+
+.notebook-list-header {
+
+}
+
+.search-notebook-form {
+
+}
+
+.create-notebook-form {
+    border-bottom: 2px solid grey;
+}
+
+.create-notebook-form__li {
+    list-style-type: none;
+    color:red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-left: -10%;
+    padding-top: 5%;
+}
+
+.create-notebook-form__input {
+    width: 450px;
+    height: 20px;
+}
+
+.create-notebook-form__buttons {
+
+}
+
+.create-notebook-btn {
+    background-color: #00a82d;
+    color: white;
+    margin: 2%;
+    border: none;
+    border-radius: 0.3em;
+    transition: all 0.2s ease 0s;
+    width: 30%;
+    padding: 2%;
+    margin-top: 5%;
+}
+
+.cancel-create-notebook-btn {
+    background-color: white;
+    border: none;
+    width: 30%;
+    padding: 1%;
+    margin: 1%;
+    cursor: pointer;
+}
+
+.notebook-list-subheader {
+
+}
+
+.notebook-list-body {
+
+}
+
+
+
+
 
 /* .header {
     grid-area: header;
@@ -400,7 +465,9 @@ table {
     padding: 3%;
 }
 
-.notebook-action-btn, .note-action-btn {
+*/
+
+.notebook-action-btn {
     border: none;
 }
 
@@ -426,7 +493,7 @@ table {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-} */
+}
 
 
 

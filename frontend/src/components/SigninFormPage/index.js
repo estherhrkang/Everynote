@@ -47,7 +47,7 @@ const SigninFormPage = () => {
     return (
         <div className='signin-form-container'>
             <div className='signin-form-body'>
-                <div className='signin-form-heading'>
+                <div className='signin-form-header'>
                     <h1>Everynote</h1>
                     <p>Remember everything important.</p>
                     <div className='error-container'>
