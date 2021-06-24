@@ -57,17 +57,14 @@
     display: block;
 }
 
-.error-ul {
+.error-li {
     list-style-type: none;
     color:red;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
-    margin-right: 20%;
+    margin-left: -20%;
+    padding-top: 5%;
 }
-
-/* .signin-form {
-
-} */
 
 .signin-form__input-div {
     display: block;
@@ -151,65 +148,89 @@
 
 
 
-
+/* OK */
 /* ------------------------------------ */
 /* SignupFormPage */
 /* ------------------------------------ */
 
 .signup-form-container {
-
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 512px;
+    box-shadow: 0px 5px 20px lightgrey;
+    border-radius: 3px;
 }
 
 .signup-form-body {
-
+    margin: 50px 100px;
+    width: 250px;
 }
 
 .signup-form-heading {
-
-}
-
-.error-container {
-
-}
-
-.error-ul {
-
-}
-
-.signup-form {
-
+    text-align: center;
 }
 
 .signup-form__input-div {
-
+    display: block;
+    text-align: center;
+    margin: 2% 0;
 }
 
 .signup-form__input {
+    padding: 12px 16px;
+    border: solid 0.3px lightgray;
+    border-radius: 7px;
+    width: 70%;
+    margin: 1%;
+}
 
+.signup-form__input:focus {
+    outline: none;
+    box-shadow: 0 0 2px #00a82d;
 }
 
 .signup-btn {
+    background-color: #00a82d;
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    transition: all 0.2s ease 0s;
+    width: 80%;
+    padding: 2%;
+    margin: 1%;
+}
 
+.signup-btn:hover {
+    background-color: green;
 }
 
 .show-password-div {
-
-}
-
-.show-password-checkbox {
-
+    display: block;
+    text-align: center;
+    padding: 3%;
 }
 
 .signin-form__button-div {
-
+    display: block;
+    text-align: center;
+    padding: 3%;
 }
 
 .signin-form__button-header {
-
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 .alter-signin-btn {
-
+    color: #00a82d;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin: 2%;
 }
 
 

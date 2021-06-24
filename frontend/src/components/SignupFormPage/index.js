@@ -58,8 +58,8 @@ const SignupFormPage = () => {
                     <h1>Everynote</h1>
                     <p>Remember everything important.</p>
                     <div className='error-container'>
-                        <ul className='error-ul'>
-                            {errors.map(error => <li key={error}>{error}</li>)}
+                        <ul>
+                            {errors.map(error => <li  className='error-li' key={error}>{error}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -107,7 +107,7 @@ const SignupFormPage = () => {
                             id='show-password-checkbox'
                             type='checkbox' 
                             onClick={() => passwordType === 'password' ? setPasswordType('text') : setPasswordType('password')}
-                            >
+                        >
                         </input>
                     </div>
                     <div className='signin-form__button-div'>

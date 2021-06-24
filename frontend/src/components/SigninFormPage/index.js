@@ -50,8 +50,8 @@ const SigninFormPage = () => {
                     <h1>Everynote</h1>
                     <p>Remember everything important.</p>
                     <div className='error-container'>
-                        <ul className='error-ul'>
-                            {errors.map(error => <li key={error}>{error}</li>)}
+                        <ul>
+                            {errors.map(error => <li className='error-li' key={error}>{error}</li>)}
                         </ul>
                     </div>
                 </div>
