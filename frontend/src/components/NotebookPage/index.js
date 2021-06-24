@@ -116,11 +116,6 @@ const NotebookPage = () => {
                                     {/* {setNotebookState(notebook)} */}
                                     <tr key={notebook.id}>
                                         <th className='table__tbody__tr__th'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
-                                        {/* <button onClick={() => history.push(`/notebooks/${notebook.id}/notes}`).bind(notebook)}></button> */}
-                                        {/* <button onClick={() => {
-                                            return <Redirect to={`/notebooks/${notebook.id}/notes`} notebook={notebook}/>}
-                                        }></button> */}
-                                        {/* <button onClick={() => history.push(`/notebooks/${notebook.id}/notes}`, { notebook })}>{notebook.title}</button> */}
                                         <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                         <th>
                                             <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>

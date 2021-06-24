@@ -47,7 +47,7 @@ const ShowNotes = () => {
 
         if (title) {
             setErrors([]);
-            return dispatch(createNote(title, content))
+            return dispatch(createNote(title, content, notebookid))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);

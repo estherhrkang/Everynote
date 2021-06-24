@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-      username: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -91,6 +91,15 @@ module.exports = (sequelize, DataTypes) => {
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
+
+  // User.findByUsername = async function (usernameParam) {
+  //   const user = await User.findOne({
+  //     where: {
+  //       username: usernameParam
+  //     }
+  //   })
+  //   return user;    
+  // };
 
   return User;
 };
