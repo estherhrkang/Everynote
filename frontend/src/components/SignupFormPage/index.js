@@ -100,15 +100,17 @@ const SignupFormPage = () => {
                         <button className='signup-btn' type='submit'>Sign up</button>
                         <button className='cancel-btn' type='button' onClick={handleCancel}>Cancel</button>
                     </div>
-                    <div className='show-password-div'>
-                        <label>Show password</label>
-                        <input
-                            className='show-password-checkbox'
-                            type='checkbox' 
-                            onClick={() => passwordType === 'password' ? setPasswordType('text') : setPasswordType('password')}
-                        >
-                        </input>
-                    </div>
+                    {password && (
+                        <div className='show-password-div'>
+                            <label>Show password</label>
+                            <input
+                                className='show-password-checkbox'
+                                type='checkbox' 
+                                onClick={() => passwordType === 'password' ? setPasswordType('text') : setPasswordType('password')}
+                            >
+                            </input>
+                        </div>
+                    )}
                     <div className='signin-form__button-div'>
                         <div className='signin-form__button-header'>
                             Already have an account?

@@ -240,19 +240,97 @@
 /* NotePage */
 /* ------------------------------------ */
 
-.main-container {
+.notes-container {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto 1fr auto;
+    height: 100vh;
 }
 
+.notes-list-container {
+    height: 100%;
+    width: 300px;
+    overflow-y: auto;
+}
 
+.notes-list-header {
+    height: 75px;
+    border-bottom: 2px solid lightgrey;
+    padding-bottom: 10px;
+    /* margin-bottom: 0; */
+}
 
+.notes-list-ul {
+    list-style-type: none;
+    margin-left: -40px;
+}
 
+.notes-list-li {
+    display: flex;
+    flex-direction: column;
+    height: 75px;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgrey;
+}
 
+.notes-list-li__title {
+    padding-bottom: 5px; 
+}
 
+.notes-list-li__content {
+    flex-grow: 3;
+    font-size: 14px;
+    color: grey;
+}
 
+.notes-list-li__date {
+    font-size: 12px;
+}
 
+.note-body {
+    padding: 20px;
+}
 
+.note-body-header {
+    font-size: 20px;
+}
+
+.note-body-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+}
+
+.note-body-content__form {
+    box-sizing: border-box;
+}
+
+.note-body-content__error-li {
+    list-style-type: none;
+    color:red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-left: -15%;
+    padding-top: 5%;
+}
+
+.note-body-content__title-input {
+    display: grid;
+    width: 200%;
+}
+
+.note-body-content__content-input {
+    display: grid;
+}
+
+.create-note-btn {
+
+}
+
+.cancel-create-note-btn {
+
+}
 
 
 
@@ -262,7 +340,7 @@
 /* ------------------------------------ */
 
 
-.header {
+/* .header {
     grid-area: header;
     height: 100%;
 }
@@ -308,7 +386,7 @@ table {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 
 
