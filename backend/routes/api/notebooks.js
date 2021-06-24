@@ -50,7 +50,7 @@ router.get('/:id', requireAuth, asyncHandler( async(req, res) => {
 
 // Get a notebook with notes: GET /api/notebooks/:id/notes
 router.get('/:notebookid/notes', requireAuth, asyncHandler( async(req, res) => {
-    const notebookid = Number(req.params.id);
+    const notebookid = Number(req.params.notebookid);
     const notes = await Note.findAll({ where: { notebookId: notebookid }});
     return res.json(notes);
 }));

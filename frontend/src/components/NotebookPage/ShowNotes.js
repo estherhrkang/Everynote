@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getAllNotesInNotebook, deleteOneNote, editOneNote } from '../../store/note';
+import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
 const ShowNotes = () => {
@@ -9,10 +10,11 @@ const ShowNotes = () => {
 
     const { notebookid } = useParams(); 
     const notebooks = useSelector(state => state.notebook.fullNotebook);
-    const notebook = notebooks.find(notebook => notebook.id === notebookid);
+    const notebook = notebooks?.find(notebook => notebook.id === Number(notebookid));
 
     const notes = useSelector(state => state.note.fullNote);
-    const subNotes = notes.find(note => note.notebookId === notebookid);
+    const subNotes = notes?.filter(note => note.notebookId === Number(notebookid));
+    console.log(subNotes);
     
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -22,6 +24,7 @@ const ShowNotes = () => {
 
     useEffect(() => {
         dispatch(getAllNotesInNotebook(notebookid));
+        dispatch(getOneNotebook({id: notebookid}));
     }, [dispatch]);
 
     useEffect(() => {
@@ -67,7 +70,7 @@ const ShowNotes = () => {
             </div> */}
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
-                    <h1><i className='fas fa-book'> {notebook.title}</i></h1>
+                    <h1><i className='fas fa-book'> {notebook?.title}</i></h1>
                     <div>{subNotes?.length} Notes</div>
                 </div>
                 <ul className='notes-list-ul'>
@@ -120,13 +123,14 @@ const ShowNotes = () => {
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         ></input>
-                        <input
+                        <textarea
                             className='note-body-content__content-input'
                             placeholder='Start writing here...'
-                            type='text'
+                            wrap='hard'
+                            cols='20'
                             value={content}
                             onChange={e => setContent(e.target.value)}
-                        ></input>
+                        ></textarea>
                         <div>
                             <button className='create-note-btn' type='submit'>Create</button>
                             <button className='cancel-create-note-btn' type='button' onClick={handleCancelCreate}>Cancel</button>

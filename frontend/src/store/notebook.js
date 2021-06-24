@@ -42,7 +42,7 @@ export const getOneNotebook = (notebook) => async dispatch => {
     const response = await csrfFetch(`/api/notebooks/${notebook.id}`);
     if (response.ok) {
         const notebook = await response.json();
-        dispatch(loadNotebooks(notebook));
+        dispatch(setNotebook(notebook));
         return notebook;
     };
 };
@@ -95,7 +95,7 @@ export const editOneNotebook = (notebook) => async dispatch => {
 // reducer
 
 const initialState = {
-    fullNotebook: null
+    fullNotebook: [],
 };
 
 const notebookReducer = (state = initialState, action) => {

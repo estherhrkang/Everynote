@@ -113,13 +113,14 @@ const NotePage = () => {
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         ></input>
-                        <input
+                        <textarea
                             className='note-body-content__content-input'
                             placeholder='Start writing here...'
-                            type='text'
+                            wrap='hard'
+                            cols='20'
                             value={content}
                             onChange={e => setContent(e.target.value)}
-                        ></input>
+                        ></textarea>
                         <div>
                             <button className='create-note-btn' type='submit'>Create</button>
                             <button className='cancel-create-note-btn' type='button' onClick={handleCancelCreate}>Cancel</button>

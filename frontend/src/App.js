@@ -34,11 +34,11 @@ function App() {
             <Route path='/signup'>
               <SignupFormPage />
             </Route>
-            <Route path='/notebooks'>
-              <NotebookPage />
-            </Route>
             <Route path='/notebooks/:notebookid/notes'>
               <ShowNotes />
+            </Route>
+            <Route path='/notebooks'>
+              <NotebookPage />
             </Route>
             <Route path='/notes'>
               <NotePage />
