@@ -49,7 +49,7 @@ const NotebookPage = () => {
         // .find finds the fist match vs .filter finds all the match put in an array
 
         // if notebook.title partially includes searchInput, 
-        const firstMatchingNotebook = notebooks.find(notebook => notebook.title.includes(searchInput));
+        const firstMatchingNotebook = notebooks.find(notebook => notebook.title.toLowerCase().includes(searchInput.toLowerCase()));
         // dispatch that notebook.title & receive matching notebook
         matchingNotebook = await dispatch(getOneNotebook(firstMatchingNotebook));
         // update display on notebooks page
