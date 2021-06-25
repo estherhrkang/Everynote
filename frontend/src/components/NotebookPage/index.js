@@ -41,8 +41,7 @@ const NotebookPage = () => {
 
     const duringPopUp = popUp ? ' during-popup' : '';
 
-    let matchingNotebook;
-    const handleSearchNotebook = async (e) => {
+    const handleSearchNotebook = (e) => {
         e.preventDefault();
 
         //need to filter here and send only one object
@@ -51,7 +50,7 @@ const NotebookPage = () => {
         // if notebook.title partially includes searchInput, 
         const firstMatchingNotebook = notebooks.find(notebook => notebook.title.toLowerCase().includes(searchInput.toLowerCase()));
         // dispatch that notebook.title & receive matching notebook
-        matchingNotebook = await dispatch(getOneNotebook(firstMatchingNotebook));
+        dispatch(getOneNotebook(firstMatchingNotebook));
         // update display on notebooks page
     };
 
