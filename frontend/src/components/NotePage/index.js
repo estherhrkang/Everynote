@@ -32,7 +32,7 @@ const NotePage = () => {
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
     
-    let currentNote = notes?.find(note => note.title.toLowerCase() === clickedNote.title.toLowerCase());
+    // let currentNote = notes !== null ? notes.find(note => note.title.toLowerCase() === clickedNote.title.toLowerCase()) : null;
 
     if (!sessionUser) return <Redirect to='/' />
 
@@ -111,11 +111,8 @@ const NotePage = () => {
             </div>
             <div className='note-body'>
                 <div className='note-body-content'>
-                    {currentNote ? (
-                        <EditNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} />
-                    ) : (
-                        <CreateNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} />
-                    )}
+                    <EditNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} />
+                    {/* <CreateNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} /> */}
                 </div>
             </div>
         </div>

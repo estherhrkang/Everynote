@@ -17,7 +17,7 @@ const EditNoteForm = ({ title, setTitle, content, setContent }) => {
 
         if (title) {
             setErrors([]);
-            return dispatch(createNote(title, content))
+            return dispatch(editOneNote(title, content))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
