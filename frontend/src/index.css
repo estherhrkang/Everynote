@@ -329,6 +329,27 @@
     /* margin-bottom: 0; */
 }
 
+.search-note-btn {
+    background-color: #00a82d;
+    color: white;
+    margin: 2%;
+    border: none;
+    border-radius: 0.3em;
+    transition: all 0.2s ease 0s;
+    width: 15%;
+    padding: 2%;
+    margin-top: 5%;
+}
+
+.cancel-search-note-btn {
+    background-color: white;
+    border: none;
+    width: 10%;
+    padding: 1%;
+    margin: 1%;
+    cursor: pointer;
+}
+
 .notes-list-ul {
     list-style-type: none;
     margin-left: -40px;
