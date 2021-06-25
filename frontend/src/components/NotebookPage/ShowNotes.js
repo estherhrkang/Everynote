@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNote, getAllNotes, getAllNotesInNotebook, deleteOneNote, editOneNote } from '../../store/note';
+import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNote, editOneNote } from '../../store/note';
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
@@ -21,7 +21,7 @@ const ShowNotes = () => {
     const [content, setContent] = useState('');
     const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
-    // const [searchInput, setSearchInput] = useState('');
+    const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotesInNotebook(notebookid));
@@ -41,6 +41,19 @@ const ShowNotes = () => {
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
+    };
+
+    const handleSearchNote = (e) => {
+        e.preventDefault();
+
+        const firstMatchingNote = subNotesArr.find(note => note.title.toLowerCase().includes(searchInput.toLowerCase()));
+
+        dispatch(getOneNote(firstMatchingNote));
+    };
+
+    const handleCancelSearch = () => {
+        setSearchInput('');
+        dispatch(getAllNotes());
     };
 
     const handleCreateNote = (e) => {
@@ -72,23 +85,20 @@ const ShowNotes = () => {
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-book'> {notebook?.title}</i></h1>
-                    <div>{subNotesArr?.length} Notes</div>
-                    <div className='note-search-box'>
-                        search box
-                        {/* <div>
-                            <form onSubmit={handleSubmit}>
-                                <input
-                                    placeholder='Find Note'
-                                    type='text'
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                >
-                                </input>
-                                <button type='submit'><i className="fas fa-search"></i></button>
-                            </form>
-                        </div> */}
-                    </div>
+                    {subNotesArr?.length} Notes
                 </div>
+                <form className='search-note-box' onSubmit={handleSearchNote}>
+                    <input
+                        className='search-note-box__input'
+                        placeholder='Find Note'
+                        type='text'
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                    >
+                    </input>
+                    <button className='search-note-btn' type='submit'><i className="fas fa-search"></i></button>
+                    <button className='cancel-search-note-btn' type='button' onClick={handleCancelSearch}>Cancel</button>
+                </form>
                 <ul className='notes-list-ul'>
                     {subNotesArr?.map(subNote => (
                         <li className='notes-list-li' key={subNote.id}>
