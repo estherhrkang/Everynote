@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const EditNoteForm = () => {
+const EditNoteForm = ({ title, setTitle, content, setContent }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     const notes = useSelector(state => state.note.fullNote);
+
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,7 +33,7 @@ const EditNoteForm = () => {
     };
 
     return (
-        <form className='note-body-content__form' onSubmit={handleSave}>
+        <form className='note-body-content__form' onSubmit={handleSubmit}>
             <ul className='note-body-content__error-ul'>
                 {errors.map(error => <li className='note-body-content__error-li' key={error}>{error}</li>)}
             </ul>
