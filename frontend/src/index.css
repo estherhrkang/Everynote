@@ -478,31 +478,27 @@
     padding-top: 5%;
 }
 
-.create-notebook-form__input {
-    width: 450px;
+.search-notebook-form__input, .create-notebook-form__input {
+    width: 300px;
     height: 20px;
 }
 
-.create-notebook-form__buttons {
-
-}
-
-.create-notebook-btn {
+.search-notebook-btn, .create-notebook-btn {
     background-color: #00a82d;
     color: white;
     margin: 2%;
     border: none;
     border-radius: 0.3em;
     transition: all 0.2s ease 0s;
-    width: 30%;
+    width: 15%;
     padding: 2%;
     margin-top: 5%;
 }
 
-.cancel-create-notebook-btn {
+.cancel-search-notebook-btn, .cancel-create-notebook-btn {
     background-color: white;
     border: none;
-    width: 30%;
+    width: 10%;
     padding: 1%;
     margin: 1%;
     cursor: pointer;

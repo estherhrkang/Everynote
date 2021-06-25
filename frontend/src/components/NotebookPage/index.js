@@ -55,6 +55,11 @@ const NotebookPage = () => {
         // update display on notebooks page
     };
 
+    const handleCancelSearch = () => {
+        setSearchInput('');
+        dispatch(getAllNotebooks());
+    };
+
     const handleCreateNotebook = async (e) => {
         e.preventDefault();
         if (title) {
@@ -85,18 +90,15 @@ const NotebookPage = () => {
             </div>
             <form className='search-notebook-form' onSubmit={handleSearchNotebook}>
                 <input
+                className='search-notebook-form__input'
                 placeholder='Find a notebook'
                 type='text'
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 >
                 </input>
-                <button type='submit'><i className="fas fa-search"></i></button>
-                {matchingNotebook && (
-                    <ul>
-                        <li>{matchingNotebook.title}</li>
-                    </ul>
-                )}
+                <button className='search-notebook-btn' type='submit'><i className="fas fa-search"></i></button>
+                <button className='cancel-search-notebook-btn' type='button' onClick={handleCancelSearch}>Cancel</button>
             </form>
             <form className='create-notebook-form' onSubmit={handleCreateNotebook}>
                 <ul>
@@ -109,10 +111,8 @@ const NotebookPage = () => {
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 ></input>
-                <div className='create-notebook-form__buttons'>
-                    <button className='create-notebook-btn' type='submit'>Create</button>
-                    <button className='cancel-create-notebook-btn' type='button' onClick={handleCancelCreate}>Cancel</button>
-                </div>
+                <button className='create-notebook-btn' type='submit'>Create</button>
+                <button className='cancel-create-notebook-btn' type='button' onClick={handleCancelCreate}>Cancel</button>
             </form>
             <div className='notebook-list-subheader'>
 
