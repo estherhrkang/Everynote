@@ -36,8 +36,8 @@ router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
     return res.json(notebookId);
 }));
 
-// Edit a notebook: PATCH /api/notebooks/:id
-router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
+// Edit a notebook: PUT /api/notebooks/:id
+router.put('/:id', requireAuth, asyncHandler( async(req, res) => {
     const notebook = await Notebook.updateOne(Number(req.params.id));
     return res.json(notebook);
 }));

@@ -36,8 +36,8 @@ router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
     return res.json(noteId);
 }));
 
-// Edit a note: PATCH /api/notes/:id
-// router.patch('/:id', requireAuth, asyncHandler( async(req, res) => {
+// Edit a note: PUT /api/notes/:id
+// router.put('/:id', requireAuth, asyncHandler( async(req, res) => {
 //     const note = await Note.updateOne(req.body);
 //     return res.json(note);
 // }));

@@ -96,7 +96,7 @@ export const deleteOneNote = (note) => async dispatch => {
 
 export const editOneNote = (note) => async dispatch => {
     const response = await csrfFetch(`/api/notes/${note.id}`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
