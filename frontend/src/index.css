@@ -342,6 +342,12 @@
     border-bottom: 1px solid #e6e6e6;
 }
 
+.notes-list-li__btn {
+    border: none;
+    background-color: #f8f8f8;
+
+}
+
 .notes-list-li__title {
     padding-bottom: 5px; 
 }
@@ -454,7 +460,7 @@
 }
 
 .search-notebook-form {
-    
+
 
 
 }
