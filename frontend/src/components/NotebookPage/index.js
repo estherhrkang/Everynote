@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Redirect, Route, useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, getOneNotebook, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
 import EditNotebookModal from './EditNotebookModal';
-import ShowNotes from './ShowNotes';
 import '../../index.css';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     // array
     const notebooks = useSelector(state => state.notebook.fullNotebook);
 
@@ -129,7 +127,6 @@ const NotebookPage = () => {
                         <tbody>
                             {notebooks?.map(notebook => (
                                 <>
-                                    {/* {setNotebookState(notebook)} */}
                                     <tr key={notebook.id}>
                                         <th className='table__tbody__tr__th'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
                                         <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
