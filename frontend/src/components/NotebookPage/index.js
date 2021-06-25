@@ -87,11 +87,11 @@ const NotebookPage = () => {
             </div>
             <form className='search-notebook-form' onSubmit={handleSearchNotebook}>
                 <input
-                className='search-notebook-form__input'
-                placeholder='Find a notebook'
-                type='text'
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
+                    className='search-notebook-form__input'
+                    placeholder='Find a notebook'
+                    type='text'
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
                 >
                 </input>
                 <button className='search-notebook-btn' type='submit'><i className="fas fa-search"></i></button>

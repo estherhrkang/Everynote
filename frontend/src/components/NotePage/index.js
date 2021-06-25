@@ -12,7 +12,7 @@ const NotePage = () => {
     const [content, setContent] = useState('');
     const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
-    // const [searchInput, setSearchInput] = useState('');
+    const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotes());
@@ -31,6 +31,19 @@ const NotePage = () => {
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
+    };
+
+    const handleSearchNote = (e) => {
+        e.preventDefault();
+
+        const firstMatchingNote = notes.find(note => note.title.toLowerCase().includes(searchInput.toLowerCase()));
+
+        dispatch(getOneNote(firstMatchingNote));
+    };
+
+    const handleCancelSearch = () => {
+        setSearchInput('');
+        dispatch(getAllNotes());
     };
 
     const handleSubmit = (e) => {
@@ -65,23 +78,20 @@ const NotePage = () => {
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
-                    <div>{notes?.length} Notes</div>
-                    <div className='note-search-box'>
-                        search box
-                        {/* <div>
-                            <form onSubmit={handleSubmit}>
-                                <input
-                                    placeholder='Find Note'
-                                    type='text'
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                >
-                                </input>
-                                <button type='submit'><i className="fas fa-search"></i></button>
-                            </form>
-                        </div> */}
-                    </div>
+                    {notes?.length} Notes
                 </div>
+                <form className='search-note-box' onSubmit={handleSearchNote}>
+                    <input
+                        className='search-note-box__input'
+                        placeholder='Find Note'
+                        type='text'
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                    >
+                    </input>
+                    <button className='search-note-btn' type='submit'><i className="fas fa-search"></i></button>
+                    <button className='cancel-search-note-btn' type='button' onClick={handleCancelSearch}>Cancel</button>
+                </form>
                 <ul className='notes-list-ul'>
                     {notes?.map(note => (
                         <li className='notes-list-li' key={note.id}>
