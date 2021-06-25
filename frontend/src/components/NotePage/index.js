@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
+import CreateNoteForm from './CreateNoteForm';
+import EditNoteForm from './EditNoteForm';
 import '../../index.css';
 
 const NotePage = () => {
@@ -51,50 +53,6 @@ const NotePage = () => {
     const handleCancelSearch = () => {
         setSearchInput('');
         dispatch(getAllNotes());
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (title) {
-            setErrors([]);
-            return dispatch(createNote(title, content))
-                .catch(async(res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
-        };
-        return setErrors(['Please provide title for this note.']);
-    };
-
-    const handleSave = () => {
-        if (title) {
-            setErrors([]);
-            return dispatch(editOneNote(currentNote.id, title, content))
-                .catch(async(res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
-        };
-        return setErrors(['Please provide title for this note.']);
-    };
-
-    const handleCreate = () => {
-        if (title) {
-            setErrors([]);
-            return dispatch(createNote(title, content))
-                .catch(async(res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
-        };
-        return setErrors(['Please provide title for this note.']);
-    };
-
-    const handleCancelSubmit = () => {
-        setTitle('');
-        setContent('');
-        setErrors([]);
     };
 
     return (
@@ -154,64 +112,10 @@ const NotePage = () => {
             </div>
             <div className='note-body'>
                 <div className='note-body-content'>
-                    {/* conditional */}
-                    {/* if clicked note from above exists, */}
-                    {/* render a form that handles edit onsubmit */}
                     {currentNote ? (
-                        <>
-                            <form className='note-body-content__form' onSubmit={handleSave}>
-                                <ul className='note-body-content__error-ul'>
-                                    {errors.map(error => <li className='note-body-content__error-li' key={error}>{error}</li>)}
-                                </ul>
-                                <input
-                                    className='note-body-content__title-input'
-                                    placeholder={title ? title : 'Title'}
-                                    type='text'
-                                    value={title}
-                                    onChange={e => setTitle(e.target.value)}
-                                ></input>
-                                <textarea
-                                    className='note-body-content__content-input'
-                                    placeholder={content ? content : 'Start writing here...'}
-                                    wrap='hard'
-                                    cols='20'
-                                    value={content}
-                                    onChange={e => setContent(e.target.value)}
-                                ></textarea>
-                                <div>
-                                    <button className='create-note-btn' type='submit'>Save</button>
-                                    <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
-                                </div>
-                            </form>
-                        </>
+                        <EditNoteForm />
                     ) : (
-                        <>
-                            {/* else, render a form that handles create onsubmit */}
-                            <form className='note-body-content__form' onSubmit={handleCreate}>
-                                <ul className='note-body-content__error-ul'>
-                                    {errors.map(error => <li className='note-body-content__error-li' key={error}>{error}</li>)}
-                                </ul>
-                                <input
-                                    className='note-body-content__title-input'
-                                    placeholder={title ? title : 'Title'}
-                                    type='text'
-                                    value={title}
-                                    onChange={e => setTitle(e.target.value)}
-                                ></input>
-                                <textarea
-                                    className='note-body-content__content-input'
-                                    placeholder={content ? content : 'Start writing here...'}
-                                    wrap='hard'
-                                    cols='20'
-                                    value={content}
-                                    onChange={e => setContent(e.target.value)}
-                                ></textarea>
-                                <div>
-                                    <button className='create-note-btn' type='submit'>Create</button>
-                                    <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
-                                </div>
-                            </form>
-                        </>
+                        <CreateNoteForm />
                     )}
                 </div>
             </div>
