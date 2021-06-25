@@ -91,20 +91,28 @@ const ShowNotes = () => {
                 <ul className='notes-list-ul'>
                     {subNotes?.map(subNote => (
                         <li className='notes-list-li' key={subNote.id}>
-                            <div className='notes-list-li__title'>{subNote.title}</div>
-                            <div className='notes-list-li__content'>{subNote.content.length < 40 ? subNote.content : `${subNote.content.slice(0, 40)}...`}</div>
-                            <div className='notes-list-li__date'>{subNote.updatedAt.slice(0,10)}</div>
-                            
-                            <div>
-                                <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
-                            </div>
-                                {showMenu && (
-                                    <>
-                                        <button>Add to a notebook</button>
-                                        <button onClick={() => dispatch(deleteOneNote(subNote))}>Delete</button>
-                                        {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
-                                    </>
-                                )}
+                            <button 
+                                className='notes-list-li__btn' 
+                                onClick={() => {
+                                    setTitle(subNote.title)
+                                    setContent(subNote.content)
+                                }}
+                            >
+                                <div className='notes-list-li__title'>{subNote.title}</div>
+                                <div className='notes-list-li__content'>{subNote.content.length < 40 ? subNote.content : `${subNote.content.slice(0, 40)}...`}</div>
+                                <div className='notes-list-li__date'>{subNote.updatedAt.slice(0,10)}</div>
+                                
+                                <div>
+                                    <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
+                                </div>
+                                    {showMenu && (
+                                        <>
+                                            <button>Add to a notebook</button>
+                                            <button onClick={() => dispatch(deleteOneNote(subNote))}>Delete</button>
+                                            {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
+                                        </>
+                                    )}
+                            </button>
                         </li>
                     ))}
                 </ul>
@@ -117,21 +125,25 @@ const ShowNotes = () => {
                         </ul>
                         <input
                             className='note-body-content__title-input'
-                            placeholder='Title'
+                            placeholder={title ? title : 'Title'}
                             type='text'
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         ></input>
                         <textarea
                             className='note-body-content__content-input'
-                            placeholder='Start writing here...'
+                            placeholder={content ? content : 'Start writing here...'}
                             wrap='hard'
                             cols='20'
                             value={content}
                             onChange={e => setContent(e.target.value)}
                         ></textarea>
                         <div>
-                            <button className='create-note-btn' type='submit'>Create</button>
+                            {title ? (
+                                <button className='save-note-btn' type='submit'>Save</button>
+                            ) : (
+                                <button className='create-note-btn' type='submit'>Create</button>
+                            )}
                             <button className='cancel-create-note-btn' type='button' onClick={handleCancelCreate}>Cancel</button>
                         </div>
                     </form>
