@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
 const NotePage = () => {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     const notes = useSelector(state => state.note.fullNote);
     
@@ -13,6 +15,7 @@ const NotePage = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
     const [searchInput, setSearchInput] = useState('');
+    const [currentNote, setCurrentNote] = useState({});
 
     useEffect(() => {
         dispatch(getAllNotes());
@@ -27,6 +30,8 @@ const NotePage = () => {
 
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
+
+    if (!sessionUser) return <Redirect to='/' />
 
     const openMenu = () => {
         if (showMenu) return;
@@ -100,6 +105,7 @@ const NotePage = () => {
                                 onClick={() => {
                                     setTitle(note.title)
                                     setContent(note.content)
+                                    setCurrentNote(note)
                                 }}
                             >
                                 <div className='notes-list-li__title'>{note.title}</div>
@@ -111,7 +117,7 @@ const NotePage = () => {
                                 </div>
                                     {showMenu && (
                                         <>
-                                            <button>Add to a notebook</button>
+                                            <button>Add to notebook</button>
                                             <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
                                             {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
                                         </>
@@ -144,11 +150,17 @@ const NotePage = () => {
                         ></textarea>
                         <div>
                             {title ? (
-                                <button className='save-note-btn' type='submit'>Save</button>
+                                <>
+                                    <button className='save-note-btn' type='submit'>Save</button>
+                                    <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
+                                    <button onClick={() => dispatch(deleteOneNote(currentNote))}>Delete</button>
+                                </>
                             ) : (
-                                <button className='create-note-btn' type='submit'>Create</button>
+                                <>
+                                    <button className='create-note-btn' type='submit'>Create</button>
+                                    <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
+                                </>
                             )}
-                            <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
                         </div>
                     </form>
                 </div>

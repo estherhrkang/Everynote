@@ -97,8 +97,8 @@ export const editOneNotebook = (notebook) => async dispatch => {
         const notebook = await response.json();
         dispatch(setNotebook(notebook));
         return notebook;
-    }
-}
+    };
+};
 
 // reducer
 

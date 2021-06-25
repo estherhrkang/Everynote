@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNote, editOneNote } from '../../store/note';
 import { getOneNotebook } from '../../store/notebook';
@@ -7,6 +8,8 @@ import '../../index.css';
 
 const ShowNotes = () => {
     const dispatch = useDispatch();
+    
+    const sessionUser = useSelector(state => state.session.user);
 
     const { notebookid } = useParams(); 
     const notebooks = useSelector(state => state.notebook.fullNotebook);
@@ -37,6 +40,8 @@ const ShowNotes = () => {
 
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
+
+    if (!sessionUser) return <Redirect to='/' />
 
     const openMenu = () => {
         if (showMenu) return;
@@ -118,7 +123,6 @@ const ShowNotes = () => {
                                 </div>
                                     {showMenu && (
                                         <>
-                                            <button>Add to a notebook</button>
                                             <button onClick={() => dispatch(deleteOneNote(subNote))}>Delete</button>
                                             {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
                                         </>

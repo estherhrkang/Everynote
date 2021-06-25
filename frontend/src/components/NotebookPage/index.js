@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, getOneNotebook, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
@@ -8,6 +8,8 @@ import '../../index.css';
 
 const NotebookPage = () => {
     const dispatch = useDispatch();
+
+    const sessionUser = useSelector(state => state.session.user);
     // array
     const notebooks = useSelector(state => state.notebook.fullNotebook);
 
@@ -31,6 +33,8 @@ const NotebookPage = () => {
 
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
+
+    if (!sessionUser) return <Redirect to='/' />
 
     const openMenu = () => {
         if (showMenu) return;

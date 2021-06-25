@@ -5,7 +5,7 @@ import '../../index.css';
 
 const EditNotebookModal = ({ setPopUp, title }) => {
     const notebooks = useSelector(state => state.notebook.fullNotebook);
-    // const notebook = notebooks.find(notebook => )
+    // const currentNotebook = notebooks.find(notebook => notebook.title === title);
 
 
     return (
@@ -16,7 +16,7 @@ const EditNotebookModal = ({ setPopUp, title }) => {
                     <input
                         placeholder={title}
                         value={title}
-                        onChange={() => editOneNotebook()}
+                        onChange={() => editOneNotebook( )}
                     >
                     </input>
                     <button onClick={()=> setPopUp(false)}> Submit </button>

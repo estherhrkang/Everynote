@@ -31,7 +31,7 @@ router.get('/', requireAuth, asyncHandler( async(req, res) => {
 }));
 
 // Delete a note: DELETE /api/notes/:id
-router.delete('/:id', requireAuth, asyncHandler( async(req, res) => {
+router.delete('/:id', asyncHandler( async(req, res) => {
     const noteId = await Note.deleteOne(Number(req.params.id));
     return res.json(noteId);
 }));
