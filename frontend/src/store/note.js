@@ -125,6 +125,8 @@ const noteReducer = (state = initialState, action) => {
         case LOAD_NOTES:
             return { ...state, fullNote: [...action.note] };
         case SET_NOTE:
+            // newState = Object.assign({}, state);
+            // newState.fullNote = action.note;
             newState = { ...state };
             newState.fullNote = [...state.fullNote, action.note];
             return newState;

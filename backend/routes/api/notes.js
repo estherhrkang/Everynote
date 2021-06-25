@@ -37,10 +37,15 @@ router.delete('/:id', asyncHandler( async(req, res) => {
 }));
 
 // Edit a note: PUT /api/notes/:id
-// router.put('/:id', requireAuth, asyncHandler( async(req, res) => {
-//     const note = await Note.updateOne(req.body);
-//     return res.json(note);
-// }));
+router.put('/:id', requireAuth, asyncHandler( async(req, res) => {
+    // const noteId = Number(req.params.id);
+    // const { editedNote } = req.body;
+    // const note = await Note.findOne({ where: { id: noteId }});
+    // await note.update({ editedNote });
+
+    const note = await Note.updateOne(req.body);
+    return res.json(note);
+}));
 
 // Get(search) a note: GET /api/notes/:id
 router.get('/:id', requireAuth, asyncHandler( async(req, res) => {

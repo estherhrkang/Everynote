@@ -15,21 +15,23 @@ const NotePage = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
     const [searchInput, setSearchInput] = useState('');
-    const [currentNote, setCurrentNote] = useState({});
+    const [clickedNote, setClickedNote] = useState({});
 
     useEffect(() => {
         dispatch(getAllNotes());
     }, [dispatch]);
-
+    
     useEffect(() => {
         if (!showMenu) return;
-
+        
         const closeMenu = () => setShowMenu(false);
-
+        
         document.addEventListener('click', closeMenu);
-
+        
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
+    
+    let currentNote = notes?.find(note => note.title === clickedNote.title);
 
     if (!sessionUser) return <Redirect to='/' />
 
@@ -54,6 +56,30 @@ const NotePage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (title) {
+            setErrors([]);
+            return dispatch(createNote(title, content))
+                .catch(async(res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
+        };
+        return setErrors(['Please provide title for this note.']);
+    };
+
+    const handleSave = () => {
+        if (title) {
+            setErrors([]);
+            return dispatch(editOneNote(currentNote.id, title, content))
+                .catch(async(res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
+        };
+        return setErrors(['Please provide title for this note.']);
+    };
+
+    const handleCreate = () => {
         if (title) {
             setErrors([]);
             return dispatch(createNote(title, content))
@@ -105,7 +131,7 @@ const NotePage = () => {
                                 onClick={() => {
                                     setTitle(note.title)
                                     setContent(note.content)
-                                    setCurrentNote(note)
+                                    setClickedNote(note)
                                 }}
                             >
                                 <div className='notes-list-li__title'>{note.title}</div>
@@ -117,9 +143,8 @@ const NotePage = () => {
                                 </div>
                                     {showMenu && (
                                         <>
-                                            <button>Add to notebook</button>
+                                            {/* <button>Add to notebook</button> */}
                                             <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
-                                            {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
                                         </>
                                     )}
                             </button>
@@ -129,40 +154,65 @@ const NotePage = () => {
             </div>
             <div className='note-body'>
                 <div className='note-body-content'>
-                    <form className='note-body-content__form' onSubmit={handleSubmit}>
-                        <ul className='note-body-content__error-ul'>
-                            {errors.map(error => <li className='note-body-content__error-li' key={error}>{error}</li>)}
-                        </ul>
-                        <input
-                            className='note-body-content__title-input'
-                            placeholder={title ? title : 'Title'}
-                            type='text'
-                            value={title}
-                            onChange={e => setTitle(e.target.value)}
-                        ></input>
-                        <textarea
-                            className='note-body-content__content-input'
-                            placeholder={content ? content : 'Start writing here...'}
-                            wrap='hard'
-                            cols='20'
-                            value={content}
-                            onChange={e => setContent(e.target.value)}
-                        ></textarea>
-                        <div>
-                            {title ? (
-                                <>
-                                    <button className='save-note-btn' type='submit'>Save</button>
+                    {/* conditional */}
+                    {/* if clicked note from above exists, */}
+                    {/* render a form that handles edit onsubmit */}
+                    {currentNote ? (
+                        <>
+                            <form className='note-body-content__form' onSubmit={handleSave}>
+                                <ul className='note-body-content__error-ul'>
+                                    {errors.map(error => <li className='note-body-content__error-li' key={error}>{error}</li>)}
+                                </ul>
+                                <input
+                                    className='note-body-content__title-input'
+                                    placeholder={title ? title : 'Title'}
+                                    type='text'
+                                    value={title}
+                                    onChange={e => setTitle(e.target.value)}
+                                ></input>
+                                <textarea
+                                    className='note-body-content__content-input'
+                                    placeholder={content ? content : 'Start writing here...'}
+                                    wrap='hard'
+                                    cols='20'
+                                    value={content}
+                                    onChange={e => setContent(e.target.value)}
+                                ></textarea>
+                                <div>
+                                    <button className='create-note-btn' type='submit'>Save</button>
                                     <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
-                                    <button onClick={() => dispatch(deleteOneNote(currentNote))}>Delete</button>
-                                </>
-                            ) : (
-                                <>
+                                </div>
+                            </form>
+                        </>
+                    ) : (
+                        <>
+                            {/* else, render a form that handles create onsubmit */}
+                            <form className='note-body-content__form' onSubmit={handleCreate}>
+                                <ul className='note-body-content__error-ul'>
+                                    {errors.map(error => <li className='note-body-content__error-li' key={error}>{error}</li>)}
+                                </ul>
+                                <input
+                                    className='note-body-content__title-input'
+                                    placeholder={title ? title : 'Title'}
+                                    type='text'
+                                    value={title}
+                                    onChange={e => setTitle(e.target.value)}
+                                ></input>
+                                <textarea
+                                    className='note-body-content__content-input'
+                                    placeholder={content ? content : 'Start writing here...'}
+                                    wrap='hard'
+                                    cols='20'
+                                    value={content}
+                                    onChange={e => setContent(e.target.value)}
+                                ></textarea>
+                                <div>
                                     <button className='create-note-btn' type='submit'>Create</button>
                                     <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
-                                </>
-                            )}
-                        </div>
-                    </form>
+                                </div>
+                            </form>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
