@@ -85,20 +85,25 @@ const NotePage = () => {
                 <ul className='notes-list-ul'>
                     {notes?.map(note => (
                         <li className='notes-list-li' key={note.id}>
-                            <div className='notes-list-li__title'>{note.title}</div>
-                            <div className='notes-list-li__content'>{note.content.length < 40 ? note.content : `${note.content.slice(0, 40)}...`}</div>
-                            <div className='notes-list-li__date'>{note.updatedAt.slice(0,10)}</div>
-                            
-                            <div>
-                                <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
-                            </div>
-                                {showMenu && (
-                                    <>
-                                        <button>Add to a notebook</button>
-                                        <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
-                                        {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
-                                    </>
-                                )}
+                            <button onClick={() => {
+                                setTitle(note.title)
+                                setContent(note.content)
+                            }}>
+                                <div className='notes-list-li__title'>{note.title}</div>
+                                <div className='notes-list-li__content'>{note.content.length < 40 ? note.content : `${note.content.slice(0, 40)}...`}</div>
+                                <div className='notes-list-li__date'>{note.updatedAt.slice(0,10)}</div>
+                                
+                                <div>
+                                    <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
+                                </div>
+                                    {showMenu && (
+                                        <>
+                                            <button>Add to a notebook</button>
+                                            <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
+                                            {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
+                                        </>
+                                    )}
+                            </button>
                         </li>
                     ))}
                 </ul>
@@ -111,7 +116,7 @@ const NotePage = () => {
                         </ul>
                         <input
                             className='note-body-content__title-input'
-                            placeholder='Title'
+                            placeholder={title ? title : 'Title'}
                             type='text'
                             value={title}
                             onChange={e => setTitle(e.target.value)}
@@ -119,7 +124,7 @@ const NotePage = () => {
                         
                         <textarea
                             className='note-body-content__content-input'
-                            placeholder='Start writing here...'
+                            placeholder={content ? content : 'Start writing here...'}
                             wrap='hard'
                             cols='20'
                             value={content}

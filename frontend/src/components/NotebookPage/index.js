@@ -42,6 +42,10 @@ const NotebookPage = () => {
 
     const handleSearchNotebook = (e) => {
         e.preventDefault();
+
+        // if notebook.title partially includes searchInput, 
+        // dispatch that notebook.title
+        // update display on notebooks page
         
         dispatch(getOneNotebook(searchInput));
     };
