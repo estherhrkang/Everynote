@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNote, getAllNotes, deleteOneNote, editOneNote } from '../../store/note';
+import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
 const NotePage = () => {
@@ -33,7 +33,7 @@ const NotePage = () => {
         setShowMenu(true);
     };
 
-    const handleCreateNote = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         if (title) {
@@ -47,7 +47,7 @@ const NotePage = () => {
         return setErrors(['Please provide title for this note.']);
     };
 
-    const handleCancelCreate = () => {
+    const handleCancelSubmit = () => {
         setTitle('');
         setContent('');
         setErrors([]);
@@ -113,7 +113,7 @@ const NotePage = () => {
             </div>
             <div className='note-body'>
                 <div className='note-body-content'>
-                    <form className='note-body-content__form' onSubmit={handleCreateNote}>
+                    <form className='note-body-content__form' onSubmit={handleSubmit}>
                         <ul className='note-body-content__error-ul'>
                             {errors.map(error => <li className='note-body-content__error-li' key={error}>{error}</li>)}
                         </ul>
@@ -138,7 +138,7 @@ const NotePage = () => {
                             ) : (
                                 <button className='create-note-btn' type='submit'>Create</button>
                             )}
-                            <button className='cancel-create-note-btn' type='button' onClick={handleCancelCreate}>Cancel</button>
+                            <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
                         </div>
                     </form>
                 </div>

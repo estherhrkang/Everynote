@@ -86,20 +86,20 @@ export const deleteOneNote = (note) => async dispatch => {
     };
 };
 
-// export const editOneNote = (note) => async dispatch => {
-//     const response = await csrfFetch(`/api/notes/${note.id}`, {
-//         method: 'PATCH',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(note)
-//     });
-//     if (response.ok) {
-//         const note = await response.json();
-//         dispatch(setNote(note));
-//         return note;
-//     }
-// };
+export const editOneNote = (note) => async dispatch => {
+    const response = await csrfFetch(`/api/notes/${note.id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(note)
+    });
+    if (response.ok) {
+        const note = await response.json();
+        dispatch(setNote(note));
+        return note;
+    }
+};
 
 // reducer
 

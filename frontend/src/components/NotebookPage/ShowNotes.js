@@ -10,11 +10,12 @@ const ShowNotes = () => {
 
     const { notebookid } = useParams(); 
     const notebooks = useSelector(state => state.notebook.fullNotebook);
+    // .find returns the value of the first element in the provided array
     const notebook = notebooks?.find(notebook => notebook.id === Number(notebookid));
 
     const notes = useSelector(state => state.note.fullNote);
-    const subNotes = notes?.filter(note => note.notebookId === Number(notebookid));
-    console.log(subNotes);
+    // .filter creates a new array
+    const subNotesArr = notes?.filter(note => note.notebookId === Number(notebookid));
     
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -71,7 +72,7 @@ const ShowNotes = () => {
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-book'> {notebook?.title}</i></h1>
-                    <div>{subNotes?.length} Notes</div>
+                    <div>{subNotesArr?.length} Notes</div>
                     <div className='note-search-box'>
                         search box
                         {/* <div>
@@ -89,7 +90,7 @@ const ShowNotes = () => {
                     </div>
                 </div>
                 <ul className='notes-list-ul'>
-                    {subNotes?.map(subNote => (
+                    {subNotesArr?.map(subNote => (
                         <li className='notes-list-li' key={subNote.id}>
                             <button 
                                 className='notes-list-li__btn' 

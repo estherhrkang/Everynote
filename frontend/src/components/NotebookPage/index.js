@@ -10,6 +10,7 @@ import '../../index.css';
 const NotebookPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    // array
     const notebooks = useSelector(state => state.notebook.fullNotebook);
 
     const [title, setTitle] = useState('');
@@ -40,14 +41,18 @@ const NotebookPage = () => {
 
     const duringPopUp = popUp ? ' during-popup' : '';
 
-    const handleSearchNotebook = (e) => {
+    let matchingNotebook;
+    const handleSearchNotebook = async (e) => {
         e.preventDefault();
 
+        //need to filter here and send only one object
+        // .find finds the fist match vs .filter finds all the match put in an array
+
         // if notebook.title partially includes searchInput, 
-        // dispatch that notebook.title
+        const firstMatchingNotebook = notebooks.find(notebook => notebook.title.includes(searchInput));
+        // dispatch that notebook.title & receive matching notebook
+        matchingNotebook = await dispatch(getOneNotebook(firstMatchingNotebook));
         // update display on notebooks page
-        
-        dispatch(getOneNotebook(searchInput));
     };
 
     const handleCreateNotebook = async (e) => {
@@ -87,6 +92,11 @@ const NotebookPage = () => {
                 >
                 </input>
                 <button type='submit'><i className="fas fa-search"></i></button>
+                {matchingNotebook && (
+                    <ul>
+                        <li>{matchingNotebook.title}</li>
+                    </ul>
+                )}
             </form>
             <form className='create-notebook-form' onSubmit={handleCreateNotebook}>
                 <ul>
