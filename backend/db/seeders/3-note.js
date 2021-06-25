@@ -14,22 +14,22 @@ module.exports = {
     */
    return queryInterface.bulkInsert('Notes', [
      {
-        title: 'Demo-Note1',
+        title: 'By Sunday, 6-27',
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         userId: 1,
         notebookId: 1
       },
      {
-        title: 'Demo-Note2',
+        title: 'Hiking Trails',
         content: 'Nullam tempor congue magna.',
         userId: 1,
-        notebookId: 1
+        notebookId: 4
       },
      {
-        title: 'Demo-Note3',
+        title: 'Keto Recipes',
         content: 'Mauris blandit arcu ut odio vehicula ullamcorper.',
         userId: 1,
-        notebookId: 1
+        notebookId: 2
       },
     ], {});
   },
@@ -44,7 +44,7 @@ module.exports = {
     */
    const Op = Sequelize.Op;
    return queryInterface.bulkDelete('Notes', {
-      title: { [Op.in]: ['Demo-Note1', 'Demo-Note2', 'Demo-Note3'] }
+      title: { [Op.in]: ['By Sunday, 6-27', 'Hiking Trails', 'Keto Recipes'] }
    });
   }
 };

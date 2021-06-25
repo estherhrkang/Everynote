@@ -13,18 +13,34 @@ module.exports = {
       }], {});
     */
    return queryInterface.bulkInsert('Notebooks', [
-     {
-        title: 'Demo-Notebook1',
+      {
+        title: 'To-Do List',
         userId: 1
       },
       {
-        title: 'Demo-Notebook2',
+        title: 'Recipes',
         userId: 1
       },
       {
-        title: 'Demo-Notebook3',
+        title: 'Foods',
         userId: 1
-      }
+      },
+      {
+        title: 'Places',
+        userId: 1
+      },
+      {
+        title: 'Journals',
+        userId: 1
+      },
+      { 
+        title: 'Books',
+        userId: 1
+      },
+      {
+        title: 'Inspirational Quotes',
+        userId: 1
+      },
     ], {});
   },
 
@@ -38,7 +54,7 @@ module.exports = {
     */
    const Op = Sequelize.Op;
    return queryInterface.bulkDelete('Notebooks', {
-      title: { [Op.in]: ['Demo-Notebook1', 'Demo-Notebook2', 'Demo-Notebook3'] }
+      title: { [Op.in]: ['To-Do List', 'Recipes', 'Foods', 'Places', 'Journals', 'Books', 'Inspirational Quotes'] }
    });
   }
 };
