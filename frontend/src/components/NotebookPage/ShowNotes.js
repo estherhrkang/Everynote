@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import { Redirect } from 'react-router';
+import { useParams, Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNote, editOneNote } from '../../store/note';
 import { getOneNotebook } from '../../store/notebook';
@@ -12,6 +12,9 @@ const ShowNotes = () => {
     const sessionUser = useSelector(state => state.session.user);
 
     const { notebookid } = useParams(); 
+    const { id } = useParams();
+
+
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     // .find returns the value of the first element in the provided array
     const notebook = notebooks?.find(notebook => notebook.id === Number(notebookid));
@@ -107,27 +110,31 @@ const ShowNotes = () => {
                 <ul className='notes-list-ul'>
                     {subNotesArr?.map(subNote => (
                         <li className='notes-list-li' key={subNote.id}>
-                            <button 
-                                className='notes-list-li__btn' 
-                                onClick={() => {
-                                    setTitle(subNote.title)
-                                    setContent(subNote.content)
-                                }}
-                            >
-                                <div className='notes-list-li__title'>{subNote.title}</div>
-                                <div className='notes-list-li__content'>{subNote.content.length < 40 ? subNote.content : `${subNote.content.slice(0, 40)}...`}</div>
-                                <div className='notes-list-li__date'>{subNote.updatedAt.slice(0,10)}</div>
-                                
-                                <div>
-                                    <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
-                                </div>
-                                    {showMenu && (
-                                        <>
-                                            <button onClick={() => dispatch(deleteOneNote(subNote))}>Delete</button>
-                                            {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
-                                        </>
-                                    )}
-                            </button>
+                            
+                            {id }
+                            <Link to={`/notes/${subNote.id}`}>
+                                {/* <button 
+                                    className='notes-list-li__btn' 
+                                    onClick={() => {
+                                        setTitle(subNote.title)
+                                        setContent(subNote.content)
+                                    }}
+                                > */}
+                                    <div className='notes-list-li__title'>{subNote.title}</div>
+                                    <div className='notes-list-li__content'>{subNote.content.length < 40 ? subNote.content : `${subNote.content.slice(0, 40)}...`}</div>
+                                    <div className='notes-list-li__date'>{subNote.updatedAt.slice(0,10)}</div>
+                                    
+                                    <div>
+                                        <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
+                                    </div>
+                                        {showMenu && (
+                                            <>
+                                                <button onClick={() => dispatch(deleteOneNote(subNote))}>Delete</button>
+                                                {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
+                                            </>
+                                        )}
+                                {/* </button> */}
+                            </Link>
                         </li>
                     ))}
                 </ul>

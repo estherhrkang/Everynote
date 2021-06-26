@@ -3,7 +3,7 @@ import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import CreateNoteForm from '../MainPage/NoteCreateForm';
-import EditNoteForm from './EditNoteForm';
+import EditNoteForm from '../MainPage/NoteEditForm';
 import '../../index.css';
 
 const NotePage = () => {

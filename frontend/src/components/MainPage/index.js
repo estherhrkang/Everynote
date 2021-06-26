@@ -10,7 +10,7 @@ import NotebookPage from "./NotebookPage";
 import NotePage from "../NotePage";
 import ShowNotes from "../NotebookPage/ShowNotes";
 import NoteCreateForm from "./NoteCreateForm";
-import EditNoteForm from "../NotePage/EditNoteForm";
+import NoteEditForm from "./NoteEditForm";
 
 import '../../index.css';
 
@@ -56,7 +56,7 @@ const MainPage = ({ isLoaded }) => {
                     <Route exact path='/notebooks'>
                         <NotebookPage notebooks={notebooks} notes={notes}/>
                     </Route>
-                    <Route path='/notebooks/:notebookid/notes'>
+                    <Route path={['/notebooks/:notebookid/notes', '/notes/:id']}>
                         <ShowNotes />
                     </Route>
                     <Route exact path='/notes'>
@@ -65,11 +65,11 @@ const MainPage = ({ isLoaded }) => {
                 </div>
                 <div>
                     main div 2 - type
-                    <Route path={['/notebooks/:notebookid/notes', '/notes']}>
+                    <Route exact path={['/notebooks/:notebookid/notes', '/notes']}>
                         <NoteCreateForm hideNoteField={() => setShowNoteField(false)}/>
                     </Route>
                     <Route path='/notes/:id'>
-                        <EditNoteForm />
+                        <NoteEditForm />
                     </Route>
                 </div>
             </div>

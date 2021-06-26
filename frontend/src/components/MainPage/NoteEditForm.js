@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const EditNoteForm = ({ title, setTitle, content, setContent }) => {
+const NoteEditForm = ({ title, setTitle, content, setContent }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebook.fullNotebook);
@@ -60,4 +60,4 @@ const EditNoteForm = ({ title, setTitle, content, setContent }) => {
     );
 };
 
-export default EditNoteForm;
+export default NoteEditForm;
