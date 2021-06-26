@@ -18,7 +18,7 @@ const NoteCreateForm = ({ notebookid, notebooks, notes, noteTitle, setNoteTitle,
 
         if (noteTitle) {
             setErrors([]);
-            return dispatch(createNote(noteTitle, noteContent))
+            return dispatch(createNote(noteTitle, noteContent, notebookid))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);

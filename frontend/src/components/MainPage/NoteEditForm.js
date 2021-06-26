@@ -39,7 +39,7 @@ const NoteEditForm = ({ id, notebooks, notes, noteTitle, setNoteTitle, noteConte
         setNoteContent('');
         setErrors([]);
         // render noteCreateForm
-        history.push('/notes/:id');
+        history.push('/notes');
     };
 
     return (
