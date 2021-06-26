@@ -25,8 +25,8 @@ const ProfileButton = ({ user }) => {
         setShowMenu(true);
     };
 
-    const handleSignout = () => {
-        dispatch(logout());
+    const handleSignout = async() => {
+        await dispatch(logout());
         history.push('/');
     };
 

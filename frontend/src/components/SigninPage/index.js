@@ -41,7 +41,7 @@ const SigninPage = () => {
     };
 
     if (sessionUser) {
-        return <Redirect to='/' />
+        return <Redirect to='/notes' />
     };
 
     return (

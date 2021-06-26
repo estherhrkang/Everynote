@@ -35,7 +35,7 @@ const SignupPage = () => {
 
         let newUser = await dispatch(signup({ username, email, password }))
 
-        if (newUser) history.push('/');
+        if (newUser) history.push('/notes');
     };
 
     const handleCancel = (e) => {
@@ -48,7 +48,7 @@ const SignupPage = () => {
     };
 
     if (sessionUser) {
-        return <Redirect to='/' />
+        return <Redirect to='/notes' />
     }
 
     return (

@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Redirect } from 'react-router';
+import { Redirect, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const NoteEditForm = ({ title, setTitle, content, setContent }) => {
+const NoteEditForm = ({ id, title, setTitle, content, setContent }) => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
-    const notebooks = useSelector(state => state.notebook.fullNotebook);
-    const notes = useSelector(state => state.note.fullNote);
+
+    // const sessionUser = useSelector(state => state.session.user);
+    // const notebooks = useSelector(state => state.notebook.fullNotebook);
+    // const notes = useSelector(state => state.note.fullNote);
 
     const [errors, setErrors] = useState([]);
 

@@ -17,6 +17,10 @@ import '../../index.css';
 const MainPage = ({ isLoaded }) => {
     const dispatch = useDispatch();
 
+    const [notebookTitle, setNotebookTitle] = useState('');
+    const [noteTitle, setNoteTitle] = useState('');
+    const [noteContent, setNoteContent] = useState('');
+
     const { notebookid } = useParams();
     const { id } = useParams();
 
@@ -55,7 +59,7 @@ const MainPage = ({ isLoaded }) => {
                 <div className='list-container'>
                     main div 1 - list
                     <Route exact path='/notebooks'>
-                        <NotebookPage notebooks={notebooks} notes={notes}/>
+                        <NotebookPage notebooks={notebooks} notes={notes} notebookTitle={notebookTitle} setNotebookTitle={setNotebookTitle}/>
                     </Route>
                     <Route path={['/notebooks/:notebookid/notes']}>
                         <NoteShow notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes}/>
@@ -70,10 +74,17 @@ const MainPage = ({ isLoaded }) => {
                 <div>
                     main div 2 - type
                     <Route exact path={['/notebooks/:notebookid/notes', '/notes']}>
-                        <NoteCreateForm hideNoteField={() => setShowNoteField(false)}/>
+                        <NoteCreateForm 
+                            hideNoteField={() => setShowNoteField(false)} 
+                            notebookid={notebookid} notebooks={notebooks} notes={notes} 
+                            noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                        />
                     </Route>
                     <Route path='/notes/:id'>
-                        <NoteEditForm />
+                        <NoteEditForm 
+                            id={id} notebooks={notebooks} notes={notes}
+                            noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                        />
                     </Route>
                 </div>
             </div>

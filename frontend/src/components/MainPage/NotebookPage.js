@@ -14,7 +14,7 @@ const NotebookPage = ({ notebooks, notes }) => {
     // array
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
 
-    const [title, setTitle] = useState('');
+    const [notebookTitle, setNotebookTitle] = useState('');
     const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
     const [popUp, setPopUp] = useState(false);
@@ -64,9 +64,9 @@ const NotebookPage = ({ notebooks, notes }) => {
 
     const handleCreateNotebook = async (e) => {
         e.preventDefault();
-        if (title) {
+        if (notebookTitle) {
             setErrors([]);
-            return dispatch(createNotebook(title))
+            return dispatch(createNotebook(notebookTitle))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors)
@@ -76,7 +76,7 @@ const NotebookPage = ({ notebooks, notes }) => {
     };
 
     const handleCancelCreate = () => {
-        setTitle('');
+        setNotebookTitle('');
         setErrors([]);
     };
 
@@ -110,8 +110,8 @@ const NotebookPage = ({ notebooks, notes }) => {
                     className='create-notebook-form__input'
                     placeholder='New notebook title'
                     type='text'
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
+                    value={notebookTitle}
+                    onChange={e => setNotebookTitle(e.target.value)}
                 ></input>
                 <button className='create-notebook-btn' type='submit'>Create</button>
                 <button className='cancel-create-notebook-btn' type='button' onClick={handleCancelCreate}>Cancel</button>

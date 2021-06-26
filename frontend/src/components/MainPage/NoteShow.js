@@ -50,7 +50,12 @@ const NoteShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
     const handleSearchNote = (e) => {
         e.preventDefault();
 
-        const firstMatchingNote = subNotes.find(note => note.title.toLowerCase().includes(searchInput.toLowerCase()));
+        let firstMatchingNote;
+        if (subNotes) {
+            firstMatchingNote = subNotes?.find(note => note.title.toLowerCase().includes(searchInput.toLowerCase()));
+        } else {
+            firstMatchingNote = notes?.find(note => note.title.toLowerCase().includes(searchInput.toLowerCase()));
+        }
 
         dispatch(getOneNote(firstMatchingNote));
     };
@@ -60,25 +65,25 @@ const NoteShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
         dispatch(getAllNotes());
     };
 
-    const handleCreateNote = (e) => {
-        e.preventDefault();
+    // const handleCreateNote = (e) => {
+    //     e.preventDefault();
 
-        if (title) {
-            setErrors([]);
-            return dispatch(createNote(title, content, notebookid))
-                .catch(async(res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
-        };
-        return setErrors(['Please provide title for this note.']);
-    };
+    //     if (title) {
+    //         setErrors([]);
+    //         return dispatch(createNote(title, content, notebookid))
+    //             .catch(async(res) => {
+    //                 const data = await res.json();
+    //                 if (data && data.errors) setErrors(data.errors);
+    //             });
+    //     };
+    //     return setErrors(['Please provide title for this note.']);
+    // };
 
-    const handleCancelCreate = () => {
-        setTitle('');
-        setContent('');
-        setErrors([]);
-    };
+    // const handleCancelCreate = () => {
+    //     setTitle('');
+    //     setContent('');
+    //     setErrors([]);
+    // };
 
     return (
         <div className='notes-container'>
