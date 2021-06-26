@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
-import CreateNoteForm from '../MainPage/NoteCreateForm';
-import EditNoteForm from '../MainPage/NoteEditForm';
+import CreateNoteForm from './NoteCreateForm';
+import EditNoteForm from './NoteEditForm';
 import '../../index.css';
 
-const NotePage = () => {
+const NoteAllShow = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebook.fullNotebook);
@@ -125,4 +125,4 @@ const NotePage = () => {
     );
 };
 
-export default NotePage;
+export default NoteAllShow;

@@ -6,7 +6,7 @@ import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNo
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
-const NoteShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
+const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.user);
@@ -95,7 +95,8 @@ const NoteShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-book'> {notebook ? ` ${notebook.title}` : ' Notes'}</i></h1>
                     {/* {subNotes ? ` ${subNotes.length}` : ` ${notes.length}`} Notes */}
-                    {subNotes?.length} {notes?.length} Notes
+                    {subNotes?.length} {notes?.length} notes
+                    <button className='new-note-btn'>New note</button>
                 </div>
                 <form className='search-note-box' onSubmit={handleSearchNote}>
                     <input
@@ -202,4 +203,4 @@ const NoteShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
     )
 }
 
-export default NoteShow;
+export default NoteInNotebookShow;

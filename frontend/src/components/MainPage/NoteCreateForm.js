@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const NoteCreateForm = ({ notebookid, title, setTitle, content, setContent }) => {
+const NoteCreateForm = ({ notebookid, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {
     const dispatch = useDispatch();
     
     // const sessionUser = useSelector(state => state.session.user);
@@ -16,20 +16,22 @@ const NoteCreateForm = ({ notebookid, title, setTitle, content, setContent }) =>
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (title) {
+        if (noteTitle) {
             setErrors([]);
-            return dispatch(createNote(title, content))
+            return dispatch(createNote(noteTitle, noteContent))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
                 });
         };
+        // setNoteTitle('');
+        // setNoteContent('');
         return setErrors(['Please provide title for this note.']);
     };
 
     const handleCancelSubmit = () => {
-        setTitle('');
-        setContent('');
+        setNoteTitle('');
+        setNoteContent('');
         setErrors([]);
     };
 
@@ -40,18 +42,18 @@ const NoteCreateForm = ({ notebookid, title, setTitle, content, setContent }) =>
             </ul>
             <input
                 className='note-body-content__title-input'
-                placeholder={title ? title : 'Title'}
+                placeholder={noteTitle ? noteTitle : 'Title'}
                 type='text'
-                value={title}
-                onChange={e => setTitle(e.target.value)}
+                value={noteTitle}
+                onChange={e => setNoteTitle(e.target.value)}
             ></input>
             <textarea
                 className='note-body-content__content-input'
-                placeholder={content ? content : 'Start writing here...'}
+                placeholder={noteContent ? noteContent : 'Start writing here...'}
                 wrap='hard'
                 cols='20'
-                value={content}
-                onChange={e => setContent(e.target.value)}
+                value={noteContent}
+                onChange={e => setNoteContent(e.target.value)}
             ></textarea>
             <div>
                 <button className='create-note-btn' type='submit'>Create</button>

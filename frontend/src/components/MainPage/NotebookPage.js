@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, getOneNotebook, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
 import EditNotebookModal from './NotebookEditModal';
-import NoteShow from './NoteShow';
+import NoteInNotebookShow from './NoteInNotebookShow';
 import '../../index.css';
 
 const NotebookPage = ({ notebooks, notes }) => {
@@ -136,7 +136,7 @@ const NotebookPage = ({ notebooks, notes }) => {
                                         <th className='table__tbody__tr__th'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
                                         {/* <th className='table__tbody__tr__th'><button onClick={() => <Link to={`/notebooks/${notebook.id}/notes`}></Link>}>{notebook.title}</button></th> */}
                                         {/* <Route path='/notebooks/:notebookid/notes'>
-                                            <NoteShow />
+                                            <NoteInNotebookShow />
                                         </Route> */}
                                         {/* <th className='table__tbody__tr__th'>{notebook.title}</th> */}
                                         <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>

@@ -7,8 +7,8 @@ import { getAllNotes, getAllNotesInNotebook } from "../../store/note";
 
 import ProfileButton from './ProfileButton';
 import NotebookPage from "./NotebookPage";
-import NotePage from "../NotePage";
-import NoteShow from "./NoteShow";
+import NoteAllShow from "./NoteAllShow";
+import NoteInNotebookShow from "./NoteInNotebookShow";
 import NoteCreateForm from "./NoteCreateForm";
 import NoteEditForm from "./NoteEditForm";
 
@@ -29,8 +29,6 @@ const MainPage = ({ isLoaded }) => {
     const notes = useSelector(state => state.note.fullNote);
     const subNotes = notes?.filter(note => note.notebookId === Number(notebookid));
 
-    const [showNoteField, setShowNoteField] = useState(false);
-
     useEffect(() => {
         dispatch(getAllNotebooks());
         dispatch(getAllNotes());
@@ -46,9 +44,6 @@ const MainPage = ({ isLoaded }) => {
                             <ProfileButton user={sessionUser} />
                         </li>
                         <li className='navigation-li'>
-                            <button className='new-note-btn' onClick={() => setShowNoteField(true)}>add new note</button>
-                        </li>
-                        <li className='navigation-li'>
                             <NavLink to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
                         </li>
                         <li className='navigation-li'> 
@@ -62,20 +57,22 @@ const MainPage = ({ isLoaded }) => {
                         <NotebookPage notebooks={notebooks} notes={notes} notebookTitle={notebookTitle} setNotebookTitle={setNotebookTitle}/>
                     </Route>
                     <Route path={['/notebooks/:notebookid/notes']}>
-                        <NoteShow notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes}/>
+                        <NoteInNotebookShow notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes}/>
                     </Route>
-                    <Route exact path={['/notes/:id', '/notes']}>
-                        <NoteShow notebookid={notebookid} id={id} notebooks={notebooks} notes={notes}/>
+                    <Route path={'/notes/:id'}>
+                        <NoteInNotebookShow notebookid={notebookid} id={id} notebooks={notebooks} notes={notes}/>
+                    </Route>
+                    <Route exact path='/notes'>
+                        <NoteAllShow />
                     </Route>
                     {/* <Route exact path='/notes'>
-                        <NotePage />
+                        <NoteAllShow />
                     </Route> */}
                 </div>
                 <div>
                     main div 2 - type
                     <Route exact path={['/notebooks/:notebookid/notes', '/notes']}>
-                        <NoteCreateForm 
-                            hideNoteField={() => setShowNoteField(false)} 
+                        <NoteCreateForm
                             notebookid={notebookid} notebooks={notebooks} notes={notes} 
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
                         />

@@ -1,24 +1,31 @@
 import { useState, useEffect } from 'react';
-import { Redirect, useParams } from 'react-router';
+import { Redirect, useParams, useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const NoteEditForm = ({ id, title, setTitle, content, setContent }) => {
+const NoteEditForm = ({ id, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // const sessionUser = useSelector(state => state.session.user);
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
     // const notes = useSelector(state => state.note.fullNote);
+
+    useEffect(() => {
+        dispatch(getAllNotes());
+    }, [dispatch]);
+
+    const currentNote = notes?.find(note => note.id === id);
 
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (title) {
+        if (noteTitle) {
             setErrors([]);
-            return dispatch(editOneNote(title, content))
+            return dispatch(editOneNote(noteTitle, noteContent))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
@@ -28,9 +35,11 @@ const NoteEditForm = ({ id, title, setTitle, content, setContent }) => {
     };
 
     const handleCancelSubmit = () => {
-        setTitle('');
-        setContent('');
+        setNoteTitle('');
+        setNoteContent('');
         setErrors([]);
+        // render noteCreateForm
+        history.push('/notes/:id');
     };
 
     return (
@@ -40,22 +49,23 @@ const NoteEditForm = ({ id, title, setTitle, content, setContent }) => {
             </ul>
             <input
                 className='note-body-content__title-input'
-                placeholder={title ? title : 'Title'}
+                placeholder={noteTitle ? noteTitle : 'Title'}
                 type='text'
-                value={title}
-                onChange={e => setTitle(e.target.value)}
+                value={noteTitle}
+                onChange={e => setNoteTitle(e.target.value)}
             ></input>
             <textarea
                 className='note-body-content__content-input'
-                placeholder={content ? content : 'Start writing here...'}
+                placeholder={noteContent ? noteContent : 'Start writing here...'}
                 wrap='hard'
                 cols='20'
-                value={content}
-                onChange={e => setContent(e.target.value)}
+                value={noteContent}
+                onChange={e => setNoteContent(e.target.value)}
             ></textarea>
             <div>
                 <button className='create-note-btn' type='submit'>Save</button>
                 <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
+                <button onClick={() => dispatch(deleteOneNote(currentNote))}>Delete</button>
             </div>
         </form>
     );
