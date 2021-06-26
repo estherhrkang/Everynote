@@ -56,12 +56,12 @@ const MainPage = ({ isLoaded }) => {
                     <Route exact path='/notebooks'>
                         <NotebookPage notebooks={notebooks} notes={notes} notebookTitle={notebookTitle} setNotebookTitle={setNotebookTitle}/>
                     </Route>
-                    <Route path={['/notebooks/:notebookid/notes']}>
+                    <Route path={['/notebooks/:notebookid/notes', '/notes/:id']}>
                         <NoteInNotebookShow notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes}/>
                     </Route>
-                    <Route path={'/notes/:id'}>
+                    {/* <Route path={'/notes/:id'}>
                         <NoteInNotebookShow notebookid={notebookid} id={id} notebooks={notebooks} notes={notes}/>
-                    </Route>
+                    </Route> */}
                     <Route exact path='/notes'>
                         <NoteAllShow />
                     </Route>
