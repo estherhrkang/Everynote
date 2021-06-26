@@ -57,17 +57,14 @@ const MainPage = ({ isLoaded }) => {
                         <NotebookPage notebooks={notebooks} notes={notes} notebookTitle={notebookTitle} setNotebookTitle={setNotebookTitle}/>
                     </Route>
                     <Route path={['/notebooks/:notebookid/notes', '/notes/:id']}>
-                        <NoteInNotebookShow notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes}/>
+                        <NoteInNotebookShow 
+                            notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes} notes={notes}
+                            noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                        />
                     </Route>
-                    {/* <Route path={'/notes/:id'}>
-                        <NoteInNotebookShow notebookid={notebookid} id={id} notebooks={notebooks} notes={notes}/>
-                    </Route> */}
                     <Route exact path='/notes'>
                         <NoteAllShow />
                     </Route>
-                    {/* <Route exact path='/notes'>
-                        <NoteAllShow />
-                    </Route> */}
                 </div>
                 <div>
                     main div 2 - type

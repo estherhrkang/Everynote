@@ -6,7 +6,7 @@ import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNo
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
-const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
+const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.user);
@@ -19,8 +19,8 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
     // .filter creates a new array
     // const subNotesArr = notes?.filter(note => note.notebookId === Number(notebookid));
     
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    // const [title, setTitle] = useState('');
+    // const [content, setContent] = useState('');
     const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
     const [searchInput, setSearchInput] = useState('');
@@ -88,6 +88,13 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
                 <ul className='notes-list-ul'>
                     {subNotes?.map(subNote => (
                         <li className='notes-list-li' key={subNote.id}>
+                            <button 
+                                className='notes-list-li__btn' 
+                                onClick={() => {
+                                    setNoteTitle(subNote.title)
+                                    setNoteContent(subNote.content)
+                                }}
+                            >
                             <Link to={`/notes/${subNote.id}`}>
                                     <div className='notes-list-li__title'>{subNote.title}</div>
                                     <div className='notes-list-li__content'>{subNote.content.length < 40 ? subNote.content : `${subNote.content.slice(0, 40)}...`}</div>
@@ -102,6 +109,7 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
                                             </>
                                         )}
                             </Link>
+                        </button>
                         </li>
                     ))}
                 </ul>

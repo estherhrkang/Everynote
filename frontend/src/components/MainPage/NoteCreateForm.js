@@ -19,13 +19,13 @@ const NoteCreateForm = ({ notebookid, notebooks, notes, noteTitle, setNoteTitle,
         if (noteTitle) {
             setErrors([]);
             return dispatch(createNote(noteTitle, noteContent, notebookid))
+                .then(setNoteTitle(''))
+                .then(setNoteContent(''))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
                 });
         };
-        // setNoteTitle('');
-        // setNoteContent('');
         return setErrors(['Please provide title for this note.']);
     };
 
@@ -37,6 +37,7 @@ const NoteCreateForm = ({ notebookid, notebooks, notes, noteTitle, setNoteTitle,
 
     return (
         <form className='note-body-content__form' onSubmit={handleSubmit}>
+            {/* create drop down menu that sets which notebook it should create the note in*/}
             <ul className='note-body-content__error-ul'>
                 {errors.map(error => <li className='note-body-content__error-li' key={error}>{error}</li>)}
             </ul>
