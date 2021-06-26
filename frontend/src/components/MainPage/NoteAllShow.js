@@ -57,13 +57,6 @@ const NoteAllShow = () => {
 
     return (
         <div className='notes-container'>
-            {/* <div className='nav-sidebar'>
-                <h3>here</h3>
-                <MainPage />
-            </div> */}
-            {/* <div className='notes-notebook-header'>
-                display notebook title accordingly
-            </div> */}
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
@@ -110,16 +103,6 @@ const NoteAllShow = () => {
                         </li>
                     ))}
                 </ul>
-            </div>
-            <div className='note-body'>
-                <div className='note-body-content'>
-                    {showCreate ? (
-                        <CreateNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} />
-                    ) : (
-                        // <EditNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} />
-                        null
-                    )}
-                </div>
             </div>
         </div>
     );
