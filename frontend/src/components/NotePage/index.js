@@ -17,6 +17,7 @@ const NotePage = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [searchInput, setSearchInput] = useState('');
     const [clickedNote, setClickedNote] = useState({});
+    const [showCreate, setShowCreate] = useState(false);
 
     useEffect(() => {
         dispatch(getAllNotes());
@@ -40,7 +41,7 @@ const NotePage = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
-
+ 
     const handleSearchNote = (e) => {
         e.preventDefault();
 
@@ -58,7 +59,7 @@ const NotePage = () => {
         <div className='notes-container'>
             {/* <div className='nav-sidebar'>
                 <h3>here</h3>
-                <Navigation />
+                <MainPage />
             </div> */}
             {/* <div className='notes-notebook-header'>
                 display notebook title accordingly
@@ -67,6 +68,7 @@ const NotePage = () => {
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
                     {notes?.length} Notes
+                    <button onClick={() => setShowCreate(true)}>New note</button>
                 </div>
                 <form className='search-note-box' onSubmit={handleSearchNote}>
                     <input
@@ -111,8 +113,12 @@ const NotePage = () => {
             </div>
             <div className='note-body'>
                 <div className='note-body-content'>
-                    <EditNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} />
-                    {/* <CreateNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} /> */}
+                    {showCreate ? (
+                        <CreateNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} />
+                    ) : (
+                        // <EditNoteForm title={title} setTitle={setTitle} content={content} setContent={setContent} />
+                        null
+                    )}
                 </div>
             </div>
         </div>

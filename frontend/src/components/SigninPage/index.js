@@ -5,7 +5,7 @@ import { useHistory, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import '../../index.css';
 
-const SigninFormPage = () => {
+const SigninPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
@@ -94,4 +94,4 @@ const SigninFormPage = () => {
     );
 };
 
-export default SigninFormPage;
+export default SigninPage;

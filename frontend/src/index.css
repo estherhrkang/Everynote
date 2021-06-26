@@ -6,7 +6,7 @@
 }
 
 /* ok - signin and signup forms */
-.root__main-container {
+.main-container {
     display: grid;
     grid-template-columns: 0.5fr auto auto;
 
@@ -31,7 +31,7 @@
 
 /* OK */
 /* ------------------------------------ */
-/* SigninFormPage */
+/* SigninPage */
 /* ------------------------------------ */
 
 .signin-form-container {
@@ -151,7 +151,7 @@
 
 /* OK */
 /* ------------------------------------ */
-/* SignupFormPage */
+/* SignupPage */
 /* ------------------------------------ */
 
 .signup-form-container {
@@ -237,7 +237,7 @@
 
 
 /* ------------------------------------ */
-/* Navigation */
+/* MainPage */
 /* ------------------------------------ */
 
 .navigation-div {
@@ -252,6 +252,10 @@
 .navigation-li {
     text-decoration: none;
     padding: 5px;
+
+}
+
+.new-note-btn {
 
 }
 

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import { signup } from '../../store/session';
 import '../../index.css';
 
-const SignupFormPage = () => {
+const SignupPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
@@ -125,4 +125,4 @@ const SignupFormPage = () => {
     );
 };
 
-export default SignupFormPage;
+export default SignupPage;

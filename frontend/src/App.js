@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import SigninFormPage from "./components/SigninFormPage";
-import SignupFormPage from "./components/SignupFormPage";
+import MainPage from "./components/MainPage";
+import SigninPage from "./components/SigninPage";
+import SignupPage from "./components/SignupPage";
 import NotebookPage from "./components/NotebookPage";
 import ShowNotes from "./components/NotebookPage/ShowNotes";
 import NotePage from "./components/NotePage";
@@ -21,34 +21,48 @@ function App() {
 
   return (
     <>
-      <div className='root__main-container'>
-        <Navigation isLoaded={isLoaded} />
+        {/* <MainPage isLoaded={isLoaded} /> */}
+
         {isLoaded && (
           <Switch>
+
             {/* <Route exact path='/'>
               Home
             </Route> */}
+
             <Route exact path='/'>
-              <SigninFormPage />
+              <SigninPage />
             </Route>
             <Route path='/signup'>
-              <SignupFormPage />
+              <SignupPage />
             </Route>
-            <Route path='/notebooks/:notebookid/notes'>
+
+            {/* <Route>
               <ShowNotes />
-            </Route>
-            <Route path='/notebooks'>
+              </Route>
+              <Route path='/notebooks'>
               <NotebookPage />
-            </Route>
-            <Route path='/notes'>
+              </Route>
+              <Route path='/notes'>
               <NotePage />
+            </Route> */}
+
+            <Route 
+              path={[
+                '/notebooks',
+                '/notebooks/:notebookid/notes',
+                '/notes',
+                '/notes/:id'
+              ]}
+            >
+              <MainPage isLoaded={isLoaded} />
             </Route>
+
             <Route>
               Page does not exist.
             </Route>
           </Switch>
         )}
-      </div>
     </>
   );
 };

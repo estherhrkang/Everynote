@@ -85,7 +85,7 @@ const ShowNotes = () => {
         <div className='notes-container'>
             {/* <div className='nav-sidebar'>
                 <h3>here</h3>
-                <Navigation />
+                <MainPage />
             </div> */}
             <div className='notes-list-container'>
                 <div className='notes-list-header'>

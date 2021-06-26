@@ -83,7 +83,7 @@ const NotebookPage = () => {
         <div className='notebooks-container'>
             {/* <div className='nav-sidebar'>
                 <h3>here</h3>
-                <Navigation />
+                <MainPage />
             </div> */}
             <div className='notebook-list-header'>
                 <h1><i className='fas fa-book'> NOTEBOOKS</i></h1>
@@ -139,7 +139,6 @@ const NotebookPage = () => {
                                         </th>
                                             {showMenu && (
                                                 <>
-                                                    <button className='add-note-notebook-btn'>Add new note</button>
                                                     <button className={'rename-notebook-btn' + duringPopUp} onClick={() => setPopUp(true)}>Rename notebook</button>
                                                     <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
                                                 </>
