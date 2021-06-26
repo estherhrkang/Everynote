@@ -6,14 +6,13 @@ import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNo
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
-const ShowNotes = () => {
+const NoteShow = () => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.user);
 
     const { notebookid } = useParams(); 
     const { id } = useParams();
-
 
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     // .find returns the value of the first element in the provided array
@@ -110,8 +109,6 @@ const ShowNotes = () => {
                 <ul className='notes-list-ul'>
                     {subNotesArr?.map(subNote => (
                         <li className='notes-list-li' key={subNote.id}>
-                            
-                            {id }
                             <Link to={`/notes/${subNote.id}`}>
                                 {/* <button 
                                     className='notes-list-li__btn' 
@@ -175,4 +172,4 @@ const ShowNotes = () => {
     )
 }
 
-export default ShowNotes;
+export default NoteShow;

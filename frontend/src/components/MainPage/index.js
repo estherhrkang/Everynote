@@ -8,7 +8,7 @@ import { getAllNotes, getAllNotesInNotebook } from "../../store/note";
 import ProfileButton from './ProfileButton';
 import NotebookPage from "./NotebookPage";
 import NotePage from "../NotePage";
-import ShowNotes from "../NotebookPage/ShowNotes";
+import NoteShow from "./NoteShow";
 import NoteCreateForm from "./NoteCreateForm";
 import NoteEditForm from "./NoteEditForm";
 
@@ -56,12 +56,12 @@ const MainPage = ({ isLoaded }) => {
                     <Route exact path='/notebooks'>
                         <NotebookPage notebooks={notebooks} notes={notes}/>
                     </Route>
-                    <Route path={['/notebooks/:notebookid/notes', '/notes/:id']}>
-                        <ShowNotes />
+                    <Route exact path={['/notebooks/:notebookid/notes', '/notes/:id', '/notes']}>
+                        <NoteShow />
                     </Route>
-                    <Route exact path='/notes'>
+                    {/* <Route exact path='/notes'>
                         <NotePage />
-                    </Route>
+                    </Route> */}
                 </div>
                 <div>
                     main div 2 - type

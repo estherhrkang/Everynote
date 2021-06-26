@@ -5,7 +5,7 @@ import MainPage from "./components/MainPage";
 import SigninPage from "./components/SigninPage";
 import SignupPage from "./components/SignupPage";
 import NotebookPage from "./components/MainPage/NotebookPage";
-import ShowNotes from "./components/NotebookPage/ShowNotes";
+import NoteShow from "./components/MainPage/NoteShow";
 import NotePage from "./components/NotePage";
 
 import * as sessionActions from './store/session';
@@ -38,7 +38,7 @@ function App() {
             </Route>
 
             {/* <Route>
-              <ShowNotes />
+              <NoteShow />
               </Route>
               <Route path='/notebooks'>
               <NotebookPage />
