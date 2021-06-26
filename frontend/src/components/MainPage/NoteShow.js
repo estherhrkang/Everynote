@@ -6,21 +6,18 @@ import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNo
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
-const NoteShow = () => {
+const NoteShow = ({ notebookid, id, notebooks, subNotes, notes }) => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.user);
 
-    const { notebookid } = useParams(); 
-    const { id } = useParams();
-
-    const notebooks = useSelector(state => state.notebook.fullNotebook);
+    // const notebooks = useSelector(state => state.notebook.fullNotebook);
     // .find returns the value of the first element in the provided array
     const notebook = notebooks?.find(notebook => notebook.id === Number(notebookid));
 
-    const notes = useSelector(state => state.note.fullNote);
+    // const notes = useSelector(state => state.note.fullNote);
     // .filter creates a new array
-    const subNotesArr = notes?.filter(note => note.notebookId === Number(notebookid));
+    // const subNotesArr = notes?.filter(note => note.notebookId === Number(notebookid));
     
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -53,7 +50,7 @@ const NoteShow = () => {
     const handleSearchNote = (e) => {
         e.preventDefault();
 
-        const firstMatchingNote = subNotesArr.find(note => note.title.toLowerCase().includes(searchInput.toLowerCase()));
+        const firstMatchingNote = subNotes.find(note => note.title.toLowerCase().includes(searchInput.toLowerCase()));
 
         dispatch(getOneNote(firstMatchingNote));
     };
@@ -91,8 +88,9 @@ const NoteShow = () => {
             </div> */}
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
-                    <h1><i className='fas fa-book'> {notebook?.title}</i></h1>
-                    {subNotesArr?.length} Notes
+                    <h1><i className='fas fa-book'> {notebook ? ` ${notebook.title}` : ' Notes'}</i></h1>
+                    {/* {subNotes ? ` ${subNotes.length}` : ` ${notes.length}`} Notes */}
+                    {subNotes?.length} {notes?.length} Notes
                 </div>
                 <form className='search-note-box' onSubmit={handleSearchNote}>
                     <input
@@ -107,7 +105,7 @@ const NoteShow = () => {
                     <button className='cancel-search-note-btn' type='button' onClick={handleCancelSearch}>Cancel</button>
                 </form>
                 <ul className='notes-list-ul'>
-                    {subNotesArr?.map(subNote => (
+                    {subNotes?.map(subNote => (
                         <li className='notes-list-li' key={subNote.id}>
                             <Link to={`/notes/${subNote.id}`}>
                                 {/* <button 
@@ -127,6 +125,33 @@ const NoteShow = () => {
                                         {showMenu && (
                                             <>
                                                 <button onClick={() => dispatch(deleteOneNote(subNote))}>Delete</button>
+                                                {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
+                                            </>
+                                        )}
+                                {/* </button> */}
+                            </Link>
+                        </li>
+                    ))}
+                    {notes?.map(note => (
+                        <li className='notes-list-li' key={note.id}>
+                            <Link to={`/notes/${note.id}`}>
+                                {/* <button 
+                                    className='notes-list-li__btn' 
+                                    onClick={() => {
+                                        setTitle(note.title)
+                                        setContent(note.content)
+                                    }}
+                                > */}
+                                    <div className='notes-list-li__title'>{note.title}</div>
+                                    <div className='notes-list-li__content'>{note.content.length < 40 ? note.content : `${note.content.slice(0, 40)}...`}</div>
+                                    <div className='notes-list-li__date'>{note.updatedAt.slice(0,10)}</div>
+                                    
+                                    <div>
+                                        <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
+                                    </div>
+                                        {showMenu && (
+                                            <>
+                                                <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
                                                 {/* <button onClick={() => dispatch(editOneNote(note))}>Edit</button> */}
                                             </>
                                         )}

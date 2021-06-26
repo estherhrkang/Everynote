@@ -23,6 +23,7 @@ const MainPage = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     const notes = useSelector(state => state.note.fullNote);
+    const subNotes = notes?.filter(note => note.notebookId === Number(notebookid));
 
     const [showNoteField, setShowNoteField] = useState(false);
 
@@ -56,8 +57,11 @@ const MainPage = ({ isLoaded }) => {
                     <Route exact path='/notebooks'>
                         <NotebookPage notebooks={notebooks} notes={notes}/>
                     </Route>
-                    <Route exact path={['/notebooks/:notebookid/notes', '/notes/:id', '/notes']}>
-                        <NoteShow />
+                    <Route path={['/notebooks/:notebookid/notes']}>
+                        <NoteShow notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes}/>
+                    </Route>
+                    <Route exact path={['/notes/:id', '/notes']}>
+                        <NoteShow notebookid={notebookid} id={id} notebooks={notebooks} notes={notes}/>
                     </Route>
                     {/* <Route exact path='/notes'>
                         <NotePage />
