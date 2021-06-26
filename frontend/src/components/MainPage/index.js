@@ -63,7 +63,10 @@ const MainPage = ({ isLoaded }) => {
                         />
                     </Route>
                     <Route exact path='/notes'>
-                        <NoteAllShow />
+                        <NoteAllShow 
+                            notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes} notes={notes}
+                            noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                        />
                     </Route>
                 </div>
                 <div>

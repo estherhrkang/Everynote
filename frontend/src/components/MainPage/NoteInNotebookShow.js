@@ -71,7 +71,6 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTi
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-book'> {notebook ? ` ${notebook.title}` : ' Notes'}</i></h1>
                     {subNotes?.length} notes
-                    <button className='new-note-btn'>New note</button>
                 </div>
                 <form className='search-note-box' onSubmit={handleSearchNote}>
                     <input
