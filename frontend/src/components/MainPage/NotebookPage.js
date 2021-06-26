@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, Route, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNotebook, getAllNotebooks, getOneNotebook, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
-import EditNotebookModal from './EditNotebookModal';
+import EditNotebookModal from './NotebookEditModal';
+import ShowNotes from '../NotebookPage/ShowNotes';
 import '../../index.css';
 
-const NotebookPage = () => {
+const NotebookPage = ({ notebooks, notes }) => {
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user);
     // array
-    const notebooks = useSelector(state => state.notebook.fullNotebook);
+    // const notebooks = useSelector(state => state.notebook.fullNotebook);
 
     const [title, setTitle] = useState('');
     const [showMenu, setShowMenu] = useState(false);
@@ -133,6 +134,11 @@ const NotebookPage = () => {
                                 <>
                                     <tr key={notebook.id}>
                                         <th className='table__tbody__tr__th'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
+                                        {/* <th className='table__tbody__tr__th'><button onClick={() => <Link to={`/notebooks/${notebook.id}/notes`}></Link>}>{notebook.title}</button></th> */}
+                                        {/* <Route path='/notebooks/:notebookid/notes'>
+                                            <ShowNotes />
+                                        </Route> */}
+                                        {/* <th className='table__tbody__tr__th'>{notebook.title}</th> */}
                                         <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                         <th>
                                             <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>

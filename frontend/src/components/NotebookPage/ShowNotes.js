@@ -132,7 +132,7 @@ const ShowNotes = () => {
                     ))}
                 </ul>
             </div>
-            <div className='note-body'>
+            {/* <div className='note-body'>
                 <div className='note-body-content'>
                     <form className='note-body-content__form' onSubmit={handleCreateNote}>
                         <ul className='note-body-content__error-ul'>
@@ -163,7 +163,7 @@ const ShowNotes = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

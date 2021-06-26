@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import SigninPage from "./components/SigninPage";
 import SignupPage from "./components/SignupPage";
-import NotebookPage from "./components/NotebookPage";
+import NotebookPage from "./components/MainPage/NotebookPage";
 import ShowNotes from "./components/NotebookPage/ShowNotes";
 import NotePage from "./components/NotePage";
 
@@ -48,6 +48,7 @@ function App() {
             </Route> */}
 
             <Route 
+              exact
               path={[
                 '/notebooks',
                 '/notebooks/:notebookid/notes',

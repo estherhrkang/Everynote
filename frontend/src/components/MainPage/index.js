@@ -6,10 +6,10 @@ import { getAllNotebooks } from "../../store/notebook";
 import { getAllNotes, getAllNotesInNotebook } from "../../store/note";
 
 import ProfileButton from './ProfileButton';
-import NotebookPage from "../NotebookPage";
+import NotebookPage from "./NotebookPage";
 import NotePage from "../NotePage";
 import ShowNotes from "../NotebookPage/ShowNotes";
-import CreateNoteForm from "../NotePage/CreateNoteForm";
+import NoteCreateForm from "./NoteCreateForm";
 import EditNoteForm from "../NotePage/EditNoteForm";
 
 import '../../index.css';
@@ -51,18 +51,26 @@ const MainPage = ({ isLoaded }) => {
                         </li>
                     </ul>
                 </div>
-                <div className=''>
+                <div className='list-container'>
                     main div 1 - list
-                    <Route path={'/notes'}>
-                        <NotePage />
+                    <Route exact path='/notebooks'>
+                        <NotebookPage notebooks={notebooks} notes={notes}/>
                     </Route>
-                    <Route path={'/notebooks/:notebookid/notes'}>
+                    <Route path='/notebooks/:notebookid/notes'>
                         <ShowNotes />
+                    </Route>
+                    <Route exact path='/notes'>
+                        <NotePage />
                     </Route>
                 </div>
                 <div>
                     main div 2 - type
-                    <CreateNoteForm hideNoteField={() => setShowNoteField(false)}/>
+                    <Route path={['/notebooks/:notebookid/notes', '/notes']}>
+                        <NoteCreateForm hideNoteField={() => setShowNoteField(false)}/>
+                    </Route>
+                    <Route path='/notes/:id'>
+                        <EditNoteForm />
+                    </Route>
                 </div>
             </div>
         )

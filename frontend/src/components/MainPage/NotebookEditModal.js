@@ -3,7 +3,7 @@ import { editOneNotebook } from '../../store/notebook';
 
 import '../../index.css';
 
-const EditNotebookModal = ({ setPopUp, title }) => {
+const NotebookEditModal = ({ setPopUp, title }) => {
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     // const currentNotebook = notebooks.find(notebook => notebook.title === title);
 
@@ -27,4 +27,4 @@ const EditNotebookModal = ({ setPopUp, title }) => {
     );
 };
 
-export default EditNotebookModal;
+export default NotebookEditModal;
