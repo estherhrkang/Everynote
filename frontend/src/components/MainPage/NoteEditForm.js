@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Redirect, useParams, useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
+import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote, setNote } from '../../store/note';
 import '../../index.css';
 
-const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {
+const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -43,6 +43,14 @@ const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle
         history.push('/notes');
     };
 
+    const handleDeleteNote = async () => {
+        await dispatch(deleteOneNote(currentNote));
+        history.push('/notes');
+        setNoteTitle('');
+        setNoteContent('');
+        setShowForm(false);
+    };
+
     return (
         <form className='note-body-content__form' onSubmit={handleSubmit}>
             <ul className='note-body-content__error-ul'>
@@ -66,7 +74,7 @@ const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle
             <div>
                 <button className='create-note-btn' type='submit'>Save</button>
                 <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
-                <button onClick={() => dispatch(deleteOneNote(currentNote))}>Delete</button>
+                <button onClick={handleDeleteNote}>Delete</button>
             </div>
         </form>
     );

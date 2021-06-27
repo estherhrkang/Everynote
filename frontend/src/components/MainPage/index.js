@@ -81,6 +81,7 @@ const MainPage = ({ isLoaded }) => {
                         id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
                         noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
                         currentNote={currentNote}
+                        setShowForm={setShowForm}
                     />
                 ) : (
                     <Route exact path={['/notes', '/notebooks/:notebookid/notes']}>
