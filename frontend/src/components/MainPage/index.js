@@ -42,16 +42,16 @@ const MainPage = ({ isLoaded }) => {
     if (sessionUser) {
         sessionLinks = (
             <div className='main-container'>
-                <div className='navigation-div'>
+                <div className='navigation-container'>
                     <ul className='navigation-ul'>
                         <li className='navigation-li'>
                             <ProfileButton user={sessionUser} />
                         </li>
-                        <li className='navigation-li'> 
-                            <NavLink to='/notes'><i className='fas fa-sticky-note'> Notes</i></NavLink>
+                        <li> 
+                            <NavLink className='navigation-li' to='/notes'><i className='fas fa-sticky-note'> Notes</i></NavLink>
                         </li>
-                        <li className='navigation-li'>
-                            <NavLink to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
+                        <li>
+                            <NavLink className='navigation-li' to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
                         </li>
                     </ul>
                 </div>
@@ -80,6 +80,8 @@ const MainPage = ({ isLoaded }) => {
                         />
                     </Route>
                 </div>
+                <div>
+                main div 2 - form
                 {showForm ? (
                     // <Route path={'/notes/:id'}>
                         <NoteEditForm 
@@ -97,6 +99,7 @@ const MainPage = ({ isLoaded }) => {
                         />
                     </Route>
                 )}
+                </div>
             </div>
         )
     }

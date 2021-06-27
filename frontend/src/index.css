@@ -5,29 +5,6 @@
     /* font-family: Arial, Helvetica, sans-serif; */
 }
 
-/* ok - signin and signup forms */
-.main-container {
-    display: grid;
-    grid-template-columns: 0.5fr auto auto;
-
-    /* grid-template-columns: 30% auto;
-    grid-template-rows: 10% auto;
-    grid-template-areas: 
-        'logo header'
-        'sidebar main'; */
-}
-
-.sidebar-container {
-    /* grid-area: sidebar; */
-    border: 1px solid black;
-
-    height: 100%;
-    left: 0;
-    width: 250px;
-    margin-top: 60px;
-}
-
-
 
 /* OK */
 /* ------------------------------------ */
@@ -236,12 +213,31 @@
 
 
 
+
 /* ------------------------------------ */
 /* MainPage */
 /* ------------------------------------ */
 
-.navigation-div {
+.main-container {
+    display: grid;
+    grid-template-columns: 0.5fr auto auto;
+
+    /* grid-template-columns: 30% auto;
+    grid-template-rows: 10% auto;
+    grid-template-areas: 
+        'logo header'
+        'sidebar main'; */
+    border: 1px solid black;
+}
+
+.navigation-container {
     /* background-color: #1a1a1a; */
+    /* height: 100%; */
+    /* left: 0; */
+    width: 200px;
+    /* margin-top: 60px; */
+    
+    border: 1px solid black;
 }
 
 .navigation-ul {
@@ -253,6 +249,7 @@
 .navigation-li {
     text-decoration: none;
     padding: 5px;
+    color: black;
 
 }
 

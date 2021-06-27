@@ -4,6 +4,7 @@ const LOAD_NOTES = 'note/LOAD_NOTES';
 const LOAD_NOTE = 'note/LOAD_NOTE';
 const SET_NOTE = 'note/SET_NOTE';
 const REMOVE_NOTE = 'note/REMOVE_NOTE';
+const EDIT_NOTE = 'note/EDIT_NOTE';
 
 // action creator
 
@@ -18,8 +19,8 @@ export const loadNote = (note) => {
     return {
         type: LOAD_NOTE,
         note
-    }
-}
+    };
+};
 
 export const setNote = (note) => {
     return {
@@ -32,6 +33,13 @@ export const removeNote = (noteId) => {
     return {
         type: REMOVE_NOTE,
         noteId
+    };
+};
+
+export const editNote = (note) => {
+    return {
+        type: EDIT_NOTE,
+        note
     };
 };
 
@@ -104,7 +112,7 @@ export const editOneNote = (note) => async dispatch => {
     });
     if (response.ok) {
         const note = await response.json();
-        dispatch(setNote(note));
+        dispatch(editNote(note));
         return note;
     };
 };
@@ -127,6 +135,11 @@ const noteReducer = (state = initialState, action) => {
         case SET_NOTE:
             // newState = Object.assign({}, state);
             // newState.fullNote = action.note;
+            newState = { ...state };
+            newState.fullNote = [...state.fullNote, action.note];
+            return newState;
+        case EDIT_NOTE:
+            
             newState = { ...state };
             newState.fullNote = [...state.fullNote, action.note];
             return newState;

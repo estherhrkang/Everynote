@@ -1,40 +1,44 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotes, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
+const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const currentNote = notes.find(note => note.id === Number(id));
-
+    
     // const sessionUser = useSelector(state => state.session.user);
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
-    // const notes = useSelector(state => state.note.fullNote);
-
+    const notes = useSelector(state => state.note.fullNote);
+    
     useEffect(() => {
         dispatch(getAllNotes());
     }, [dispatch]);
-
-    // const currentNote = notes?.find(note => note.id === id);
+    
+    // let currentNote;
+    // if (notes) {
+    //     currentNote = notes.find(note => note.id === Number(id));
+    // }
 
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (noteTitle) {
+        if (notes) {
             setErrors([]);
 
             // then try with just clickedNote passed in if below doesn't work.
             const payload = {
                 id: clickedNote.id,
                 title: noteTitle,
-                content: noteContent,
-                notebookId: notebookid
+                content: noteContent
+                // notebookId: notebookid
             };
+
+            console.log('HERE-----------', payload);
 
             // need to pass in current note id as well
             // {id: clickedNote.id},
@@ -59,11 +63,13 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, noteTitle
     };
 
     const handleDeleteNote = async () => {
-        await dispatch(deleteOneNote(clickedNote));
-        setNoteTitle('');
-        setNoteContent('');
-        setShowForm(false);
-        history.push('/notes');
+        if (notes && clickedNote) {
+            await dispatch(deleteOneNote(clickedNote));
+            setNoteTitle('');
+            setNoteContent('');
+            setShowForm(false);
+            history.push('/notes');
+        }
 
         // if (notebookid) {
         //     history.push(`/notebooks/${notebookid}/notes`)
