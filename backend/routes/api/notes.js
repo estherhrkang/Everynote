@@ -38,8 +38,8 @@ router.delete('/:id', asyncHandler( async(req, res) => {
 
 // Edit a note: PUT /api/notes/:id
 router.put('/:id', requireAuth, asyncHandler( async(req, res) => {
-    // const noteId = Number(req.params.id);
-    // const { editedNote } = req.body;
+    // const noteId = parseInt(req.params.id, 10);
+    // const { title } = req.body;
     // const note = await Note.findOne({ where: { id: noteId }});
     // await note.update({ editedNote });
 

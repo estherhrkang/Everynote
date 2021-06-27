@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
-import CreateNoteForm from './NoteCreateForm';
-import EditNoteForm from './NoteEditForm';
+import { getAllNotes, getOneNote } from '../../store/note';
 import '../../index.css';
 
 const NoteAllShow = ({ setClickedNote, notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {

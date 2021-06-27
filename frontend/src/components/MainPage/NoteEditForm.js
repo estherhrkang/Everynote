@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Redirect, useParams, useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote, setNote } from '../../store/note';
+import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { getAllNotes, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
 const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, currentNote, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
@@ -19,7 +19,7 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, currentNo
     // const currentNote = notes?.find(note => note.id === id);
 
 
-    console.log('HERE----currentNote', currentNote);
+    // console.log('HERE----currentNote', currentNote);
 
     const [errors, setErrors] = useState([]);
 
@@ -28,8 +28,20 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, currentNo
 
         if (noteTitle) {
             setErrors([]);
-            // need to pass in userId as well
-            return dispatch(editOneNote(noteTitle, noteContent, {notebookId: notebookid}))
+
+            // then try with just clickedNote passed in if below doesn't work.
+            const payload = {
+                id: clickedNote.id,
+                title: noteTitle,
+                content: noteContent,
+                notebookId: notebookid
+            };
+
+            // need to pass in current note id as well
+            // {id: clickedNote.id},
+            // return dispatch(editOneNote( {id: clickedNote.id}, {title: noteTitle}, {content: noteContent}, {notebookId:notebookid} ))
+            // return dispatch(editOneNote( clickedNote.id, noteTitle, noteContent, notebookid ))
+            return dispatch(editOneNote( payload ))
                 .then(setShowForm(false))
                 .catch(async(res) => {
                     const data = await res.json();

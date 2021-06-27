@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, Redirect, Route, useHistory } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNotebook, getAllNotebooks, getOneNotebook, deleteOneNotebook, editOneNotebook } from '../../store/notebook';
+import { createNotebook, getAllNotebooks, getOneNotebook, deleteOneNotebook } from '../../store/notebook';
 import { getAllNotes } from '../../store/note';
 import EditNotebookModal from './NotebookEditModal';
-import NoteInNotebookShow from './NoteInNotebookShow';
 import '../../index.css';
 
 const NotebookPage = ({ notebooks, notes, showForm, setShowForm }) => {

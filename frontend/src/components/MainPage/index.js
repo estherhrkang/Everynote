@@ -3,7 +3,7 @@ import { NavLink, Route, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getAllNotebooks } from "../../store/notebook";
-import { getAllNotes, getAllNotesInNotebook } from "../../store/note";
+import { getAllNotes } from "../../store/note";
 
 import ProfileButton from './ProfileButton';
 import NotebookPage from "./NotebookPage";

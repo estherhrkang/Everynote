@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import SigninPage from "./components/SigninPage";
 import SignupPage from "./components/SignupPage";
-import NotebookPage from "./components/MainPage/NotebookPage";
-import NoteInNotebookShow from "./components/MainPage/NoteInNotebookShow";
-import NoteAllShow from "./components/MainPage/NoteAllShow";
 
 import * as sessionActions from './store/session';
 

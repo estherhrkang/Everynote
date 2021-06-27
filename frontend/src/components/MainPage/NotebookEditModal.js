@@ -1,13 +1,9 @@
-import { useSelector } from 'react-redux';
 import { editOneNotebook } from '../../store/notebook';
 
 import '../../index.css';
 
 const NotebookEditModal = ({ setPopUp, title }) => {
-    const notebooks = useSelector(state => state.notebook.fullNotebook);
-    // const currentNotebook = notebooks.find(notebook => notebook.title === title);
-
-
+    
     return (
         <div className='popup-container'>
             <div className="popup-form-container">

@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Redirect, useParams } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createNote } from '../../store/note';
 import '../../index.css';
 
 const NoteCreateForm = ({ notebookid, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {

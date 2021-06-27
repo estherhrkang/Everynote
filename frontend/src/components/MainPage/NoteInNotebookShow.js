@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams, Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNote, editOneNote } from '../../store/note';
+import { getAllNotes, getOneNote, getAllNotesInNotebook } from '../../store/note';
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
@@ -21,13 +20,13 @@ const NoteInNotebookShow = ({ setClickedNote, notebookid, id, notebooks, subNote
     
     // const [title, setTitle] = useState('');
     // const [content, setContent] = useState('');
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotesInNotebook(notebookid));
         dispatch(getOneNotebook({id: notebookid}));
-    }, [dispatch]);
+    }, [dispatch, notebookid]);
 
     if (!sessionUser) return <Redirect to='/' />
 
