@@ -22,6 +22,7 @@ const SignupPage = () => {
         const errors = [];
 
         if (email.length > 256) errors.push('Email address should be less than 256 characters.');
+        if (email.length && !email.includes('@' && '.')) errors.push('Please provide an email address.');
         if (username.length > 30) errors.push('Username should be less than 30 characters.');
         if (username.length && username === email) errors.push('Username cannot be same as email address.');
         if (password.length > 60) errors.push('Password should be less than 60 characters.');
