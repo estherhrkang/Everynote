@@ -18,9 +18,6 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, currentNo
 
     // const currentNote = notes?.find(note => note.id === id);
 
-
-    // console.log('HERE----currentNote', currentNote);
-
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
