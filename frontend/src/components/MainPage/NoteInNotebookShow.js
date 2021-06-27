@@ -6,7 +6,7 @@ import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNo
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
-const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
+const NoteInNotebookShow = ({ setClickedNote, notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.user);
@@ -77,6 +77,7 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTi
                                 onClick={() => {
                                     setNoteTitle(subNote.title)
                                     setNoteContent(subNote.content)
+                                    setClickedNote(subNote)
                                     setShowForm(true)
                                 }}
                             >

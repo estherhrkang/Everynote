@@ -22,6 +22,7 @@ const MainPage = ({ isLoaded }) => {
     const [noteContent, setNoteContent] = useState('');
 
     const [showForm, setShowForm] = useState(false);
+    const [clickedNote, setClickedNote] = useState({});
 
     const { notebookid } = useParams();
     const { id } = useParams();
@@ -67,6 +68,7 @@ const MainPage = ({ isLoaded }) => {
                             notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes} notes={notes}
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
                             showForm={showForm} setShowForm={setShowForm}
+                            setClickedNote={setClickedNote}
                         />
                     </Route>
                     <Route exact path='/notes'>
@@ -74,16 +76,20 @@ const MainPage = ({ isLoaded }) => {
                             notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes} notes={notes}
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
                             showForm={setShowForm} setShowForm={setShowForm}
+                            setClickedNote={setClickedNote}
                         />
                     </Route>
                 </div>
                 {showForm ? (
-                    <NoteEditForm 
-                        id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
-                        noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
-                        currentNote={currentNote}
-                        setShowForm={setShowForm}
-                    />
+                    // <Route path={'/notes/:id'}>
+                        <NoteEditForm 
+                            id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
+                            noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                            currentNote={currentNote}
+                            setShowForm={setShowForm}
+                            clickedNote={clickedNote}
+                        />
+                    // </Route>
                 ) : (
                     <Route exact path={['/notes', '/notebooks/:notebookid/notes']}>
                         <NoteCreateForm

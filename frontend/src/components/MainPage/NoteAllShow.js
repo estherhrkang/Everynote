@@ -7,7 +7,7 @@ import CreateNoteForm from './NoteCreateForm';
 import EditNoteForm from './NoteEditForm';
 import '../../index.css';
 
-const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
+const NoteAllShow = ({ setClickedNote, notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
@@ -16,7 +16,6 @@ const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, se
     // const [title, setTitle] = useState('');
     // const [content, setContent] = useState('');
     const [searchInput, setSearchInput] = useState('');
-    const [clickedNote, setClickedNote] = useState({});
 
     useEffect(() => {
         dispatch(getAllNotes());
@@ -25,7 +24,7 @@ const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, se
     // let currentNote = notes !== null ? notes.find(note => note.title.toLowerCase() === clickedNote.title.toLowerCase()) : null;
 
     if (!sessionUser) return <Redirect to='/' />
-    
+
     const handleSearchNote = (e) => {
         e.preventDefault();
 

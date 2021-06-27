@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote, setNote } from '../../store/note';
 import '../../index.css';
 
-const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
+const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, currentNote, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -17,6 +17,9 @@ const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle
     }, [dispatch]);
 
     // const currentNote = notes?.find(note => note.id === id);
+
+
+    console.log('HERE----currentNote', currentNote);
 
     const [errors, setErrors] = useState([]);
 
@@ -45,7 +48,7 @@ const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle
     };
 
     const handleDeleteNote = async () => {
-        await dispatch(deleteOneNote(currentNote));
+        await dispatch(deleteOneNote(clickedNote));
         setNoteTitle('');
         setNoteContent('');
         setShowForm(false);
