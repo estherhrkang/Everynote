@@ -6,7 +6,7 @@ import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNo
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
-const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {
+const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.user);
@@ -85,6 +85,7 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTi
                     <button className='cancel-search-note-btn' type='button' onClick={handleCancelSearch}>Cancel</button>
                 </form>
                 <ul className='notes-list-ul'>
+                    
                     {subNotes?.map(subNote => (
                         <li className='notes-list-li' key={subNote.id}>
                             <button 
@@ -92,6 +93,7 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTi
                                 onClick={() => {
                                     setNoteTitle(subNote.title)
                                     setNoteContent(subNote.content)
+                                    setShowForm(true)
                                 }}
                             >
                             <Link to={`/notes/${subNote.id}`}>

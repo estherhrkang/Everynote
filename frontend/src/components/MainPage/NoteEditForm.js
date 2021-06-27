@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createNote, getAllNotes, getOneNote, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const NoteEditForm = ({ id, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {
+const NoteEditForm = ({ id, notebookid, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -25,7 +25,8 @@ const NoteEditForm = ({ id, notebooks, notes, noteTitle, setNoteTitle, noteConte
 
         if (noteTitle) {
             setErrors([]);
-            return dispatch(editOneNote(noteTitle, noteContent))
+            // need to pass in userId as well
+            return dispatch(editOneNote(noteTitle, noteContent, {notebookId: notebookid}))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);

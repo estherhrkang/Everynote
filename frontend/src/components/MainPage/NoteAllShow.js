@@ -7,7 +7,7 @@ import CreateNoteForm from './NoteCreateForm';
 import EditNoteForm from './NoteEditForm';
 import '../../index.css';
 
-const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent }) => {
+const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
@@ -83,6 +83,7 @@ const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, se
                                     setNoteTitle(note.title)
                                     setNoteContent(note.content)
                                     setClickedNote(note)
+                                    setShowForm(true)
                                 }}
                             >
                                 <Link to={`/notes/${note.id}`}>

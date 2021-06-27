@@ -241,11 +241,12 @@
 /* ------------------------------------ */
 
 .navigation-div {
-
+    /* background-color: #1a1a1a; */
 }
 
 .navigation-ul {
     list-style-type: none;
+    /* color: white; */
 
 }
 

@@ -43,7 +43,9 @@ router.put('/:id', requireAuth, asyncHandler( async(req, res) => {
     // const note = await Note.findOne({ where: { id: noteId }});
     // await note.update({ editedNote });
 
-    const note = await Note.updateOne(req.body);
+    const id = Number(req.params.id);
+    const { title, content, notebookId } = req.body;
+    const note = await Note.updateOne( id, title, content, req.user.id, notebookId );
     return res.json(note);
 }));
 

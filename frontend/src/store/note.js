@@ -76,7 +76,7 @@ export const createNote = (title, content, notebookId) => async dispatch => {
         const note = await response.json();
         dispatch(setNote(note));
         return note;
-    }
+    };
 };
 
 export const deleteOneNote = (note) => async dispatch => {
@@ -106,7 +106,7 @@ export const editOneNote = (note) => async dispatch => {
         const note = await response.json();
         dispatch(setNote(note));
         return note;
-    }
+    };
 };
 
 // reducer
