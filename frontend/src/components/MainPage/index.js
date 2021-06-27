@@ -30,6 +30,9 @@ const MainPage = ({ isLoaded }) => {
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     const notes = useSelector(state => state.note.fullNote);
     const subNotes = notes?.filter(note => note.notebookId === Number(notebookid));
+    const currentNote = notes?.find(note => note.id === Number(id));
+
+    console.log('CURRENT NOTE', currentNote);
 
     useEffect(() => {
         dispatch(getAllNotebooks());
@@ -73,11 +76,11 @@ const MainPage = ({ isLoaded }) => {
                         />
                     </Route>
                 </div>
-
                 {showForm ? (
                     <NoteEditForm 
                         id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
                         noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                        currentNote={currentNote}
                     />
                 ) : (
                     <Route exact path={['/notes', '/notebooks/:notebookid/notes']}>

@@ -15,7 +15,6 @@ const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, se
     
     // const [title, setTitle] = useState('');
     // const [content, setContent] = useState('');
-    const [showMenu, setShowMenu] = useState(false);
     const [searchInput, setSearchInput] = useState('');
     const [clickedNote, setClickedNote] = useState({});
 
@@ -23,25 +22,10 @@ const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, se
         dispatch(getAllNotes());
     }, [dispatch]);
     
-    useEffect(() => {
-        if (!showMenu) return;
-        
-        const closeMenu = () => setShowMenu(false);
-        
-        document.addEventListener('click', closeMenu);
-        
-        return () => document.removeEventListener('click', closeMenu);
-    }, [showMenu]);
-    
     // let currentNote = notes !== null ? notes.find(note => note.title.toLowerCase() === clickedNote.title.toLowerCase()) : null;
 
     if (!sessionUser) return <Redirect to='/' />
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
- 
     const handleSearchNote = (e) => {
         e.preventDefault();
 
@@ -90,16 +74,6 @@ const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, se
                                     <div className='notes-list-li__title'>{note.title}</div>
                                     <div className='notes-list-li__content'>{note.content.length < 40 ? note.content : `${note.content.slice(0, 40)}...`}</div>
                                     <div className='notes-list-li__date'>{note.updatedAt.slice(0,10)}</div>
-                                    
-                                    <div>
-                                        <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
-                                    </div>
-                                        {showMenu && (
-                                            <>
-                                                {/* <button>Add to notebook</button> */}
-                                                <button onClick={() => dispatch(deleteOneNote(note))}>Delete</button>
-                                            </>
-                                        )}
                                 </Link>
                             </button>
                         </li>

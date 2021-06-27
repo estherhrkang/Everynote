@@ -21,7 +21,6 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTi
     
     // const [title, setTitle] = useState('');
     // const [content, setContent] = useState('');
-    const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState([]);
     const [searchInput, setSearchInput] = useState('');
 
@@ -30,22 +29,7 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTi
         dispatch(getOneNotebook({id: notebookid}));
     }, [dispatch]);
 
-    useEffect(() => {
-        if (!showMenu) return;
-
-        const closeMenu = () => setShowMenu(false);
-
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener('click', closeMenu);
-    }, [showMenu]);
-
     if (!sessionUser) return <Redirect to='/' />
-
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
 
     const handleSearchNote = (e) => {
         e.preventDefault();
@@ -100,15 +84,6 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTi
                                     <div className='notes-list-li__title'>{subNote.title}</div>
                                     <div className='notes-list-li__content'>{subNote.content.length < 40 ? subNote.content : `${subNote.content.slice(0, 40)}...`}</div>
                                     <div className='notes-list-li__date'>{subNote.updatedAt.slice(0,10)}</div>
-                                    
-                                    <div>
-                                        <button className='note-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>  
-                                    </div>
-                                        {showMenu && (
-                                            <>
-                                                <button onClick={() => dispatch(deleteOneNote(subNote))}>Delete</button>
-                                            </>
-                                        )}
                             </Link>
                         </button>
                         </li>
