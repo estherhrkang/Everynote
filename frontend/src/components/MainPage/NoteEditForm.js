@@ -8,7 +8,7 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, noteTitle
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const currentNote = notes?.find(note => note.id === Number(id));
+    const currentNote = notes.find(note => note.id === Number(id));
 
     // const sessionUser = useSelector(state => state.session.user);
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
