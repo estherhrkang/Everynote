@@ -27,6 +27,7 @@ const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle
             setErrors([]);
             // need to pass in userId as well
             return dispatch(editOneNote(noteTitle, noteContent, {notebookId: notebookid}))
+                .then(setShowForm(false))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);

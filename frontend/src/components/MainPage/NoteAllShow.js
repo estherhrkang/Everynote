@@ -7,7 +7,7 @@ import CreateNoteForm from './NoteCreateForm';
 import EditNoteForm from './NoteEditForm';
 import '../../index.css';
 
-const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
+const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
@@ -25,7 +25,7 @@ const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, se
     // let currentNote = notes !== null ? notes.find(note => note.title.toLowerCase() === clickedNote.title.toLowerCase()) : null;
 
     if (!sessionUser) return <Redirect to='/' />
-
+    
     const handleSearchNote = (e) => {
         e.preventDefault();
 
@@ -70,11 +70,11 @@ const NoteAllShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, se
                                     setShowForm(true)
                                 }}
                             >
-                                <Link to={`/notes/${note.id}`}>
+                                {/* <Link to={`/notes/${note.id}`}> */}
                                     <div className='notes-list-li__title'>{note.title}</div>
                                     <div className='notes-list-li__content'>{note.content.length < 40 ? note.content : `${note.content.slice(0, 40)}...`}</div>
                                     <div className='notes-list-li__date'>{note.updatedAt.slice(0,10)}</div>
-                                </Link>
+                                {/* </Link> */}
                             </button>
                         </li>
                     ))}

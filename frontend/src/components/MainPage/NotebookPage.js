@@ -7,7 +7,7 @@ import EditNotebookModal from './NotebookEditModal';
 import NoteInNotebookShow from './NoteInNotebookShow';
 import '../../index.css';
 
-const NotebookPage = ({ notebooks, notes }) => {
+const NotebookPage = ({ notebooks, notes, showForm, setShowForm }) => {
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user);

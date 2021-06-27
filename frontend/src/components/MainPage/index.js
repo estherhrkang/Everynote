@@ -57,20 +57,23 @@ const MainPage = ({ isLoaded }) => {
                 <div className='list-container'>
                     main div 1 - list
                     <Route exact path='/notebooks'>
-                        <NotebookPage notebooks={notebooks} notes={notes} notebookTitle={notebookTitle} setNotebookTitle={setNotebookTitle}/>
+                        <NotebookPage 
+                            notebooks={notebooks} notes={notes} notebookTitle={notebookTitle} setNotebookTitle={setNotebookTitle}
+                            showForm={showForm} setShowForm={setShowForm}
+                        />
                     </Route>
                     <Route path={['/notebooks/:notebookid/notes', '/notes/:id']}>
                         <NoteInNotebookShow 
                             notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes} notes={notes}
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
-                            setShowForm={setShowForm}
+                            showForm={showForm} setShowForm={setShowForm}
                         />
                     </Route>
                     <Route exact path='/notes'>
                         <NoteAllShow 
                             notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes} notes={notes}
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
-                            setShowForm={setShowForm}
+                            showForm={setShowForm} setShowForm={setShowForm}
                         />
                     </Route>
                 </div>

@@ -6,7 +6,7 @@ import { createNote, getAllNotes, getOneNote, getAllNotesInNotebook, deleteOneNo
 import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
-const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
+const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.user);
@@ -80,11 +80,11 @@ const NoteInNotebookShow = ({ notebookid, id, notebooks, subNotes, notes, noteTi
                                     setShowForm(true)
                                 }}
                             >
-                            <Link to={`/notes/${subNote.id}`}>
-                                    <div className='notes-list-li__title'>{subNote.title}</div>
-                                    <div className='notes-list-li__content'>{subNote.content.length < 40 ? subNote.content : `${subNote.content.slice(0, 40)}...`}</div>
-                                    <div className='notes-list-li__date'>{subNote.updatedAt.slice(0,10)}</div>
-                            </Link>
+                            {/* <Link to={`/notes/${subNote.id}`}> */}
+                                <div className='notes-list-li__title'>{subNote.title}</div>
+                                <div className='notes-list-li__content'>{subNote.content.length < 40 ? subNote.content : `${subNote.content.slice(0, 40)}...`}</div>
+                                <div className='notes-list-li__date'>{subNote.updatedAt.slice(0,10)}</div>
+                            {/* </Link> */}
                         </button>
                         </li>
                     ))}
