@@ -39,16 +39,22 @@ const NoteEditForm = ({ id, notebookid, notebooks, notes, currentNote, noteTitle
         setNoteTitle('');
         setNoteContent('');
         setErrors([]);
-        // render noteCreateForm
+        setShowForm(false);
         history.push('/notes');
     };
 
     const handleDeleteNote = async () => {
         await dispatch(deleteOneNote(currentNote));
-        history.push('/notes');
         setNoteTitle('');
         setNoteContent('');
         setShowForm(false);
+        history.push('/notes');
+
+        // if (notebookid) {
+        //     history.push(`/notebooks/${notebookid}/notes`)
+        // } else {
+        //     history.push('/notes');
+        // }
     };
 
     return (

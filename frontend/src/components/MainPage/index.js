@@ -32,8 +32,6 @@ const MainPage = ({ isLoaded }) => {
     const subNotes = notes?.filter(note => note.notebookId === Number(notebookid));
     const currentNote = notes?.find(note => note.id === Number(id));
 
-    console.log('CURRENT NOTE', currentNote);
-
     useEffect(() => {
         dispatch(getAllNotebooks());
         dispatch(getAllNotes());
@@ -48,11 +46,11 @@ const MainPage = ({ isLoaded }) => {
                         <li className='navigation-li'>
                             <ProfileButton user={sessionUser} />
                         </li>
-                        <li className='navigation-li'>
-                            <NavLink to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
-                        </li>
                         <li className='navigation-li'> 
                             <NavLink to='/notes'><i className='fas fa-sticky-note'> Notes</i></NavLink>
+                        </li>
+                        <li className='navigation-li'>
+                            <NavLink to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
                         </li>
                     </ul>
                 </div>
