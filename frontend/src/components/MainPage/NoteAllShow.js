@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotes, getOneNote } from '../../store/note';
 import '../../index.css';
 
-const NoteAllShow = ({ setClickedNote, notebookid, id, notebooks, subNotes, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
+const NoteAllShow = ({ setClickedNote, notebookid, id, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
@@ -56,20 +56,20 @@ const NoteAllShow = ({ setClickedNote, notebookid, id, notebooks, subNotes, note
                 </form>
                 <ul className='notes-list-ul'>
                     {notes?.map(note => (
-                        <li className='notes-list-li' key={note.id}>
+                        <li className='notes-list-li' key={note?.id}>
                             <button 
                                 className='notes-list-li__btn' 
                                 onClick={() => {
-                                    setNoteTitle(note.title)
-                                    setNoteContent(note.content)
-                                    setClickedNote(note)
+                                    setNoteTitle(note?.title)
+                                    setNoteContent(note?.content)
+                                    setClickedNote(note ? note : null)
                                     setShowForm(true)
                                 }}
                             >
                                 {/* <Link to={`/notes/${note.id}`}> */}
-                                    <div className='notes-list-li__title'>{note.title}</div>
-                                    <div className='notes-list-li__content'>{note.content.length < 40 ? note.content : `${note.content.slice(0, 40)}...`}</div>
-                                    <div className='notes-list-li__date'>{note.updatedAt.slice(0,10)}</div>
+                                    <div className='notes-list-li__title'>{note?.title}</div>
+                                    <div className='notes-list-li__content'>{note?.content.length < 40 ? note?.content : `${note?.content.slice(0, 40)}...`}</div>
+                                    <div className='notes-list-li__date'>{note?.updatedAt.slice(0,10)}</div>
                                 {/* </Link> */}
                             </button>
                         </li>

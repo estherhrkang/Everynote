@@ -30,8 +30,8 @@ const MainPage = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     const notes = useSelector(state => state.note.fullNote);
-    const subNotes = notes?.filter(note => note.notebookId === Number(notebookid));
-    const currentNote = notes?.find(note => note.id === Number(id));
+    // const subNotes = notes.filter(note => note.notebookId === Number(notebookid));
+    // const currentNote = notes.find(note => note.id === Number(id));
 
     useEffect(() => {
         dispatch(getAllNotebooks());
@@ -65,7 +65,7 @@ const MainPage = ({ isLoaded }) => {
                     </Route>
                     <Route path={['/notebooks/:notebookid/notes', '/notes/:id']}>
                         <NoteInNotebookShow 
-                            notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes} notes={notes}
+                            notebookid={notebookid} id={id} notebooks={notebooks} notes={notes}
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
                             showForm={showForm} setShowForm={setShowForm}
                             setClickedNote={setClickedNote}
@@ -73,7 +73,7 @@ const MainPage = ({ isLoaded }) => {
                     </Route>
                     <Route exact path='/notes'>
                         <NoteAllShow 
-                            notebookid={notebookid} id={id} notebooks={notebooks} subNotes={subNotes} notes={notes}
+                            notebookid={notebookid} id={id} notebooks={notebooks} notes={notes}
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
                             showForm={setShowForm} setShowForm={setShowForm}
                             setClickedNote={setClickedNote}
@@ -85,7 +85,6 @@ const MainPage = ({ isLoaded }) => {
                         <NoteEditForm 
                             id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
-                            currentNote={currentNote}
                             setShowForm={setShowForm}
                             clickedNote={clickedNote}
                         />

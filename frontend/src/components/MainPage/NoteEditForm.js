@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux';
 import { getAllNotes, deleteOneNote, editOneNote } from '../../store/note';
 import '../../index.css';
 
-const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, currentNote, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
+const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, setShowForm }) => {
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const currentNote = notes?.find(note => note.id === Number(id));
 
     // const sessionUser = useSelector(state => state.session.user);
     // const notebooks = useSelector(state => state.notebook.fullNotebook);
