@@ -34,10 +34,10 @@ const NotebookPage = ({ notebooks }) => {
 
     if (!sessionUser) return <Redirect to='/' />
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
+    // const openMenu = () => {
+    //     if (showMenu) return;
+    //     setShowMenu(true);
+    // };
 
     // const duringPopUp = popUp ? ' during-popup' : '';
 
