@@ -26,7 +26,7 @@ const SignupPage = () => {
         if (username.length > 30) errors.push('Username must be less than 30 characters.');
         if (username.length && username === email) errors.push('Username cannot be same as email address.');
         if (password.length > 60) errors.push('Password must be less than 60 characters.');
-        if (password.length < 6) errors.push('Password must be 6 characters or more.')
+        if (password.length && password.length < 6) errors.push('Password must be 6 characters or more.')
         if (password !== confirmPassword) errors.push('Password and confirm password must match.');
 
         setErrors(errors);
