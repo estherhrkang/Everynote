@@ -80,7 +80,7 @@ const MainPage = ({ isLoaded }) => {
                         />
                     </Route>
                 </div>
-                <div className='form-container'>
+                {/* <div className='form-container'> */}
                     {showForm ? (
                         <NoteEditForm 
                             id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
@@ -89,14 +89,19 @@ const MainPage = ({ isLoaded }) => {
                             clickedNote={clickedNote}
                         />
                     ) : (
+                        <>
+                        {/* <Route exact path='/notebooks'>
+                            {null}
+                        </Route> */}
                         <Route exact path={['/notes', '/notebooks/:notebookid/notes']}>
                             <NoteCreateForm
                             notebookid={notebookid} notebooks={notebooks} notes={notes} 
                             noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
                             />
                         </Route>
+                        </>
                     )}
-                </div>
+                {/* </div> */}
             </div>
         )
     }

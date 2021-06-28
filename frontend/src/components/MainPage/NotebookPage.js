@@ -108,26 +108,23 @@ const NotebookPage = ({ notebooks }) => {
                 <button className='create-notebook-btn' type='submit'>Create</button>
                 <button className='cancel-create-notebook-btn' type='button' onClick={handleCancelCreate}>Cancel</button>
             </form>
-            <div className='notebook-list-subheader'>
-
-            </div>
-            <div className='notebook-list-body'>
+            <div className='notebook-list'>
                 <div>
                     <table>
-                        <thead>
+                        <thead className='notebook-list-thead'>
                             <tr>
-                                <th>Title</th>
-                                <th>Updated</th>
-                                <th>Actions</th>
+                                <th className='notebook-list-row'>Title</th>
+                                <th className='notebook-list-row'>Updated</th>
+                                <th className='notebook-list-row'>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='notebook-list-tbody'>
                             {notebooks?.map(notebook => (
                                 <>
                                     <tr key={notebook.id}>
-                                        <th className='table__tbody__tr__th'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
-                                        <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
-                                        <th>
+                                        <th className='notebook-list-row'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
+                                        <th className='notebook-list-row'>{notebook.updatedAt.slice(0,10)}</th>
+                                        <th className='notebook-list-row'>
                                             <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>
                                         </th>
                                             {showMenu && (
