@@ -1,4 +1,5 @@
 'use strict';
+const faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -14,22 +15,154 @@ module.exports = {
     */
    return queryInterface.bulkInsert('Notes', [
      {
-        title: 'By Sunday, 6-27',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        userId: 1,
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
         notebookId: 1
       },
      {
-        title: 'Hiking Trails',
-        content: 'Nullam tempor congue magna.',
-        userId: 1,
-        notebookId: 4
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
       },
      {
-        title: 'Keto Recipes',
-        content: 'Mauris blandit arcu ut odio vehicula ullamcorper.',
-        userId: 1,
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 1
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
         notebookId: 2
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 2
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 2
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 2
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 2
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 2
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 2
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 2
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 3
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 3
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 4
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 4
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 4
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 4
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.paragraph(),
+        userId: 1, 
+        notebookId: 5
       },
     ], {});
   },
@@ -44,7 +177,7 @@ module.exports = {
     */
    const Op = Sequelize.Op;
    return queryInterface.bulkDelete('Notes', {
-      title: { [Op.in]: ['By Sunday, 6-27', 'Hiking Trails', 'Keto Recipes'] }
+      // title: { [Op.in]: ['By Sunday, 6-27', 'Hiking Trails', 'Keto Recipes'] }
    });
   }
 };
