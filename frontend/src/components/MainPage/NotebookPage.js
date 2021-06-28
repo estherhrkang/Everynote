@@ -136,7 +136,7 @@ const NotebookPage = ({ notebooks }) => {
                                                 </>
                                             )} */}
                                         <th>
-                                            <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
+                                            <button className='delete-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
                                         </th>
                                     </tr>
                                 </>

@@ -634,8 +634,14 @@ table {
     border: none;
 }
 
-.delete-note-btn {
+.delete-btn {
+    background-color: transparent;
+    border: none;
+}
 
+.delete-btn:hover {
+    cursor: pointer;
+    color: red;
 }
 
 .during-popup{

@@ -87,7 +87,7 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, noteTitle, setNo
             <div>
                 <button className='create-note-btn' type='submit'>Save</button>
                 <button className='cancel-create-note-btn' type='button' onClick={handleCancelSubmit}>Cancel</button>
-                <button onClick={handleDeleteNote}>Delete</button>
+                <button className='delete-btn' onClick={handleDeleteNote}>Delete</button>
             </div>
         </form>
     );
