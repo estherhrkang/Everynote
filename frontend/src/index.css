@@ -368,6 +368,10 @@ body {
     padding: 7px;
 }
 
+.search-note-btn:hover {
+    background-color: green;
+}
+
 .cancel-search-note-btn {
     background-color: transparent;
     border: none;
@@ -386,28 +390,36 @@ body {
     display: flex;
     flex-direction: column;
     height: 75px;
-    padding: 10px 0;
+    justify-content: center;
     border-bottom: 1px solid #e6e6e6;
+    padding: 5px 0;
+}
+
+.notes-list-li:hover {
+    background-color: white;
 }
 
 .notes-list-li__btn {
     border: none;
-    background-color: #f8f8f8;
-
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .notes-list-li__title {
-    padding-bottom: 5px; 
+    padding: 3px;
 }
 
 .notes-list-li__content {
     flex-grow: 3;
     font-size: 14px;
+    padding: 3px;
     color: grey;
 }
 
 .notes-list-li__date {
     font-size: 12px;
+    padding: 3px;
+    color: #a6a6a6;
 }
 
 .note-action-btn {
@@ -500,6 +512,10 @@ body {
     padding: 10px;
 }
 
+.create-note-btn:hover, .save-note-btn:hover {
+    background-color: green;
+}
+
 .cancel-create-note-btn {
     background-color: transparent;
     border: none;
@@ -568,6 +584,10 @@ body {
     margin: 20px;
     width: 80px;
     padding: 7px;
+}
+
+.search-notebook-btn:hover, .create-notebook-btn:hover {
+    background-color: green;
 }
 
 .cancel-search-notebook-btn, .cancel-create-notebook-btn {
