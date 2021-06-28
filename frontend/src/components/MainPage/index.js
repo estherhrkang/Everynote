@@ -45,9 +45,9 @@ const MainPage = ({ isLoaded }) => {
                 <div className='navigation-container'>
                     <ul className='navigation-ul'>
                         <li className='navigation-li navigation-li__title'>
-                            Everynote
+                            <NavLink className='navigation-li__navlink' to='/notes'>Everynote</NavLink>
                         </li>
-                        <li className='navigation-li navigation-li__profile-btn'>
+                        <li className='navigation-li'>
                             <ProfileButton user={sessionUser} />
                         </li>
                         <li className='navigation-li'> 
