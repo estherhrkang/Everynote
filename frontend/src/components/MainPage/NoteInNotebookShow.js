@@ -10,15 +10,10 @@ const NoteInNotebookShow = ({ setClickedNote, notebookid, id, notebooks, notes, 
     
     const sessionUser = useSelector(state => state.session.user);
 
-    // const notebooks = useSelector(state => state.notebook.fullNotebook);
     // .find returns the value of the first element in the provided array
     const notebook = notebooks.find(notebook => notebook?.id === Number(notebookid));
     const subNotes = notes.filter(note => note.notebookId === Number(notebookid));
     
-    // const notes = useSelector(state => state.note.fullNote);
-    // const subNotes = useSelector(state => state.note.fullNote).filter(note => note?.notebookId === Number(notebookid))
-    // const subNotes = notes?.filter(note => note?.notebookId === Number(notebookid));
-
     const [searchInput, setSearchInput] = useState('');
     // const [isLoaded, setIsLoaded] = useState(false);
 
@@ -53,7 +48,7 @@ const NoteInNotebookShow = ({ setClickedNote, notebookid, id, notebooks, notes, 
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-book'> {notebook ? ` ${notebook.title}` : ' Notes'}</i></h1>
-                    {subNotes?.length} notes
+                    <p className='list-counter'>{subNotes?.length} Notes</p>
                 </div>
                 <form className='search-note-box' onSubmit={handleSearchNote}>
                     <input

@@ -40,7 +40,7 @@ const NoteAllShow = ({ setClickedNote, notebookid, id, notebooks, notes, noteTit
             <div className='notes-list-container'>
                 <div className='notes-list-header'>
                     <h1><i className='fas fa-sticky-note'> NOTES</i></h1>
-                    {notes?.length} Notes
+                    <p className='list-counter'>{notes?.length} Notes</p>
                 </div>
                 <form className='search-note-box' onSubmit={handleSearchNote}>
                     <input

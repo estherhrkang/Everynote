@@ -8,21 +8,14 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, noteTitle, setNo
     const dispatch = useDispatch();
     const history = useHistory();
 
-    
-    // const sessionUser = useSelector(state => state.session.user);
-    // const notebooks = useSelector(state => state.notebook.fullNotebook);
     const notes = useSelector(state => state.note.fullNote);
+    
+    const [errors, setErrors] = useState([]);
     
     useEffect(() => {
         dispatch(getAllNotes());
     }, [dispatch]);
     
-    // let currentNote;
-    // if (notes) {
-    //     currentNote = notes.find(note => note.id === Number(id));
-    // }
-
-    const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +23,6 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, noteTitle, setNo
         if (notes) {
             setErrors([]);
 
-            // then try with just clickedNote passed in if below doesn't work.
             const payload = {
                 id: clickedNote.id,
                 title: noteTitle,
@@ -38,12 +30,6 @@ const NoteEditForm = ({ clickedNote, id, notebookid, notebooks, noteTitle, setNo
                 // notebookId: notebookid
             };
 
-            console.log('HERE-----------', payload);
-
-            // need to pass in current note id as well
-            // {id: clickedNote.id},
-            // return dispatch(editOneNote( {id: clickedNote.id}, {title: noteTitle}, {content: noteContent}, {notebookId:notebookid} ))
-            // return dispatch(editOneNote( clickedNote.id, noteTitle, noteContent, notebookid ))
             return dispatch(editOneNote( payload ))
                 .then(setShowForm(false))
                 .catch(async(res) => {

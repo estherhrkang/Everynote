@@ -30,9 +30,7 @@ const MainPage = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     const notes = useSelector(state => state.note.fullNote);
-    // const subNotes = notes.filter(note => note.notebookId === Number(notebookid));
-    // const currentNote = notes.find(note => note.id === Number(id));
-
+    
     useEffect(() => {
         dispatch(getAllNotebooks());
         dispatch(getAllNotes());
@@ -59,7 +57,6 @@ const MainPage = ({ isLoaded }) => {
                     </ul>
                 </div>
                 <div className='list-container'>
-                    main div 1 - list
                     <Route exact path='/notebooks'>
                         <NotebookPage 
                             notebooks={notebooks} notes={notes} notebookTitle={notebookTitle} setNotebookTitle={setNotebookTitle}
@@ -83,17 +80,14 @@ const MainPage = ({ isLoaded }) => {
                         />
                     </Route>
                 </div>
-                <div>
-                main div 2 - form
+                <div className='form-container'>
                 {showForm ? (
-                    // <Route path={'/notes/:id'}>
-                        <NoteEditForm 
-                            id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
-                            noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
-                            setShowForm={setShowForm}
-                            clickedNote={clickedNote}
-                        />
-                    // </Route>
+                    <NoteEditForm 
+                        id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
+                        noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                        setShowForm={setShowForm}
+                        clickedNote={clickedNote}
+                    />
                 ) : (
                     <Route exact path={['/notes', '/notebooks/:notebookid/notes']}>
                         <NoteCreateForm

@@ -18,32 +18,14 @@ function App() {
 
   return (
     <>
-        {/* <MainPage isLoaded={isLoaded} /> */}
-
         {isLoaded && (
           <Switch>
-
-            {/* <Route exact path='/'>
-              Home
-            </Route> */}
-
             <Route exact path='/'>
               <SigninPage />
             </Route>
             <Route path='/signup'>
               <SignupPage />
             </Route>
-
-            {/* <Route>
-              <NoteInNotebookShow />
-              </Route>
-              <Route path='/notebooks'>
-              <NotebookPage />
-              </Route>
-              <Route path='/notes'>
-              <NoteAllShow />
-            </Route> */}
-
             <Route 
               exact
               path={[
@@ -55,7 +37,6 @@ function App() {
             >
               <MainPage isLoaded={isLoaded} />
             </Route>
-
             <Route>
               Page does not exist.
             </Route>

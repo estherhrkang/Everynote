@@ -87,7 +87,7 @@ const NotebookPage = ({ notebooks, notes, showForm, setShowForm }) => {
             </div> */}
             <div className='notebook-list-header'>
                 <h1><i className='fas fa-book'> NOTEBOOKS</i></h1>
-                {notebooks?.length} Notebooks
+                <p className='list-counter'>{notebooks?.length} Notebooks</p>
             </div>
             <form className='search-notebook-form' onSubmit={handleSearchNotebook}>
                 <input
