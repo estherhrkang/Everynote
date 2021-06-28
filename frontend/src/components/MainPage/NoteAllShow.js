@@ -60,8 +60,8 @@ const NoteAllShow = ({ setClickedNote, notes, setNoteTitle, setNoteContent, setS
                                 setShowForm(true)
                             }}
                         >
-                            <div className='notes-list-li__title'>{note?.title}</div>
-                            <div className='notes-list-li__content'>{note?.content.length < 40 ? note?.content : `${note?.content.slice(0, 40)}...`}</div>
+                            <div className='notes-list-li__title'>{note?.title.length < 50 ? note?.title : `${note?.title.slice(0, 50)}...`}</div>
+                            <div className='notes-list-li__content'>{note?.content.length < 50 ? note?.content : `${note?.content.slice(0, 50)}...`}</div>
                             <div className='notes-list-li__date'>{note?.updatedAt.slice(0,10)}</div>
                         </button>
                     </li>
