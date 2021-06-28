@@ -139,7 +139,6 @@ const noteReducer = (state = initialState, action) => {
             newState.fullNote = [...state.fullNote, action.note];
             return newState;
         case EDIT_NOTE:
-            
             newState = { ...state };
             newState.fullNote = [...state.fullNote, action.note];
             return newState;

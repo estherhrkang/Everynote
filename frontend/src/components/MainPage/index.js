@@ -44,14 +44,17 @@ const MainPage = ({ isLoaded }) => {
             <div className='main-container'>
                 <div className='navigation-container'>
                     <ul className='navigation-ul'>
-                        <li className='navigation-li'>
+                        <li className='navigation-li navigation-li__title'>
+                            Everynote
+                        </li>
+                        <li className='navigation-li navigation-li__profile-btn'>
                             <ProfileButton user={sessionUser} />
                         </li>
-                        <li> 
-                            <NavLink className='navigation-li' to='/notes'><i className='fas fa-sticky-note'> Notes</i></NavLink>
+                        <li className='navigation-li'> 
+                            <NavLink className='navigation-li__navlink' to='/notes'><i className='fas fa-sticky-note'> Notes</i></NavLink>
                         </li>
-                        <li>
-                            <NavLink className='navigation-li' to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
+                        <li className='navigation-li'>
+                            <NavLink className='navigation-li__navlink' to='/notebooks'><i className='fas fa-book'> Notebooks</i></NavLink>
                         </li>
                     </ul>
                 </div>

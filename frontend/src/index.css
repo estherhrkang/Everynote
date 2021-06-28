@@ -5,6 +5,12 @@
     /* font-family: Arial, Helvetica, sans-serif; */
 }
 
+/* #root {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+} */
+
 
 /* OK */
 /* ------------------------------------ */
@@ -231,26 +237,51 @@
 }
 
 .navigation-container {
-    /* background-color: #1a1a1a; */
+    background-color: #1a1a1a;
     /* height: 100%; */
     /* left: 0; */
     width: 200px;
     /* margin-top: 60px; */
     
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .navigation-ul {
     list-style-type: none;
     /* color: white; */
-
+    
 }
 
 .navigation-li {
     text-decoration: none;
-    padding: 5px;
-    color: black;
+    padding: 10px;
+    color: #a6a6a6;
+    margin: 5px 0;
+    margin-left: -30px;
 
+    /* border: 3px solid red; */
+}
+
+.navigation-li:active {
+    /* background-color: tomato; */
+}
+
+.navigation-li__title {
+    color: white;
+    font-size: 150%;
+    margin-bottom: 20px;
+    /* margin-left: 10px; */
+}
+
+.navigation-li__profile-btn {
+    
+}
+
+.navigation-li__navlink {
+    text-decoration: none;
+    padding: 5px;
+    color: #a6a6a6;
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 .new-note-btn {
@@ -268,20 +299,21 @@
     border: none;
     /* background-color: #04a72e; */
     background-color: #00a82d;
-    border-radius: 7px;
+    border-radius: 15px;
     margin: 5px;
-    padding: 5px;
+    padding: 7px 15px;
     color: white;
 
 }
 
 .profile-btn__ul {
     list-style-type: none;
+    background-color: #333333;
 
 }
 
 .profile-btn__li {
-    margin-left: -20px;
+    
 
 }
 
@@ -295,6 +327,7 @@
     background-color: transparent;
     cursor: pointer;
     margin-left: -5px;
+    color: #a6a6a6;
 
 }
 
