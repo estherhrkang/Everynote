@@ -53,7 +53,7 @@ const NoteInNotebookShow = ({ setClickedNote, notebookid, id, notebooks, notes, 
                 <form className='search-note-box' onSubmit={handleSearchNote}>
                     <input
                         className='search-note-box__input'
-                        placeholder='Find Note'
+                        placeholder='Search note'
                         type='text'
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
