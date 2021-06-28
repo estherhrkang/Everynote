@@ -39,14 +39,15 @@ const NotebookPage = ({ notebooks }) => {
         setShowMenu(true);
     };
 
-    const duringPopUp = popUp ? ' during-popup' : '';
+    // const duringPopUp = popUp ? ' during-popup' : '';
 
     const handleSearchNotebook = (e) => {
         e.preventDefault();
 
         // .find finds the fist match vs .filter finds all the match put in an array
         const firstMatchingNotebook = notebooks.find(notebook => notebook.title.toLowerCase().includes(searchInput.toLowerCase()));
-        dispatch(getOneNotebook(firstMatchingNotebook));
+        dispatch(getOneNotebook(firstMatchingNotebook))
+            .then(setSearchInput(''))
     };
 
     const handleCancelSearch = () => {
@@ -59,6 +60,7 @@ const NotebookPage = ({ notebooks }) => {
         if (notebookTitle) {
             setErrors([]);
             return dispatch(createNotebook(notebookTitle))
+                .then(setNotebookTitle(''))
                 .catch(async(res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors)
@@ -113,18 +115,18 @@ const NotebookPage = ({ notebooks }) => {
                     <table>
                         <thead className='notebook-list-thead'>
                             <tr>
-                                <th className='notebook-list-row'>Title</th>
-                                <th className='notebook-list-row'>Updated</th>
-                                <th className='notebook-list-row'>Actions</th>
+                                <th>Title</th>
+                                <th>Updated</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody className='notebook-list-tbody'>
                             {notebooks?.map(notebook => (
                                 <>
-                                    <tr key={notebook.id}>
-                                        <th className='notebook-list-row'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
-                                        <th className='notebook-list-row'>{notebook.updatedAt.slice(0,10)}</th>
-                                        <th className='notebook-list-row'>
+                                    <tr className='notebook-list-row' key={notebook.id}>
+                                        <th><Link className='notebook-title-link' to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
+                                        <th>{notebook.updatedAt.slice(0,10)}</th>
+                                        {/* <th>
                                             <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>
                                         </th>
                                             {showMenu && (
@@ -132,7 +134,10 @@ const NotebookPage = ({ notebooks }) => {
                                                     <button className={'rename-notebook-btn' + duringPopUp} onClick={() => setPopUp(true)}>Rename notebook</button>
                                                     <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete notebook</button>
                                                 </>
-                                            )}
+                                            )} */}
+                                        <th>
+                                            <button className='delete-notebook-btn' onClick={() => dispatch(deleteOneNotebook(notebook))}>Delete</button>
+                                        </th>
                                     </tr>
                                 </>
                             ))}
