@@ -4,22 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotes, getOneNote } from '../../store/note';
 import '../../index.css';
 
-const NoteAllShow = ({ setClickedNote, notebookid, id, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
+const NoteAllShow = ({ setClickedNote, notes, setNoteTitle, setNoteContent, setShowForm }) => {
     const dispatch = useDispatch();
+
     const sessionUser = useSelector(state => state.session.user);
-    // const notebooks = useSelector(state => state.notebook.fullNotebook);
-    // const notes = useSelector(state => state.note.fullNote);
-    
-    // const [title, setTitle] = useState('');
-    // const [content, setContent] = useState('');
+
     const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(getAllNotes());
     }, [dispatch]);
     
-    // let currentNote = notes !== null ? notes.find(note => note.title.toLowerCase() === clickedNote.title.toLowerCase()) : null;
-
     if (!sessionUser) return <Redirect to='/' />
 
     const handleSearchNote = (e) => {
@@ -65,11 +60,9 @@ const NoteAllShow = ({ setClickedNote, notebookid, id, notebooks, notes, noteTit
                                 setShowForm(true)
                             }}
                         >
-                            {/* <Link to={`/notes/${note.id}`}> */}
-                                <div className='notes-list-li__title'>{note?.title}</div>
-                                <div className='notes-list-li__content'>{note?.content.length < 40 ? note?.content : `${note?.content.slice(0, 40)}...`}</div>
-                                <div className='notes-list-li__date'>{note?.updatedAt.slice(0,10)}</div>
-                            {/* </Link> */}
+                            <div className='notes-list-li__title'>{note?.title}</div>
+                            <div className='notes-list-li__content'>{note?.content.length < 40 ? note?.content : `${note?.content.slice(0, 40)}...`}</div>
+                            <div className='notes-list-li__date'>{note?.updatedAt.slice(0,10)}</div>
                         </button>
                     </li>
                 ))}

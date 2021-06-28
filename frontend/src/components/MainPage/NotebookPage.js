@@ -6,12 +6,10 @@ import { getAllNotes } from '../../store/note';
 import EditNotebookModal from './NotebookEditModal';
 import '../../index.css';
 
-const NotebookPage = ({ notebooks, notes, showForm, setShowForm }) => {
+const NotebookPage = ({ notebooks }) => {
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user);
-    // array
-    // const notebooks = useSelector(state => state.notebook.fullNotebook);
 
     const [notebookTitle, setNotebookTitle] = useState('');
     const [showMenu, setShowMenu] = useState(false);
@@ -46,14 +44,9 @@ const NotebookPage = ({ notebooks, notes, showForm, setShowForm }) => {
     const handleSearchNotebook = (e) => {
         e.preventDefault();
 
-        //need to filter here and send only one object
         // .find finds the fist match vs .filter finds all the match put in an array
-
-        // if notebook.title partially includes searchInput, 
         const firstMatchingNotebook = notebooks.find(notebook => notebook.title.toLowerCase().includes(searchInput.toLowerCase()));
-        // dispatch that notebook.title & receive matching notebook
         dispatch(getOneNotebook(firstMatchingNotebook));
-        // update display on notebooks page
     };
 
     const handleCancelSearch = () => {
@@ -133,11 +126,6 @@ const NotebookPage = ({ notebooks, notes, showForm, setShowForm }) => {
                                 <>
                                     <tr key={notebook.id}>
                                         <th className='table__tbody__tr__th'><Link to={`/notebooks/${notebook.id}/notes`}>{notebook.title}</Link></th>
-                                        {/* <th className='table__tbody__tr__th'><button onClick={() => <Link to={`/notebooks/${notebook.id}/notes`}></Link>}>{notebook.title}</button></th> */}
-                                        {/* <Route path='/notebooks/:notebookid/notes'>
-                                            <NoteInNotebookShow />
-                                        </Route> */}
-                                        {/* <th className='table__tbody__tr__th'>{notebook.title}</th> */}
                                         <th className='table__tbody__tr__th'>{notebook.updatedAt.slice(0,10)}</th>
                                         <th>
                                             <button className='notebook-action-btn' onClick={openMenu}><i className="fas fa-ellipsis-h"></i></button>

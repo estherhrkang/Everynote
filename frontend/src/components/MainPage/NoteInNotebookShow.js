@@ -2,25 +2,23 @@ import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotes, getOneNote, getAllNotesInNotebook } from '../../store/note';
-import { getAllNotebooks, getOneNotebook } from '../../store/notebook';
+import { getOneNotebook } from '../../store/notebook';
 import '../../index.css';
 
-const NoteInNotebookShow = ({ setClickedNote, notebookid, id, notebooks, notes, noteTitle, setNoteTitle, noteContent, setNoteContent, showForm, setShowForm }) => {
+const NoteInNotebookShow = ({ setClickedNote, notebookid, notebooks, notes, setNoteTitle, setNoteContent, setShowForm }) => {
     const dispatch = useDispatch();
     
     const sessionUser = useSelector(state => state.session.user);
-
     // .find returns the value of the first element in the provided array
     const notebook = notebooks.find(notebook => notebook?.id === Number(notebookid));
+    // .filter returns all the matches in an array
     const subNotes = notes.filter(note => note.notebookId === Number(notebookid));
     
     const [searchInput, setSearchInput] = useState('');
-    // const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         dispatch(getAllNotesInNotebook(notebookid));
         dispatch(getOneNotebook({id: notebookid}))
-            // .then(() => { setIsLoaded(true) })
     }, [dispatch, notebookid]);
 
     if (!sessionUser) return <Redirect to='/' />
@@ -63,29 +61,23 @@ const NoteInNotebookShow = ({ setClickedNote, notebookid, id, notebooks, notes, 
                     <button className='cancel-search-note-btn' type='button' onClick={handleCancelSearch}>Cancel</button>
                 </form>
                 <ul className='notes-list-ul'>
-                    {/* {isLoaded && (
-                        <> */}
-                            {subNotes?.map(subNote => (
-                                <li className='notes-list-li' key={subNote?.id}>
-                                    <button 
-                                        className='notes-list-li__btn' 
-                                        onClick={() => {
-                                            setNoteTitle(subNote?.title)
-                                            setNoteContent(subNote?.content)
-                                            setClickedNote(subNote ? subNote : null)
-                                            setShowForm(true)
-                                        }}
-                                    >
-                                    {/* <Link to={`/notes/${subNote.id}`}> */}
-                                        <div className='notes-list-li__title'>{subNote?.title}</div>
-                                        <div className='notes-list-li__content'>{subNote?.content.length < 40 ? subNote?.content : `${subNote?.content.slice(0, 40)}...`}</div>
-                                        <div className='notes-list-li__date'>{subNote?.updatedAt.slice(0,10)}</div>
-                                    {/* </Link> */}
-                                </button>
-                                </li>
-                            ))}
-                        {/* </>
-                    )} */}
+                    {subNotes?.map(subNote => (
+                        <li className='notes-list-li' key={subNote?.id}>
+                            <button 
+                                className='notes-list-li__btn' 
+                                onClick={() => {
+                                    setNoteTitle(subNote?.title)
+                                    setNoteContent(subNote?.content)
+                                    setClickedNote(subNote ? subNote : null)
+                                    setShowForm(true)
+                                }}
+                            >
+                                <div className='notes-list-li__title'>{subNote?.title}</div>
+                                <div className='notes-list-li__content'>{subNote?.content.length < 40 ? subNote?.content : `${subNote?.content.slice(0, 40)}...`}</div>
+                                <div className='notes-list-li__date'>{subNote?.updatedAt.slice(0,10)}</div>
+                        </button>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </div>
