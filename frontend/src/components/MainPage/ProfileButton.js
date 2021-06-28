@@ -37,7 +37,6 @@ const ProfileButton = ({ user }) => {
             </button>
             {showMenu && (
                 <ul className='profile-btn__ul'>
-                    <li className='profile-btn__li'>{user.username}</li>
                     <li className='profile-btn__li'>{user.email}</li>
                     <li className='profile-btn__li'>
                         <button className='profile-btn__signout-btn' onClick={handleSignout}>Sign Out</button>
