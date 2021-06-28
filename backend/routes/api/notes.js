@@ -38,20 +38,12 @@ router.delete('/:id', asyncHandler( async(req, res) => {
 
 // Edit a note: PUT /api/notes/:id
 router.put('/:id', requireAuth, asyncHandler( async(req, res) => {
-    // const noteId = parseInt(req.params.id, 10);
-    // const { title } = req.body;
-    // const note = await Note.findOne({ where: { id: noteId }});
-    // await note.update({ editedNote });
-
     const id = Number(req.params.id);
     const { title, content, notebookId } = req.body;
     const note = await Note.findOne({
         where: { id: id }
     })
-
     await note.update({ title, content, notebookId });
-
-    // const note = await Note.updateOne( id, title, content, req.user.id, notebookId );
     return res.json(note);
 }));
 

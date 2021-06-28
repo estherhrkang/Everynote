@@ -308,7 +308,7 @@
 
 .profile-btn__ul {
     list-style-type: none;
-    background-color: #333333;
+    background-color: transparent;
 
 }
 
@@ -318,7 +318,7 @@
 }
 
 .profile-btn__li:hover {
-    background-color: #e6e6e6;
+    color:#e6e6e6;
 
 }
 
@@ -328,11 +328,12 @@
     cursor: pointer;
     margin-left: -5px;
     color: #a6a6a6;
-
+    
 }
 
 .profile-btn__signout-btn:hover {
-    background-color: #e6e6e6;
+    color: #e6e6e6;
+    
 
 }
 

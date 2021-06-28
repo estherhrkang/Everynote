@@ -35,22 +35,5 @@ module.exports = (sequelize, DataTypes) => {
     return note.id;
   };
 
-  Note.updateOne = async function(note) {
-    // await Note.update( note, { where: { id } });
-    // return await Note.findByPk(id);
-
-    const id = note.id;
-    delete note.id;
-
-    await Note.update(
-      note, {
-        where: { id },
-        returning: true,
-        plain: true,
-      }
-    );
-    return await Note.findByPk(id);
-  };
-
   return Note;
 };
