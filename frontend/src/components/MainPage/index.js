@@ -30,7 +30,7 @@ const MainPage = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebook.fullNotebook);
     const notes = useSelector(state => state.note.fullNote);
-    
+
     useEffect(() => {
         dispatch(getAllNotebooks());
         dispatch(getAllNotes());
@@ -81,21 +81,21 @@ const MainPage = ({ isLoaded }) => {
                     </Route>
                 </div>
                 <div className='form-container'>
-                {showForm ? (
-                    <NoteEditForm 
-                        id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
-                        noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
-                        setShowForm={setShowForm}
-                        clickedNote={clickedNote}
-                    />
-                ) : (
-                    <Route exact path={['/notes', '/notebooks/:notebookid/notes']}>
-                        <NoteCreateForm
-                        notebookid={notebookid} notebooks={notebooks} notes={notes} 
-                        noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                    {showForm ? (
+                        <NoteEditForm 
+                            id={id} notebookid={notebookid} notebooks={notebooks} notes={notes}
+                            noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                            setShowForm={setShowForm}
+                            clickedNote={clickedNote}
                         />
-                    </Route>
-                )}
+                    ) : (
+                        <Route exact path={['/notes', '/notebooks/:notebookid/notes']}>
+                            <NoteCreateForm
+                            notebookid={notebookid} notebooks={notebooks} notes={notes} 
+                            noteTitle={noteTitle} setNoteTitle={setNoteTitle} noteContent={noteContent} setNoteContent={setNoteContent}
+                            />
+                        </Route>
+                    )}
                 </div>
             </div>
         )

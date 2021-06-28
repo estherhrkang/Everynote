@@ -227,7 +227,7 @@
 
 .main-container {
     display: grid;
-    grid-template-columns: 0.5fr auto auto;
+    grid-template-columns: auto auto auto;
 
     /* grid-template-columns: 30% auto;
     grid-template-rows: 10% auto;
@@ -239,7 +239,7 @@
 
 .navigation-container {
     background-color: #1a1a1a;
-    width: 200px;
+    width: 15vw;
     height: 100vh;
 }
 
@@ -310,14 +310,14 @@
 
 
 
-/*  */
+/* OK */
 /* ------------------------------------ */
 /* NoteAllShow */
 /* ------------------------------------ */
 
 .notes-list-container {
     height: 100vh;
-    width: 300px;
+    width: 30vw;
     overflow-y: auto;
     background-color: #f8f8f8;
     padding: 5px 10px;
@@ -342,30 +342,30 @@
 }
 
 .search-note-box__input {
-    width: 60%;
+    width: 55%;
     border: none;
     border-radius: 15px;
-    padding: 2%;
+    padding: 7px;
+    margin: 7px 0;
 }
 
 .search-note-btn {
     background-color: #00a82d;
     color: white;
-    margin: 2%;
     border: none;
     border-radius: 15px;
     transition: all 0.2s ease 0s;
-    width: 15%;
-    padding: 2%;
-    margin-top: 5%;
+    margin: 7px;
+    width: 50px;
+    padding: 7px;
 }
 
 .cancel-search-note-btn {
     background-color: transparent;
     border: none;
-    width: 10%;
-    padding: 1%;
-    margin: 1%;
+    margin: 7px 0;
+    width: 50px;
+    padding: 7px;
     cursor: pointer;
 }
 
@@ -414,16 +414,27 @@
     font-size: 20px;
 }
 
-.note-body-content {
+
+
+/*  */
+/* ------------------------------------ */
+/* NoteEditForm & NoteCreateForm */
+/* ------------------------------------ */
+
+
+.form-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    height: 100%;
+    height: 100vh;
+    width: 55vw;
 }
 
 .note-body-content__form {
     box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
 }
 
 .note-body-content__error-li {
@@ -431,14 +442,15 @@
     color:red;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
-    margin-left: -15%;
+    /* margin-left: -15%; */
     padding-top: 5%;
 }
 
 .note-body-content__title-input {
     box-sizing: border-box;
     display: grid;
-    width: 450px;
+    /* width: 450px; */
+    width: 100%;
     height: 50px;
     border: none;
 }
@@ -446,7 +458,8 @@
 .note-body-content__content-input {
     box-sizing: border-box;
     display: grid;
-    width: 450px;
+    /* width: 450px; */
+    width: 100%;
     height: 400px;
     border: none;
 
@@ -462,21 +475,20 @@
 .create-note-btn, .save-note-btn {
     background-color: #00a82d;
     color: white;
-    margin: 2%;
     border: none;
-    border-radius: 0.3em;
+    border-radius: 15px;
     transition: all 0.2s ease 0s;
-    width: 30%;
-    padding: 2%;
-    margin-top: 5%;
+    margin: 20px;
+    width: 100px;
+    padding: 10px;
 }
 
 .cancel-create-note-btn {
     background-color: transparent;
     border: none;
-    width: 30%;
-    padding: 1%;
-    margin: 1%;
+    margin: 20px;
+    width: 100px;
+    padding: 10px;
     cursor: pointer;
 }
 
@@ -493,6 +505,7 @@
     grid-template-columns: 1fr; */
     height: 100vh;
     padding: 5px 30px;
+    width: 85vw;
 }
 
 .notebook-list-header {
@@ -528,21 +541,20 @@
 .search-notebook-btn, .create-notebook-btn {
     background-color: #00a82d;
     color: white;
-    margin: 2%;
     border: none;
-    border-radius: 0.3em;
+    border-radius: 15px;
     transition: all 0.2s ease 0s;
-    width: 15%;
-    padding: 2%;
-    margin-top: 5%;
+    margin: 20px;
+    width: 80px;
+    padding: 7px;
 }
 
 .cancel-search-notebook-btn, .cancel-create-notebook-btn {
     background-color: transparent;
     border: none;
-    width: 10%;
-    padding: 1%;
-    margin: 1%;
+    margin: 20px;
+    width: 80px;
+    padding: 5px;
     cursor: pointer;
 }
 
